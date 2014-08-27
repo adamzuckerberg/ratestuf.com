@@ -109,4 +109,90 @@ function get_draggable_balls($search_term) {
 //   }             
 // }
 
+function get_draggable_balls_text_ratings($search_term) {
+
+// GET ALL TEXTRATINGS FOR ALL BALLS PRINTED. SORT BY BEST-VALUE, FAIR VALUE, WORSE VALUE AND ECHO TEXTRATING WITH NO USER FB IMAGE YET BUT IN THE FUTURE WHEN ITS NOT JUST ADAM. IF ONE ITEM.  IF TWO OR MORE ITEMS EACH WITH BEST, FAIR, and WORSE NOT SURE WHAT TO DO
+
+      }     
+  
+function print_textratings_to_screen($search_term) {
+
+          global $user;
+          global $connection;
+          $search_term = stripslashes(mysqli_real_escape_string($connection, strtolower($search_term)));
+
+
+// this is the query I want but I get a mysql num rows error if i use it WTF?
+          // $query = "SELECT ratings_table.ratingDateTime, ratings_table.ratingId, ratings_table.userId, ratings_table.xRating, ratings_table.yRating, ratings_table.itemId, ratings_table.textRating, fblogin.firstname, fblogin.lastname FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `fblogin` ON items_table.createdBy = fblogin.fb_id JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' LIMIT 4"; 
+
+          $query = "SELECT ratings_table.ratingDateTime, ratings_table.xRating, ratings_table.yRating, ratings_table.ratingId,  ratings_table.textRating, items_table.itemId, items_table.itemName FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE ratings_table.textRating <> '' AND subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' LIMIT 5"; 
+
+          $result2 = $connection->query($query);
+
+        $counter = 0;
+
+      if(mysqli_num_rows($result2) > 0) {
+
+          while ($row = $result2->fetch_array(MYSQLI_ASSOC)) {
+      $counter ++;
+
+      echo '<div class="textRatingsBallBlock"><div id="'.$row["ratingId"].'" class="textRatingBall"'.'xposition='.$row["xRating"].' yposition='.$row["yRating"].'></div><p class="textRatingItemName">'.$row["itemName"].'&trade;'.'</p></div><div class="textRatingsTextBlock">'.'<p class="textRatingsDollars">'.get_dollar_rating($row['yRating']).'</p><br>'.'<p class="textRatingsStars">'.get_star_rating($row['xRating']).'</p>'.'<p class="textRatingOutput">'.htmlentities($row['textRating']).'</p>'.'<p class="ratingDate">'.date('m/d/Y',strtotime($row["ratingDateTime"])).'</p>'.'</div>';
+      echo '<hr>';
+      // var_dump($row);
+      }     
+    } else {
+      // echo "fahq";
+    }
+
+}
+
+function get_ball_coloring_in_textrating_area($xRating,$yRating) {
+
+if ($yRating >= 0 && $yRating < .25) {
+return "$";
+} elseif ($yRating >= .25 && $yRating < .50) {
+return "$$";
+} elseif ($yRating >= .50 && $yRating < .75) {
+return "$$$";
+} elseif ($yRating >= .75 && $yRating < 1.00) {
+return "$$$$";
+}
+}
+
+function get_dollar_rating($yRating) {
+
+if ($yRating >= 0 && $yRating < .25) {
+return "$";
+} elseif ($yRating >= .25 && $yRating < .50) {
+return "$$";
+} elseif ($yRating >= .50 && $yRating < .75) {
+return "$$$";
+} elseif ($yRating >= .75 && $yRating < 1.00) {
+return "$$$$";
+}
+}
+
+function get_star_rating($xRating) {
+
+if ($xRating >= 0 && $xRating < .20) {
+return "&#9734";
+} elseif ($xRating >= .20 && $xRating < .40) {
+return "&#9734&#9734";
+} elseif ($xRating >= .40 && $xRating < .60) {
+return "&#9734&#9734&#9734";
+} elseif ($xRating >= .60 && $xRating < .80) {
+return "&#9734&#9734&#9734&#9734";
+} elseif ($xRating >= .80 && $xRating <= 1.00) {
+return "&#9734&#9734&#9734&#9734&#9734";
+}
+}
+
+
+?>
+
+
+
+
+
+
 

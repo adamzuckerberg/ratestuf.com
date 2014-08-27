@@ -10,9 +10,29 @@
 	z-index: 2;
 	display: none;
 }
-#responsiveAd1 {
-	margin: -140px 0px 0px 100px;
+#dialogItemName {
+	margin: 20px 0px 0px 40px;
 }
+.ratingDate {
+	text-align: right;
+	color: grey;
+	font-size: .8em;
+	margin: 0px 30px 0px 0px;
+/*	display: none;*/
+}
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+}
+
+/*#responsiveAd1 {
+	margin: -140px 0px 0px 100px;
+}*/
+
 #adBoxBelowRatenowButton {
 /*	border: 2px solid blue;*/
 	width: 350px;
@@ -84,7 +104,7 @@ float: left;
 	font-size: 1.6em;
 	line-height: 1.4em;
 	font-weight: bolder;
-	color: #0000ee;g
+	color: #0000ee;
 /*	width: 100%;*/
 /*	border: 5px solid green;*/
 }
@@ -106,6 +126,25 @@ float: left;
 	width: 15%;
 	min-width: 50px;
 	height: 26%;
+	min-height: 50px;
+	margin: 7px 0px 5px 20px;
+}
+.textRating {
+	font-size: 1.0em;
+	font-weight: 900;
+	color: black;
+}
+.textRatingContent {
+	margin: 10px 0px 0px 0px;
+}
+#userImageTextRatings {
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+    border:3px solid #1cff2c;
+	width: 8%;
+	min-width: 50px;
+	height: 8%;
 	min-height: 50px;
 	margin: 7px 0px 5px 20px;
 }
@@ -395,6 +434,47 @@ select option {
 	z-index: 0;
 /*	border: 10px solid purple;*/
 }
+#dialog-message {
+	display: none;
+}
+.dialogBall {
+	border-radius: 50%;
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
+	z-index: 3;
+	margin-top: 5px;
+}
+.ui-dialog .ui-dialog-buttonpane { border-width: 0 !important; }
+
+.dialogTextArea {
+	margin: 10px 0px 0px 0px;
+	width: 95%;
+	height: 90%;
+	font-family: "Arial Bold", sans-serif; 
+	font-size: 2.0em;
+/*	display: none;*/
+/*	border: 2px dashed black;*/
+}
+textarea {
+	font-family: "Arial Bold", sans-serif; 
+	font-size: 2.0em;	
+}
+
+button:hover {
+	color: black;
+	border: 2px solid black;
+	background: #1cff2c;
+}
+button {
+	border-radius: 10%;
+}
+.ui-dialog-buttonset {
+/*	border: 3px solid #1cff2c;
+	background: white;*/
+}
+
 .bestValue {
 background: repeating-linear-gradient(
   45deg,
@@ -552,6 +632,52 @@ background: repeating-linear-gradient(
 	width: 100%;
 /*	border: 10px solid green;*/
 }
+#DynamicRatingsSection {
+ 	font-family: "Arial Bold", sans-serif; 
+	font-size: 1.4em;
+	margin: 5px 0px 5px -20px;	
+	padding: 0px 0px 0px 15px;
+/*	border-style:solid;
+	border-width: 2px;*/
+/*	border: 1px solid black;*/
+}
+#DynamicRatingsSectionHeadline {
+	background: #eeeeee;
+ 	font-family: "Arial Bold", sans-serif; 
+	font-size: 1.5em;
+	margin: 20px 0px 20px 0px;	
+	padding: 0px 0px 0px 15px;
+	border-style:solid;
+	border-width: 2px;
+/*	border: 10px solid green;*/
+}
+.textRatingsDollars {
+	display: inline-block;
+	margin: 5px 0px 0px 0px;
+	color: #1cff2c;
+/*	background: grey;*/
+}
+.textRatingsStars {
+	display: inline-block;
+	margin: -3px 0px 9px 0px;
+/*	color: yellow;*/
+/*	background: grey;*/
+}
+.textRatingsBallBlock {
+	width: 22%;
+	height: 150px;
+/*	border: 2px solid black;*/
+	display: inline-block;
+/*	background: grey;*/
+}
+.textRatingsTextBlock {
+	width: 75%;
+	height: 150px;
+/*	border: 2px solid black;*/
+	display: inline-block;
+	position: absolute;
+	padding: 10px 0px 0px 15px;
+}
 h3.trending {
 	background: #eeeeee;
 	font-style: helvetica;
@@ -564,10 +690,10 @@ h3.trending {
 	margin: 0px 0px 20px 0px;
 }
 #trendingStuf {
-/*	font-family: "Arial Bold", sans-serif; */
 	font-family: "Arial Bold", sans-serif; 
-	font-size: 1.8em;
-	line-height: .5em;
+/*	font-family: "Arial Bold", sans-serif; */
+	font-size: 1.6em;
+	line-height: .7em;
 	margin: 0px 0px 0px -30px;
 }
 .trendingVS {
@@ -667,6 +793,23 @@ width: 25px;
 position: absolute;
 box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
 z-index: 3;
+}
+.textRatingItemName {
+/*	margin: 0px 0px 0px 0px;*/
+/*	background: blue;*/
+	width: 100%;
+	margin: -10% 0px 0px 0px;
+	text-align: center;
+/*	margin: -20px 0px 0px 0px;*/
+}
+.textRatingBall {
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+/*	position: absolute;*/
+	box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
+/*	z-index: 3;*/
+	margin: 15% auto;	
 }
 .active
 {
@@ -927,6 +1070,9 @@ hr.line {
     -webkit-transform: scale(1) rotate(0turn) translate(0px,0%);
 }
 /*merge start*/
+#userimage2 {
+	display: inline-block;
+}
 #userImage {
     width: 80px;
     height: 80px;

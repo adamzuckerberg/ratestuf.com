@@ -29,10 +29,12 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
 
 <head>
-	<meta charset="utf-8">
+
+
+  <meta charset="utf-8">
   <meta property="og:image" content="http://ratestuf.org/images/logo.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>RateStuf | Top 10 Reviews and Consumer Ratings</title>
+	<title>RateStuf | Top 10 Brand Map, Reviews - User-Generated Ratings</title>
 <!--   <title>Ratestuf | <?php echo $_SERVER['QUERY_STRING'] . " - Reviews of The Top 10 Brands and A vs. B Ratings"; ?></title> -->
   <meta name="description" content="A dynamic user-generated brand map to help you discover the best brands in every category. Real-time user-generated ratings of the top 10 brands in any class: the best hosting services, best airlines, best rental cars, best online ride sharing services...you name it. Add your ratings of price and service quality to help others find the best-value brands or, add a new brand to our database to help others discover new, innovative products and services in any category.">
 <!--   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico?v=2" /> -->
@@ -41,8 +43,8 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
   <link href="css/custom.css" rel="stylesheet">
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <!--   drag and drop on touch screens --> 
   <script src="js/jquery.ui.touch-punch.min.js"></script>
   <script src="js/respond.js"></script>
@@ -56,6 +58,84 @@ userloggedin =<?php
   }
 ?>;
 </script>
+
+<!-- facebook og sharing -->
+<meta property="fb:app_id" content="228744763916305" />
+<!-- i want to add explicitly share so it goes in the news feed how? -->
+<!-- "fb:explicitly_shared=true" -->
+<meta property="og:site_name" content="RateStuf" />
+<meta property="og:image" content="https://ratestuf.org/<?php
+if (isset($product["fbimage"])) {
+  echo $product["fbimage"]; 
+} else {
+  echo 'images/logo.jpg';
+}
+
+?>"/>
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hey everyone, this is what I think about <?php echo (isset($_GET['s'])? $_GET['s']:""); ?>"/>
+<meta property="og:description" content="A dynamic user-generated brand map to help you discover the best brands in every category." />
+
+<meta property="og:image" content="https://www.ratestuf.org/<?php  
+
+// <!-- 5 stars -->
+if(isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>75){ 
+    echo 'images/fbog/FB_OG_5stars_4dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>50){ 
+    echo 'images/fbog/FB_OG_5stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>25){ 
+    echo 'images/fbog/FB_OG_5stars_2dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>0){ 
+    echo 'images/fbog/FB_OG_5stars_1dollars.png';
+}
+
+// <!-- 4 stars -->
+elseif(isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>75){ 
+    echo 'images/fbog/FB_OG_4stars_4dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>50){ 
+    echo 'images/fbog/FB_OG_4stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>25){ 
+    echo 'images/fbog/FB_OG_4stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>0){ 
+    echo 'images/fbog/FB_OG_4stars_3dollars.png';
+}
+
+// <!-- 3 stars -->
+elseif(isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>75){ 
+    echo 'images/fbog/FB_OG_3stars_4dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>50){ 
+    echo 'images/fbog/FB_OG_3stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>25){ 
+    echo 'images/fbog/FB_OG_3stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>0){ 
+    echo 'images/fbog/FB_OG_3stars_3dollars.png';
+}
+// <!-- 2 stars -->
+elseif(isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>75){ 
+    echo 'images/fbog/FB_OG_2stars_4dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>50){ 
+    echo 'images/fbog/FB_OG_2stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>25){ 
+    echo 'images/fbog/FB_OG_2stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>0){ 
+    echo 'images/fbog/FB_OG_2stars_3dollars.png';
+}
+// <!-- 1 stars -->
+elseif(isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>75){ 
+    echo 'images/fbog/FB_OG_1stars_4dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>50){ 
+    echo 'images/fbog/FB_OG_1stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>25){ 
+    echo 'images/fbog/FB_OG_1stars_3dollars.png';
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0){ 
+    echo 'images/fbog/FB_OG_1stars_3dollars.png';
+}
+
+
+?>"/>
+
+
+
 
 </head>
   <body>
@@ -135,7 +215,7 @@ userloggedin =<?php
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-2 hidden-sm hidden-xs"></div>
-            <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12"1
+            <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
                 <h1 id="headline" title="the best (and the worst)">
 
                 <?php
@@ -235,7 +315,24 @@ userloggedin =<?php
                   <div id="oneDollar"><span>$</span></div>
               </div>
 
+<div id="dialog-message" title="">
+    <span class="dialogBall" style="float:left; margin:0 7px 50px 0;"></span> 
+    <span id="dialogItemName"></span>
 
+                <textarea class="dialogTextArea"></textarea> 
+
+<!-- <h2>Share Your Rating on Facebook: </h2> -->
+<!-- this is the facebook sharing widget stuff from SpaGroups for the dialog box on RateStuf -->
+<!-- src="images/share-on-facebook-nonhover.png"
+ -->
+
+<!-- This is what I think about Brand&trade;
+What about (A) 2 item vs search (B) multiple items -->
+<!-- <a href="#" onclick="fbs_click('https://www.facebook.com/share.php?u=https://ratestuf.org/group.php?id=<?php echo $_GET['id']; ?>')" class="fb-share-button" data-width="1000" data-type="button" id="facebookShareButtonGroup"><img src="https://spagroups.com/images/share-on-facebook-nonhover.png" onmouseover="this.setAttribute('src','https://spagroups.com/images/share-on-facebook-hover.png');" onmouseout="this.setAttribute('src','https://spagroups.com/images/share-on-facebook-nonhover.png');"/></a>  -->
+
+<!-- <div class="fb-share-button" data-href="https://spagroups.com/group.php?id=<?php echo $_GET['id']; ?>" data-width="1000" data-type="button"></div> -->
+
+</div>
                 <div id="containmentWrapper"></div>
 
                 <img id="rateTable" src="images/rateTable.png">
@@ -261,9 +358,17 @@ userloggedin =<?php
                             $secondSearchTerm = trim(substr($search_term, ($position_of_vs_term + $length_of_vs_term),100));
                             $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
                             get_draggable_balls($firstSearchTerm); 
-                            get_draggable_balls($secondSearchTerm);                                
+                            get_draggable_balls($secondSearchTerm);   
+
+                            // print_textratings_to_screen($firstSearchTerm);
+                            // print_textratings_to_screen($secondSearchTerm);
+
                         } else {
                             get_draggable_balls($search_term);
+
+                            // print_textratings_to_screen($search_term);
+
+
                             } 
                           } 
                         }
@@ -318,7 +423,7 @@ userloggedin =<?php
         <div id="blankRow2"></div>
       </div>
       <div class="row">
-        <div class="col-lg-7 col-md-7 hidden-xs hidden-sm"> 
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"> 
   <?php
                 // // Step 2. Perform database query to get the 5 most TRENDING ratings
                 //   $query = "SELECT COUNT(items_table.itemId) AS count,items_table.itemId, items_table.itemName "; 
@@ -352,9 +457,67 @@ userloggedin =<?php
                 <?php 
                 //Step 4. Release returned data
                   // mysqli_free_result($trending);
-                ?>           
+                ?>        
+
+  <p id="DynamicRatingsSectionHeadline">
+                <?php
+
+                if (isset($_GET['s'])) {
+                if (is_a_subcategory($_GET['s'])) {
+                  echo 'Top 10 '.ucwords(strtolower(stripslashes($_GET['s']))).':';
+                } else {
+                if (position_of_vs_term_in_the_search($_GET['s']) > 0 ) {  
+                echo 'User Ratings for '. substr_replace(ucwords(strtolower(stripslashes($_GET['s']))),'v',position_of_vs_term_in_the_search($_GET['s'])+1,1).':';
+                } else {
+                echo 'User Ratings for '.ucwords(strtolower(stripslashes($_GET['s']))).':';
+                }
+                  }
+                }  else {
+                echo ""; 
+                }
+
+                ?>
+
+  </p>
+<div id="DynamicRatingsSection">
 
 
+<!-- <div class="textRatingsBallBlock">
+<div id="GetTheIdFromTheRating" class="textRatingBall worseValue"></div>
+<p class="textRatingItemName">itemName&trade;</p>
+</div>
+<div class="textRatingsTextBlock">
+<img id="userImage2" src='https://graph.facebook.com/503854370/picture?type=large'>
+<p class="textRatingsDollars">$$$$</p><br>
+<p class="textRatingsStars">&#9734</p>
+<p>"Lorem ipsum dolor sit amet, this stuff sucks bumlickidiocious."</p><a href="#"><p>Read more</p></a>
+</div> -->
+
+
+<!-- INSERT QUERY TO ECHO THE TEXTRATING, USER, VALUE BASED ON AVERAGE RATING ETC. -->
+                    <?php
+                    $search_term="";
+                    if (isset($_GET["s"])) {
+                      $search_term = trim($_GET["s"]);
+                      if ($search_term != "") {
+                      $position_of_vs_term = position_of_vs_term_in_the_search($search_term);
+                        if ($position_of_vs_term !== 0) {
+                            $firstSearchTerm = trim(substr($search_term, 0, ($position_of_vs_term) ));
+                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
+                            $secondSearchTerm = trim(substr($search_term, ($position_of_vs_term + $length_of_vs_term),100));
+                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
+                            print_textratings_to_screen($firstSearchTerm);
+                            print_textratings_to_screen($secondSearchTerm);
+                        } else {
+                            print_textratings_to_screen($search_term);
+                            } 
+                          } 
+                        }
+                    ?>
+                  
+
+
+</div>
 <h3 class='paragraphs'> Online Reviews </h3>
 <p class='paragraphs'> RateStuf&trade; is an <strong>online review website</strong>.  Our users work together to create a dynamic, real-time brand map to help other consumers discover the best-value brands and make better purchase decisions. </p>
 <h3 class='paragraphs'> What is a Brand Map? </h3>

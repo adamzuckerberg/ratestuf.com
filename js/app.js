@@ -30,6 +30,104 @@ $('.dollarRating').children().css('padding-bottom',dollarPadding);
 
 }).trigger('resize');
 
+function capitaliseFirstLetter(text)
+{
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+$(".draggable").click(function(){
+
+if (!userloggedin) {
+  return;
+}
+
+$("#dialog-message").find(".dialogTextArea").val("");
+
+  if($(this).hasClass("bestValue")) {
+    $('#dialog-message > .dialogBall').removeClass("fairValue");
+    $('#dialog-message > .dialogBall').removeClass("worseValue");
+    $('#dialog-message > .dialogBall').addClass("bestValue");
+
+  } else if($(this).hasClass("fairValue")) {
+    $('#dialog-message > .dialogBall').removeClass("worseValue");
+    $('#dialog-message > .dialogBall').removeClass("bestValue");
+    $('#dialog-message > .dialogBall').addClass("fairValue");
+
+  } else if($(this).hasClass("worseValue")) {
+    $('#dialog-message > .dialogBall').removeClass("bestValue");
+    $('#dialog-message > .dialogBall').removeClass("fairValue");
+    $('#dialog-message > .dialogBall').addClass("worseValue");
+  }
+
+    $( "#dialog-message" ).dialog({
+      modal: true,
+      width: 550,
+      height: 400,
+      title: "Tell us more about " + capitaliseFirstLetter($(this).find('.itemName').html()),
+      buttons: {
+        'Save': function() {
+
+              var data = {};
+              data.items = [];
+
+              itemName = $(this).find('.itemName').html();
+              itemId = $(this).attr('id');
+              xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
+              yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
+              textRating = $("#dialog-message").find(".dialogTextArea").val();
+              data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":textRating});
+             
+              saveratings(data);
+
+          $( this ).dialog( "close" );
+        },
+            'Save & Share to FB (recommended)': function() {
+
+              var data = {};
+              data.items = [];
+
+              itemName = $(this).find('.itemName').html();
+              itemId = $(this).attr('id');
+              xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
+              yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
+              textRating = $("#dialog-message").find(".dialogTextArea").val();
+              data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":textRating});
+             
+              saveratings(data);
+
+              window.location.href="https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption="+encodeURI(textRating)+"&link=https://www.ratestuf.org/?s="+encodeURI(itemName)+"&x="+encodeURI(xRating)+"&y="+encodeURI(yRating)+"&redirect_uri=https://www.facebook.com";
+
+          $( this ).dialog( "close" );
+
+    }
+      }
+    });
+$('#dialog-message').dialog('setTitle', $(this).find(".itemName").html());
+  });
+
+function saveratings(data) {
+          $.ajax({ 
+              type: "POST",
+              url: "ajax/saveratings.php",
+              data: JSON.stringify(data),
+              contentType: "application/json",
+
+              success: function(res) {
+                console.log(res);
+                if (res.hasOwnProperty('alreadyRated')) {
+                  alert("You've already rated this stuf.");
+                } else {
+                alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
+                location.reload();
+                }
+                // Location.reload(true);
+              },
+              error: function(res) {
+                console.log(res);
+              }
+              ,dataType:'json'});
+}
+
 
 // triggers on load or resize for STARS
 
@@ -262,6 +360,46 @@ $("#rateNowButton").click(function(){
 
 });
 
+// *****************************************
+// INSERT TEXT RATINGS INTO DATABASE ON CLICK OF SAVERATINGS BUTTON IN JQUERY DIALOG BOX
+// *****************************************
+// $( ".selector" ).dialog({
+//   'Save Rating': function() {
+//         //write your function here or call function here
+
+// $(this).draggable() {
+
+//   itemName = $(this).attr('name');
+//   itemId = $(this).attr('id');
+//   xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
+//   yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
+//   data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating}, "textRating":textRating);
+
+// });
+ 
+//  $.ajax({ 
+
+//   type: "POST",
+//   url: "ajax/saveratings.php",
+//   data: JSON.stringify(data),
+//   contentType: "application/json",
+
+//   success: function(res) {
+//     console.log(res);
+//     if (res.hasOwnProperty('alreadyRated')) {
+//       alert("You've already rated this stuf.");
+//     } else {
+//     alert("Got it! Thanks for adding your rating to our database. You are awesome!");
+//     location.reload();
+//     }
+//     // Location.reload(true);
+//   },
+//   error: function(res) {
+//     console.log(res);
+//   }
+//   ,dataType:'json'});
+
+// });
 
 // $(".draggable").each(function(){
 
@@ -270,6 +408,39 @@ $("#rateNowButton").click(function(){
 //   }
 
 //   }); 
+
+$(document).ready(function() {
+
+  $(".textRatingBall").each(function(){
+
+  xPosition = (Math.round(($(this).attr('xposition') * 100)));
+  yPosition = (100-(Math.round(($(this).attr('yposition') * 100))));
+  UpperLineSlope = 0.8965;
+  yPositionOnUpperLine = ((UpperLineSlope * xPosition) + 25);
+  LowerLineSlope = 0.8977;
+  yPositionOnLowerLine = ((LowerLineSlope * xPosition) + 5);
+
+ 
+  if (yPosition > yPositionOnUpperLine) {
+        $(this).removeClass('bestValue');
+        $(this).removeClass('fairValue');  
+        $(this).addClass('worseValue');
+  }
+  
+  if (yPosition <= yPositionOnUpperLine && yPosition >= yPositionOnLowerLine) {
+        $(this).removeClass('worseValue');
+        $(this).removeClass('bestValue');        
+        $(this).addClass('fairValue'); 
+  } 
+  
+  if (yPosition < yPositionOnLowerLine) {
+        $(this).removeClass('worseValue');
+        $(this).removeClass('fairValue');  
+        $(this).addClass('bestValue'); 
+      }
+  });
+});
+
 
 $(".draggable").each(function(){
 
