@@ -79,60 +79,62 @@ if (isset($product["fbimage"])) {
 <meta property="og:image" content="https://www.ratestuf.org/<?php  
 
 // <!-- 5 stars -->
-if(isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>75){ 
+if(isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0.75){ 
     echo 'images/fbog/FB_OG_5stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0.50){ 
     echo 'images/fbog/FB_OG_5stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0.25){ 
     echo 'images/fbog/FB_OG_5stars_2dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >80 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0){ 
     echo 'images/fbog/FB_OG_5stars_1dollars.png';
 }
 
 // <!-- 4 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0.75){ 
     echo 'images/fbog/FB_OG_4stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0.50){ 
     echo 'images/fbog/FB_OG_4stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0.25){ 
     echo 'images/fbog/FB_OG_4stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >60 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0){ 
     echo 'images/fbog/FB_OG_4stars_3dollars.png';
 }
 
 // <!-- 3 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0.75){ 
     echo 'images/fbog/FB_OG_3stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0.50){ 
     echo 'images/fbog/FB_OG_3stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0.25){ 
     echo 'images/fbog/FB_OG_3stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >40 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0){ 
     echo 'images/fbog/FB_OG_3stars_3dollars.png';
 }
 // <!-- 2 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.75){ 
     echo 'images/fbog/FB_OG_2stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.50){ 
     echo 'images/fbog/FB_OG_2stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.25){ 
     echo 'images/fbog/FB_OG_2stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >20 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.0){ 
     echo 'images/fbog/FB_OG_2stars_3dollars.png';
 }
 // <!-- 1 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.75){ 
     echo 'images/fbog/FB_OG_1stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.50){ 
     echo 'images/fbog/FB_OG_1stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.25){ 
     echo 'images/fbog/FB_OG_1stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.0){ 
     echo 'images/fbog/FB_OG_1stars_3dollars.png';
 }
+else {
+     echo 'images/fbog/FB_OG_2stars_3dollars.png'; 
+}
 
-
-?>"/>
+?>">
 
 
 
@@ -315,7 +317,7 @@ elseif(isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>75)
                   <div id="oneDollar"><span>$</span></div>
               </div>
 
-<div id="dialog-message" title="">
+<div id="dialog-message" title="" data-itemId="" data-itemName="" data-xRating="" data-yRating="">
     <span class="dialogBall" style="float:left; margin:0 7px 50px 0;"></span> 
     <span id="dialogItemName"></span>
 
@@ -333,6 +335,8 @@ What about (A) 2 item vs search (B) multiple items -->
 <!-- <div class="fb-share-button" data-href="https://spagroups.com/group.php?id=<?php echo $_GET['id']; ?>" data-width="1000" data-type="button"></div> -->
 
 </div>
+
+<div id="rateTableScreenCapture">
                 <div id="containmentWrapper"></div>
 
                 <img id="rateTable" src="images/rateTable.png">
@@ -389,6 +393,8 @@ What about (A) 2 item vs search (B) multiple items -->
 <!-- important divs that keep the draggable, stars, dollars in the same parent element for accurate ratings -->
 
               </div>
+<!-- end screen capture -->
+</div>
 
                   <img id="arrowUp" src="images/arrowUp.png" class="img-responsive">
                   <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Sign up or log in to add your ratings. You will rate all visible balls, so remove any balls you don't want to rate prior to clicking this button.  To delete a ball, click to select the ball (it will be highlighted in yellow) and press the DELETE key to remove the ball.">Rate Now!</button>
@@ -725,13 +731,13 @@ What about (A) 2 item vs search (B) multiple items -->
 <br>
 <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 <!-- Responsive1 -->
-<ins class="adsbygoogle"
+<!-- <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-1429880673944819"
      data-ad-slot="6801582082"
-     data-ad-format="auto"></ins>
+     data-ad-format="auto"></ins> -->
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+// (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
 <!-- adsense -->    
@@ -742,20 +748,49 @@ What about (A) 2 item vs search (B) multiple items -->
 
 <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 <!-- Responsive1 -->
-<ins class="adsbygoogle"
+<!-- <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-1429880673944819"
      data-ad-slot="6801582082"
-     data-ad-format="auto"></ins>
+     data-ad-format="auto"></ins> -->
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+// (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
 <!-- adsense -->    
 
 
+
+
+
           </div>
       </div>
+
+<!-- <br>
+
+<p>this is a canvas</p>
+<canvas id="canvas" width="1000px" height="700px"></canvas>
+<p>this is a canvas 2</p>
+<canvas id="canvas2" width="1000px" height="700px"></canvas> -->
+
+<script>
+
+
+// $( "#dialog-message" ).close({
+
+// $(document).ready(function() {
+//         var img = $('#rateTable');
+//         var canvas = $('#canvas')[0];
+//         var context = canvas.getContext('2d');
+
+//         img.load(function() {
+//             context.drawImage(this, 0, 0);
+//         });
+// });
+
+</script>
+
+
       <footer class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><div id="footerLinks" class="hidden-sm hidden-xs"> <a href="http://areas.kenan-flagler.unc.edu/Marketing/FacultyStaff/zeithaml/Selected%20Publications/Consumer%20Perceptions%20of%20Price,%20Quality,%20and%20Value-%20A%20Means-End%20Model%20and%20Snthesis%20of%20Evidence.pdf">Scholary Stuf on Perceived Value and Price</a>  | <a href="http://www.comm.ucsb.edu/faculty/flanagin/CV/FlanaginandMetzger2013(CiHB).pdf">Scholary Stuf on User-Generated Ratings</a> | <a href="http://www.demandforce.com/_assets/downloads/pdf/resources/heres-looking-out-for-you-kid-the-unselfish-reasons-why-people-write-online-reviews.pdf">The Unselfish Reasons Why People Write Online Reviews</a></p><div>
@@ -764,9 +799,7 @@ What about (A) 2 item vs search (B) multiple items -->
 <!-- close container -->
     </div>
 
-<!-- adsense -->
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- adsense -->
+
 
 <!-- javascript -->
 <script src="js/app.js" type="text/javascript"></script>

@@ -88,11 +88,13 @@ function get_draggable_balls($search_term) {
       if ($user) {
       $query = "INSERT INTO items_table (itemName, createdBy) VALUES ('$search_term',$user)";
       $result = $connection->query($query);
-      $itemId = $connection->insert_id;
-
+      // $itemId = $connection->insert_id;
+      // error_log($connection->error);
       // RUN ANOTHER SELECT QUERY TO FIND THE ITEM IN THE DATABASE AND DISPLAY TO CAPTURE ITS FIRST RATING
-      $query = "SELECT itemName, itemId FROM `items_table` WHERE itemName = '$search_term'";
+      $query = "SELECT itemName, itemId FROM `items_table` WHERE itemName = '$search_term' limit 1";
       $result = $connection->query($query);
+      $item = $result->fetch_assoc();
+      $itemId = $item['itemId'];
 
       // INSERT A ROW INTO THE item_subcategory_map table so that the new item is in the "uncategorized" subcategory (i.e. subcategoryId = 0
       $query = "INSERT INTO item_subcategory_map (itemId, subcategoryId) VALUES ($itemId,0)";
@@ -125,7 +127,7 @@ function print_textratings_to_screen($search_term) {
 // this is the query I want but I get a mysql num rows error if i use it WTF?
           // $query = "SELECT ratings_table.ratingDateTime, ratings_table.ratingId, ratings_table.userId, ratings_table.xRating, ratings_table.yRating, ratings_table.itemId, ratings_table.textRating, fblogin.firstname, fblogin.lastname FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `fblogin` ON items_table.createdBy = fblogin.fb_id JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' LIMIT 4"; 
 
-          $query = "SELECT ratings_table.ratingDateTime, ratings_table.xRating, ratings_table.yRating, ratings_table.ratingId,  ratings_table.textRating, items_table.itemId, items_table.itemName FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE ratings_table.textRating <> '' AND subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' LIMIT 5"; 
+          $query = "SELECT ratings_table.ratingDateTime, ratings_table.xRating, ratings_table.yRating, ratings_table.userId, ratings_table.ratingId,  ratings_table.textRating, items_table.itemId, items_table.itemName FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE ratings_table.textRating <> '' AND subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' LIMIT 5"; 
 
           $result2 = $connection->query($query);
 
@@ -136,7 +138,7 @@ function print_textratings_to_screen($search_term) {
           while ($row = $result2->fetch_array(MYSQLI_ASSOC)) {
       $counter ++;
 
-      echo '<div class="textRatingsBallBlock"><div id="'.$row["ratingId"].'" class="textRatingBall"'.'xposition='.$row["xRating"].' yposition='.$row["yRating"].'></div><p class="textRatingItemName">'.$row["itemName"].'&trade;'.'</p></div><div class="textRatingsTextBlock">'.'<p class="textRatingsDollars">'.get_dollar_rating($row['yRating']).'</p><br>'.'<p class="textRatingsStars">'.get_star_rating($row['xRating']).'</p>'.'<p class="textRatingOutput">'.htmlentities($row['textRating']).'</p>'.'<p class="ratingDate">'.date('m/d/Y',strtotime($row["ratingDateTime"])).'</p>'.'</div>';
+      echo '<div class="textRatingsBallBlock"><div id="'.$row["ratingId"].'" class="textRatingBall"'.'xposition='.$row["xRating"].' yposition='.$row["yRating"].'></div><p class="textRatingItemName">'.$row["itemName"].'&trade;'.'</p></div><div class="textRatingsTextBlock">'.'<p class="textRatingsDollars">'.get_dollar_rating($row['yRating']).'</p><br>'.'<p class="textRatingsStars">'.get_star_rating($row['xRating']).'</p>'.'<p class="textRatingOutput">'.htmlentities($row['textRating']).'</p>'.'<img id="userImage2" src='.'https://graph.facebook.com/503854370/picture?type=large>'.'<p class="ratingDate">'.date('m/d/Y',strtotime($row["ratingDateTime"])).'</p>'.'</div>';
       echo '<hr>';
       // var_dump($row);
       }     

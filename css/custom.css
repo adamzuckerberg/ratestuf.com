@@ -3,11 +3,23 @@
 }
 #adBoxAboveRatenowButton {
 /*	border: 2px solid blue;*/
-	width: 350px;
+/*	width: 350px;
 	height: 250px;
 	margin: -80% 0px -10% 0px;
 	position: relative;
 	z-index: 2;
+	display: none;*/
+}
+#userImage2 {
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+    border:3px solid grey;
+	width: 70px;
+	min-width: 40px;
+	height: 60px;
+	min-height: 35px;
+	margin: -180px 0px 5px 80%;
 	display: none;
 }
 #dialogItemName {
@@ -29,9 +41,9 @@ hr {
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
 }
 
-/*#responsiveAd1 {
+#responsiveAd1 {
 	margin: -140px 0px 0px 100px;
-}*/
+}
 
 #adBoxBelowRatenowButton {
 /*	border: 2px solid blue;*/
@@ -453,13 +465,13 @@ select option {
 	width: 95%;
 	height: 90%;
 	font-family: "Arial Bold", sans-serif; 
-	font-size: 2.0em;
+/*	font-size: 20px;*/
 /*	display: none;*/
 /*	border: 2px dashed black;*/
 }
 textarea {
 	font-family: "Arial Bold", sans-serif; 
-	font-size: 2.0em;	
+	font-size: 1.6em !important;	
 }
 
 button:hover {
@@ -914,8 +926,8 @@ a:active {
     -webkit-transform: scale(2.4) rotate(1turn) translate(2px,38%);
 }
 #arrowUp {
-  width: 200px;
-  height: 620px;
+  width: 160px;
+  height: 420px;
   position: absolute;
   margin: -600px 0px 0px 300px;
   z-index: 0;
@@ -978,8 +990,8 @@ z-index: 3;
 	display: none;
 }
 #arrowUp {
-  width: 200px;
-  height: 800px;
+  width: 170px;
+  height: 500px;
   position: absolute;
   margin: -700px 0px 0px 850px;
   z-index: 0;
@@ -1070,9 +1082,6 @@ hr.line {
     -webkit-transform: scale(1) rotate(0turn) translate(0px,0%);
 }
 /*merge start*/
-#userimage2 {
-	display: inline-block;
-}
 #userImage {
     width: 80px;
     height: 80px;
@@ -1095,10 +1104,10 @@ hr.line {
 font-size: 1.2em;
 }
 #adBoxAboveRatenowButton {
-	display: block;
+/*	display: block;*/
 }
 #adBoxBelowRatenowButton {
-	display: block;
+/*	display: block;*/
 }
 
 
@@ -1146,15 +1155,7 @@ z-index: 3;
 }
 
 @media(min-width:1450px){
-
-
-
 }
 
 @media(min-width:1750px){
-
-
-
-
-
 }		

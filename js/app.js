@@ -35,11 +35,19 @@ function capitaliseFirstLetter(text)
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-$(".draggable").click(function(){
+$(".draggable").dblclick(function(){
+
+
+// $(".draggable").parent().css('border', '2px solid green');
 
 if (!userloggedin) {
   return;
 }
+
+  $('#dialog-message').data('itemId',$(this).attr('id'));
+  $('#dialog-message').data('itemName',$(this).attr('name'));
+  $('#dialog-message').data('xRating',(Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100));
+  $('#dialog-message').data('yRating',(1-Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100));
 
 $("#dialog-message").find(".dialogTextArea").val("");
 
@@ -70,12 +78,12 @@ $("#dialog-message").find(".dialogTextArea").val("");
               var data = {};
               data.items = [];
 
-              itemName = $(this).find('.itemName').html();
-              itemId = $(this).attr('id');
-              xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
-              yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
+              itemName = $('#dialog-message').data('itemName');
+              itemId = $('#dialog-message').data('itemId');
+              xRating = $('#dialog-message').data('xRating');
+              yRating = $('#dialog-message').data('yRating');
               textRating = $("#dialog-message").find(".dialogTextArea").val();
-              data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":textRating});
+              data.items.push({"name":itemName, "itemId":itemId, "xRating":xRating, "yRating":yRating, "textRating":textRating});
              
               saveratings(data);
 
@@ -86,19 +94,21 @@ $("#dialog-message").find(".dialogTextArea").val("");
               var data = {};
               data.items = [];
 
-              itemName = $(this).find('.itemName').html();
-              itemId = $(this).attr('id');
-              xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
-              yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
+              // itemName = $(this).find('.itemName').html();
+              itemName = $('#dialog-message').data('itemName');
+              itemId = $('#dialog-message').data('itemId');
+              xRating = $('#dialog-message').data('xRating');
+              yRating = $('#dialog-message').data('yRating');
               textRating = $("#dialog-message").find(".dialogTextArea").val();
-              data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":textRating});
+              data.items.push({"name":itemName, "itemId":itemId, "xRating":xRating, "yRating":yRating, "textRating":textRating});
              
               saveratings(data);
 
-              window.location.href="https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption="+encodeURI(textRating)+"&link=https://www.ratestuf.org/?s="+encodeURI(itemName)+"&x="+encodeURI(xRating)+"&y="+encodeURI(yRating)+"&redirect_uri=https://www.facebook.com";
+              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption="+encodeURI(textRating)+"&link="+encodeURIComponent("https://www.ratestuf.org/?s="+itemName+"&x="+xRating+"&y="+yRating)+"&redirect_uri=https://www.facebook.com",
+                '_blank');
 
           $( this ).dialog( "close" );
-
+          return;
     }
       }
     });
@@ -167,7 +177,7 @@ $('.starRating').children().css('padding-left',starPadding);
 
 
 //user is able to select a draggable ball and delete it from the screen using BACKSPSACE or DELETE
-$(".draggable").dblclick(function(){
+$(".draggable").click(function(){
   if (userloggedin) {
     $(".draggable").not(this).removeClass("active");
     $(this).toggleClass("active");
@@ -332,7 +342,7 @@ $("#rateNowButton").click(function(){
   itemId = $(this).attr('id');
   xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
   yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
-  data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating});
+  data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":""});
 
 });
  
@@ -359,55 +369,6 @@ $("#rateNowButton").click(function(){
   ,dataType:'json'});
 
 });
-
-// *****************************************
-// INSERT TEXT RATINGS INTO DATABASE ON CLICK OF SAVERATINGS BUTTON IN JQUERY DIALOG BOX
-// *****************************************
-// $( ".selector" ).dialog({
-//   'Save Rating': function() {
-//         //write your function here or call function here
-
-// $(this).draggable() {
-
-//   itemName = $(this).attr('name');
-//   itemId = $(this).attr('id');
-//   xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
-//   yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
-//   data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating}, "textRating":textRating);
-
-// });
- 
-//  $.ajax({ 
-
-//   type: "POST",
-//   url: "ajax/saveratings.php",
-//   data: JSON.stringify(data),
-//   contentType: "application/json",
-
-//   success: function(res) {
-//     console.log(res);
-//     if (res.hasOwnProperty('alreadyRated')) {
-//       alert("You've already rated this stuf.");
-//     } else {
-//     alert("Got it! Thanks for adding your rating to our database. You are awesome!");
-//     location.reload();
-//     }
-//     // Location.reload(true);
-//   },
-//   error: function(res) {
-//     console.log(res);
-//   }
-//   ,dataType:'json'});
-
-// });
-
-// $(".draggable").each(function(){
-
-//   if (!userloggedin) {
-//     $(this).addClass('greyedOut');
-//   }
-
-//   }); 
 
 $(document).ready(function() {
 
