@@ -73,7 +73,7 @@ if (isset($product["fbimage"])) {
 
 ?>"/>
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Hey everyone, this is what I think about <?php echo (isset($_GET['s'])? $_GET['s']:""); ?>"/>
+<meta property="og:title" content="Hey everyone, this is what I think about <?php echo ((isset($_GET['s'])? $_GET['s']:"")); ?>"/>
 <meta property="og:description" content="A dynamic user-generated brand map to help you discover the best brands in every category." />
 
 <meta property="og:image" content="https://www.ratestuf.org/<?php  

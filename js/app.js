@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  verticallyAlignDollarIcons();
-  horizontallyAlignStart();
+  // verticallyAlignDollarIcons();
+  // horizontallyAlignStars();
 });
 
 
@@ -10,31 +10,32 @@ $(document).ready(function() {
 // });
 
 $(document).mouseover(function() {
-  verticallyAlignDollarIcons();
-  horizontallyAlignStart();
-  setTimeout("",20000);
+  // verticallyAlignDollarIcons();
+  // horizontallyAlignStars();
+  // setTimeout("",20000);
 });
 
-function verticallyAlignDollarIcons() {
-var dollarSpacing = ($('.dollarRating').height());
-var dollarHeight = ($('#fourDollars').height() * 4.5);
-var dollarPadding = ((dollarSpacing - dollarHeight)/8);
+// trying flexbox instead of this
+// function verticallyAlignDollarIcons() {
+// var dollarSpacing = ($('.dollarRating').height());
+// var dollarHeight = ($('#fourDollars').height() * 4.5);
+// var dollarPadding = ((dollarSpacing - dollarHeight)/8);
 
-$('.dollarRating').children().css('padding-top',dollarPadding);
-$('.dollarRating').children().css('padding-bottom',dollarPadding);
-}
+// $('.dollarRating').children().css('padding-top',dollarPadding);
+// $('.dollarRating').children().css('padding-bottom',dollarPadding);
+// }
 
 // triggers on load or resize for DOLLARS.
-$(window).resize(function() {
+// $(window).resize(function() {
 
-var dollarSpacing = ($('.dollarRating').height());
-var dollarHeight = ($('#fourDollars').height() * 4);
-var dollarPadding = ((dollarSpacing - dollarHeight)/8);
+// var dollarSpacing = ($('.dollarRating').height());
+// var dollarHeight = ($('#fourDollars').height() * 4);
+// var dollarPadding = ((dollarSpacing - dollarHeight)/8);
 
-$('.dollarRating').children().css('padding-top',dollarPadding);
-$('.dollarRating').children().css('padding-bottom',dollarPadding);
+// $('.dollarRating').children().css('padding-top',dollarPadding);
+// $('.dollarRating').children().css('padding-bottom',dollarPadding);
 
-}).trigger('resize');
+// }).trigger('resize');
 
 function capitaliseFirstLetter(text)
 {
@@ -146,27 +147,27 @@ function saveratings(data) {
 
 // triggers on load or resize for STARS
 
-function horizontallyAlignStart() {
+// function horizontallyAlignStars() {
 
-var starSpacing = ($('.starRating').width());
-var starWidth = ($('#star1').width() * 5);
-var starPadding = ((starSpacing - starWidth)/11.2);
+// var starSpacing = ($('.starRating').width());
+// var starWidth = ($('#star1').width() * 5);
+// var starPadding = ((starSpacing - starWidth)/11.2);
 
-$('.starRating').children().css('padding-right',starPadding);
-$('.starRating').children().css('padding-left',starPadding);
+// $('.starRating').children().css('padding-right',starPadding);
+// $('.starRating').children().css('padding-left',starPadding);
 
-}
+// }
 
-$(window).resize(function() {
+// $(window).resize(function() {
 
-var starSpacing = ($('.starRating').width());
-var starWidth = ($('#star1').width() * 5);
-var starPadding = ((starSpacing - starWidth)/11.2);
+// var starSpacing = ($('.starRating').width());
+// var starWidth = ($('#star1').width() * 5);
+// var starPadding = ((starSpacing - starWidth)/11.2);
 
-$('.starRating').children().css('padding-right',starPadding);
-$('.starRating').children().css('padding-left',starPadding);
+// $('.starRating').children().css('padding-right',starPadding);
+// $('.starRating').children().css('padding-left',starPadding);
 
-}).trigger('resize');
+// }).trigger('resize');
 
 
 // $(".draggable").mouseover(function(){

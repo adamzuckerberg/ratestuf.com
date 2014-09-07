@@ -42,7 +42,7 @@ hr {
 }
 
 #responsiveAd1 {
-	margin: -140px 0px 0px 100px;
+	margin: -200px 0px 0px 20px;
 }
 
 #adBoxBelowRatenowButton {
@@ -545,10 +545,14 @@ background: repeating-linear-gradient(
 	display: none;
 }
 .starRating {
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	-webkit-justify-content: space-around;
+	border: 5px solid red;
   	unicode-bidi: bidi-override;
   	direction: rtl;
   	height: 30%;
-  	width: 100%;
+  	width: 94%;
   	position: relative;
 	z-index: 5;
 	margin: -6% 0px 0px 0px;
@@ -556,14 +560,9 @@ background: repeating-linear-gradient(
 	float: right;
 	color: white;
 	font-size: 1.1em;
-    text-shadow: 4px 4px 4px #ccc;
-    overflow: hidden;
+    text-shadow: 5px 5px 5px #ccc;
+/*    overflow: hidden;*/
 /*   	border: 4px solid blue;*/
-}
-
-#star1, #star2, #star3, #star4, #star5 {
-
-/*	border: 1px solid green;*/
 }
 .star:hover {
 	color: yellow;	
@@ -578,16 +577,19 @@ background: repeating-linear-gradient(
 }
 /*******************************/
 .dollarRating {
-	unicode-bidi: bidi-override;
+	display: -webkit-flex;
+	-webkit-flex-direction: column;
+	-webkit-justify-content: space-around;
+    unicode-bidi: bidi-override;
   	direction: rtl;
-	font-weight: 900;
-    width: 10%;
+	font-weight: 800;
+    width: 8%;
     z-index: 2;
-    height: 100%;
+    height: 89%;
     position: absolute;
-    padding-bottom: 6%;
+/*    padding-bottom: 6%;*/
     color: #000;
-/*    border: 5px solid red;*/
+    border: 5px solid red;
 }
 
 #fourDollars, #threeDollars, #twoDollars, #oneDollar{
@@ -597,7 +599,7 @@ background: repeating-linear-gradient(
   	width: 100%;
   	margin: 0px 50% 0px 0px;
     text-align: right;
-    font-size: 1.2em;
+    font-size: 1.0em;
 }
 
 .dollarRating > div:hover,
@@ -669,7 +671,7 @@ background: repeating-linear-gradient(
 	display: inline-block;
 	margin: -3px 0px 9px 0px;
 /*	color: yellow;*/
-/*	background: grey;*/
+	background: grey;
 }
 .textRatingsBallBlock {
 	width: 22%;
@@ -938,11 +940,6 @@ a:active {
 /*    border: 2px solid green;*/
     margin-right: -1%;
 }
-.starRating {
-	font-size: 2.0em;
-	padding-right: 1%;
-	padding-left: -4%;
-}
 .dollarRating {
 	font-size: 1.6em;
 }
@@ -954,6 +951,11 @@ a:active {
 }
  #footer {
 	font-size: 1.2em;
+}
+.starRating {
+	font-size: 2.0em;
+	margin-top: -4%;
+	border: 3px solid green;
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -999,7 +1001,7 @@ margin-right: -2%;
 	height: 54px;
 }
 #fbTagline {
-/*	margin: 0px 0px 0px 34px;*/
+	margin: 0px 0px 0px 34px;
 /*	display: inline-block;*/
 /*	margin: 5px auto;	*/
 }
@@ -1049,7 +1051,7 @@ hr.line {
 	width:  8em;
     margin: 60% 0px 0px 10px;*/
 /*	border: 2px solid green;*/
-	margin: 20px 0px 500px 20px;
+	margin: 30px 0px 500px 10px;
 }
 #WhiteSpaceFill {
 	width: 100%;
@@ -1120,6 +1122,7 @@ hr.line {
 .starRating {
 	font-size: 2.0em;
 	margin-top: -4%;
+	border: 3px solid green;
 }
 #fbLogOut {
 font-size: 1.2em;
@@ -1131,14 +1134,12 @@ font-size: 1.2em;
 /*	display: block;*/
 }
 
-
-
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media(min-width:1200px){
 .starRating {
-	font-size: 2.4em;
+	font-size: 2.2em;
 }
 .dollarRating {
 	font-size: 1.9em;
