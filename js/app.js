@@ -52,11 +52,11 @@ if (!userloggedin) {
 
   $('#dialog-message').data('itemId',$(this).attr('id'));
   $('#dialog-message').data('itemName',$(this).attr('name'));
-  $('#dialog-message').data('xRating',(Math.round( ($(this).position().left) / $('#containmentWrapper').width() * 100)/100));
-  $('#dialog-message').data('yRating',(Math.round( (1-(($(this).position().top) / $('#containmentWrapper').height())) * 100)/100));
+  $('#dialog-message').data('xRating',(( ($(this).position().left) / (($('#containmentWrapper').width()) * 0.8745 ) * 100)/100));
+  $('#dialog-message').data('yRating',(( (1-(($(this).position().top) / (($('#containmentWrapper').height()) * 0.82 ))) * 100)/100)+1);
   $("#dialog-message").find(".dialogTextArea").val("");
 
-  if($(this).hasClass("bestValue")) {
+ if($(this).hasClass("bestValue")) {
     $('#dialog-message > .dialogBall').removeClass("fairValue");
     $('#dialog-message > .dialogBall').removeClass("worseValue");
     $('#dialog-message > .dialogBall').addClass("bestValue");
@@ -336,12 +336,10 @@ $("#rateNowButton").click(function(){
 
   itemName = $(this).attr('name');
   itemId = $(this).attr('id');
-  // * 100)/100);
-  xRating = ( ((($(this).position().left) / $('#containmentWrapper').width()) * 100)/100);
-  alert('position from left: '+($(this).position().left));
-  alert('container width: '+$('#containmentWrapper').width());
-  yRating = (((1-(($(this).position().top) / $('#containmentWrapper').height())) * 100)/100); 
-  alert('xRating:' + xRating + 'yRating:' + yRating);
+  xRating = ((($(this).position().left) / ($('#containmentWrapper').width()*0.8745) * 100)/100);
+  yRating = ((1-(($(this).position().top) / ($('#containmentWrapper').height()*0.82)) * 100)/100)+1; 
+  // alert('container height: '+($('#containmentWrapper').height() * 0.82));
+  // alert('position from top: '+($(this).position().top));
   data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":""});
 
 });
