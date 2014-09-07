@@ -29,7 +29,7 @@
 	text-align: right;
 	color: grey;
 	font-size: .8em;
-	margin: 0px 30px 0px 0px;
+	margin: 30px auto;
 /*	display: none;*/
 }
 hr {
@@ -61,7 +61,7 @@ hr {
 	display: none;
 }
 #fbTagline {
-	margin: 0px 0px 0px -50px;
+/*	margin: 0px 0px 0px -50px;*/
 	font-weight: 1em;
 	display: inline-block;
 }
@@ -69,15 +69,15 @@ body {
 	background: #ffffff;
 }
 p.paragraphs {
-	font-size: 1.5em;
+	font-size: 0.9em;
 	color: black;
 }
 h3.paragraphs {
-		font-size: 2.0em;
+		font-size: 1.6em;
 		color: black;
 }
 blockquote {
-	font-size: 1.5em;	
+	font-size: 1.35em;	
 }
 
 .logo {
@@ -94,9 +94,10 @@ blockquote {
 #loginFacebook {
 	opacity:0.85;
 	filter:alpha(opacity=85); /* For IE8 and earlier */
-	margin: 5px 0px 0px -50px;
+	margin: 5px auto;
 	padding: 0px 0px 0px 0px;
 	width: 100%;
+/*	border: 2px solid green;*/
 }
 #loginFacebook:hover {
 	opacity:1.0;
@@ -451,17 +452,17 @@ select option {
 }
 .dialogBall {
 	border-radius: 50%;
-	height: 25px;
-	width: 25px;
+	height: 35px;
+	width: 35px;
 	position: absolute;
 	box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
 	z-index: 3;
-	margin-top: 5px;
+	margin: 8px 0px 0px 8px;
 }
 .ui-dialog .ui-dialog-buttonpane { border-width: 0 !important; }
 
 .dialogTextArea {
-	margin: 10px 0px 0px 0px;
+	margin: 20px 0px 0px 0px;
 	width: 95%;
 	height: 90%;
 	font-family: "Arial Bold", sans-serif; 
@@ -471,22 +472,28 @@ select option {
 }
 textarea {
 	font-family: "Arial Bold", sans-serif; 
-	font-size: 1.6em !important;	
+	font-size: 1.6em !important;
+	padding: 20px;
 }
 
-button:hover {
-	color: black;
-	border: 2px solid black;
+.ui-dialog-buttonset button:hover {
+	color: grey;
+	font-weight: 800px;
 	background: #1cff2c;
 }
-button {
-	border-radius: 10%;
+.ui-dialog-buttonset button {
+	border-radius: 10px;
+	min-width: 5em;
+	min-height: 2em;
+	background: lightgreen;
+	color: black;
+	float: right;
 }
 .ui-dialog-buttonset {
-/*	border: 3px solid #1cff2c;
-	background: white;*/
+/*	border: 3px solid #1cff2c;*/
+	background: white;
+	width: 100%;
 }
-
 .bestValue {
 background: repeating-linear-gradient(
   45deg,
@@ -552,7 +559,6 @@ background: repeating-linear-gradient(
     text-shadow: 4px 4px 4px #ccc;
     overflow: hidden;
 /*   	border: 4px solid blue;*/
-
 }
 
 #star1, #star2, #star3, #star4, #star5 {
@@ -627,12 +633,11 @@ background: repeating-linear-gradient(
 		color: #2d3333;
 }
 #arrowUp {
-  width: 0px;
-  height: 0px;
   position: absolute;
   margin: -270px 0px 0px 20px;
   z-index: 0;
   display: none;
+/*  border: 10px solid blue;*/
 }
 .trending {
 	font-family: "Arial Bold", sans-serif; 
@@ -644,20 +649,11 @@ background: repeating-linear-gradient(
 	width: 100%;
 /*	border: 10px solid green;*/
 }
-#DynamicRatingsSection {
- 	font-family: "Arial Bold", sans-serif; 
-	font-size: 1.4em;
-	margin: 5px 0px 5px -20px;	
-	padding: 0px 0px 0px 15px;
-/*	border-style:solid;
-	border-width: 2px;*/
-/*	border: 1px solid black;*/
-}
 #DynamicRatingsSectionHeadline {
 	background: #eeeeee;
  	font-family: "Arial Bold", sans-serif; 
 	font-size: 1.5em;
-	margin: 20px 0px 20px 0px;	
+	margin: 70px 0px 20px 0px;	
 	padding: 0px 0px 0px 15px;
 	border-style:solid;
 	border-width: 2px;
@@ -805,6 +801,8 @@ width: 25px;
 position: absolute;
 box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
 z-index: 3;
+margin-left: 6%;
+margin-bottom: 7%;
 }
 .textRatingItemName {
 /*	margin: 0px 0px 0px 0px;*/
@@ -845,10 +843,12 @@ p.itemName {
 }
 
 #containmentWrapper { 
- 	width: 101%;
- 	height: 96%;
- 	margin: 0px 0px 0px 5%;
- 	min-height: 200px;
+ 	width: 100%;
+ 	height: 100%;
+/* 	opacity:0.45; 
+	background-color: green;*/
+/* 	margin: -15px 0px 0px 5%;*/
+/* 	min-height: 200px;*/
  	border:0px;
 /* 	background: hsla(50,50%,62%,.3);*/
  	position: absolute;
@@ -929,7 +929,7 @@ a:active {
   width: 160px;
   height: 420px;
   position: absolute;
-  margin: -600px 0px 0px 300px;
+  margin: -400px 0px 0px 300px;
   z-index: 0;
   display: none;
 }
@@ -947,8 +947,10 @@ a:active {
 	font-size: 1.6em;
 }
 #containmentWrapper { 
- 	width: 98%;
- 	height: 94%;
+ 	width: 100%;
+ 	height: 100%;
+/* 	opacity:0.45; 
+	background-color: yellow;*/
 }
  #footer {
 	font-size: 1.2em;
@@ -960,6 +962,14 @@ body {
 	margin-right: 5%;
 	margin-left: 5%;
 }
+p.paragraphs {
+	font-size: 1.5em;
+	color: black;
+}
+h3.paragraphs {
+		font-size: 2.0em;
+		color: black;
+}
 .draggable1, .draggable2, .draggable3, .draggable4, .draggable5, .draggable6, .draggable7, .draggable8, .draggable9, .draggable10 {
 /*background: #1cff2c;*/
 border-radius: 50%;
@@ -968,6 +978,12 @@ width: 40px;
 position: absolute;
 box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
 z-index: 3;
+margin-left: 6%;
+margin-bottom: 5%;
+margin-right: -2%;
+}
+#DynamicRatingsSectionHeadline {
+	margin: 20px 0px 20px 0px;	
 }
 #headline {
 	display: none;
@@ -983,21 +999,23 @@ z-index: 3;
 	height: 54px;
 }
 #fbTagline {
-	margin: 0px 0px 0px 34px;
-	display: inline-block;
+/*	margin: 0px 0px 0px 34px;*/
+/*	display: inline-block;*/
+/*	margin: 5px auto;	*/
 }
 #logo1 {
 	display: none;
 }
 #arrowUp {
-  width: 170px;
-  height: 500px;
+  width: 1px;
+  height: 1px;
   position: absolute;
-  margin: -700px 0px 0px 850px;
+  float: right;
+  margin: -560px 0px 0px 850px;
   z-index: 0;
   display: none;
-/*  border: 10px solid green;*/
-}
+/*  border: 10px solid green;
+*/}
 #logo2 {
 	display: inline-block;
 	width: 350px;
@@ -1057,7 +1075,7 @@ hr.line {
 	margin: 40px 0px 0px 30px;
 	width: 100%;
 	max-width: 400px;
-	min-width: 400px;
+	min-width: 400px;	
 /*	border: 10px solid green;*/
 }
 #footerLinks {
@@ -1068,8 +1086,11 @@ hr.line {
 	text-align: center;
 }
 #containmentWrapper { 
- 	width: 98%;
- 	height: 92%;
+ 	width: 100%;
+ 	height: 100%;
+	opacity:0.45; 
+	background-color: pink;
+/* 	margin: -25px 0px 0px 5%;*/
 
 }
 .logo {
@@ -1142,6 +1163,7 @@ width: 45px;
 position: absolute;
 box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
 z-index: 3;
+/*border:1px solid green;*/
 }
 .draggable:hover {
 	height: 50px;

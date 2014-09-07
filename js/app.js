@@ -3,6 +3,12 @@ $(document).ready(function() {
   horizontallyAlignStart();
 });
 
+
+// $(document).ready(function() {
+// $("#rateTableFrame").css('border', '2px solid blue');
+// $('.draggable').parent().css('border', '5px solid red');
+// });
+
 $(document).mouseover(function() {
   verticallyAlignDollarIcons();
   horizontallyAlignStart();
@@ -38,7 +44,7 @@ function capitaliseFirstLetter(text)
 $(".draggable").dblclick(function(){
 
 
-// $(".draggable").parent().css('border', '2px solid green');
+
 
 if (!userloggedin) {
   return;
@@ -46,10 +52,9 @@ if (!userloggedin) {
 
   $('#dialog-message').data('itemId',$(this).attr('id'));
   $('#dialog-message').data('itemName',$(this).attr('name'));
-  $('#dialog-message').data('xRating',(Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100));
-  $('#dialog-message').data('yRating',(1-Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100));
-
-$("#dialog-message").find(".dialogTextArea").val("");
+  $('#dialog-message').data('xRating',(Math.round( ($(this).position().left) / $('#containmentWrapper').width() * 100)/100));
+  $('#dialog-message').data('yRating',(Math.round( (1-(($(this).position().top) / $('#containmentWrapper').height())) * 100)/100));
+  $("#dialog-message").find(".dialogTextArea").val("");
 
   if($(this).hasClass("bestValue")) {
     $('#dialog-message > .dialogBall').removeClass("fairValue");
@@ -69,8 +74,8 @@ $("#dialog-message").find(".dialogTextArea").val("");
 
     $( "#dialog-message" ).dialog({
       modal: true,
-      width: 550,
-      height: 400,
+      width: 600,
+      height: 500,
       title: "Tell us more about " + capitaliseFirstLetter($(this).find('.itemName').html()),
       buttons: {
         'Save': function() {
@@ -190,23 +195,18 @@ $(".draggable").mousemove(function(){
     $(".star").removeClass('starhover');
 
     if ($(this).position().left > (($("#star1").position().left)+30)) {
-      // alert("sukadik");
       $("#star1").addClass('starhover');
     } 
     if ($(this).position().left > (($("#star2").position().left)+30)) {
-      // alert("sukadik");
       $("#star2").addClass('starhover');
     }
     if ($(this).position().left > (($("#star3").position().left)+30)) {
-      // alert("sukadik");
       $("#star3").addClass('starhover');
     }
         if ($(this).position().left > (($("#star4").position().left)+30)) {
-      // alert("sukadik");
       $("#star4").addClass('starhover');
     }
         if ($(this).position().left > (($("#star5").position().left)+-20)) {
-      // alert("sukadik");
       $("#star5").addClass('starhover');
     }
 //DOLLARS
@@ -216,19 +216,15 @@ $(".draggable").mousemove(function(){
     $("#oneDollar").removeClass('dollarhover');
 
     if ($(this).offset().top < (($("#fourDollars").offset().top)+40)) {
-      // alert("sukadik");
       $("#fourDollars").addClass('dollarhover');
     } 
     if ($(this).offset().top < (($("#threeDollars").offset().top)+40)) {
-      // alert("sukadik");
       $("#threeDollars").addClass('dollarhover');
     }
     if ($(this).offset().top < (($("#twoDollars").offset().top)+40)) {
-      // alert("sukadik");
       $("#twoDollars").addClass('dollarhover');
     }
         if ($(this).offset().top < (($("#oneDollar").offset().top)+20)) {
-      // alert("sukadik");
       $("#oneDollar").addClass('dollarhover');
     }
 
@@ -340,8 +336,12 @@ $("#rateNowButton").click(function(){
 
   itemName = $(this).attr('name');
   itemId = $(this).attr('id');
-  xRating = (Math.round(($(this).position().left / ($(this).parent().width())) * 100) / 100);
-  yRating = (Math.round(($(this).position().top / ($(this).parent().height())) * 100) / 100);
+  // * 100)/100);
+  xRating = ( ((($(this).position().left) / $('#containmentWrapper').width()) * 100)/100);
+  alert('position from left: '+($(this).position().left));
+  alert('container width: '+$('#containmentWrapper').width());
+  yRating = (((1-(($(this).position().top) / $('#containmentWrapper').height())) * 100)/100); 
+  alert('xRating:' + xRating + 'yRating:' + yRating);
   data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":""});
 
 });

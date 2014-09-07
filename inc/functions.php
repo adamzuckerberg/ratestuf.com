@@ -73,7 +73,7 @@ function get_draggable_balls($search_term) {
 
           while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
       $counter ++;
-      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item.\''.'style=\'position: absolute;'.' '.'left:'.$row["xRating"].'%'.';'.' '.'top: '.$row["yRating"].'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($row["itemName"]).'&trade;'.'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
+      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...doubleclick to add a text rating.\''.'style=\'position: absolute;'.' '.'left:'.$row["xRating"].'%'.';'.' '.'top: '.(80-$row["yRating"]).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($row["itemName"]).'&trade;'.'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
       if ($row["votes"] == 1) {
         echo 'rating'; 
       } else {
@@ -100,7 +100,7 @@ function get_draggable_balls($search_term) {
       $query = "INSERT INTO item_subcategory_map (itemId, subcategoryId) VALUES ($itemId,0)";
       $result = $connection->query($query);
       
-      echo '<div'.' '.'id='.'\''.$itemId.'\''. 'class='.'\'draggable'.'1'.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$search_term.'\''.' '.'title=\'This is a ball. Move it to rate to rate this item.\''.'style=\'position: absolute;'.' '.'left:'.'50'.'%'.';'.' '.'top: '.'50'.'%'.'\''.'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($search_term).'</p>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.'0'.'<br>ratings</p>'.'</div>';
+      echo '<div'.' '.'id='.'\''.$itemId.'\''. 'class='.'\'draggable'.'1'.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$search_term.'\''.' '.'title=\'This is a ball. Move it to rate to rate this item.\''.'style=\'position: absolute;'.' '.'left:50%'.';'.' '.'top:40%'.'\''.'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($search_term).'</p>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.'0'.'<br>ratings</p>'.'</div>';
 
         } else {
 

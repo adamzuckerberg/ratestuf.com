@@ -202,7 +202,7 @@ else {
                 <form id="mainForm" method="get" action="./" >
                   <div class="right-inner-addon">
 
-                    <input type="text" id="searchTags" class="items form-control" placeholder="find, add or compare stuf" name="s" value="">
+                    <input type="text" id="searchTags" class="items form-control" placeholder="find, add or compare stuff" name="s" value="">
                         <i class="glyphicon glyphicon-search"></i>
                 </div>
                 </form>
