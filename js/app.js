@@ -4,10 +4,10 @@ $(document).ready(function() {
 });
 
 
-// $(document).ready(function() {
+$(document).ready(function() {
 // $("#rateTableFrame").css('border', '2px solid blue');
 // $('.draggable').parent().css('border', '5px solid red');
-// });
+});
 
 $(document).mouseover(function() {
   // verticallyAlignDollarIcons();
@@ -44,17 +44,18 @@ function capitaliseFirstLetter(text)
 
 $(".draggable").dblclick(function(){
 
-
-
-
 if (!userloggedin) {
   return;
 }
+  containerHeight = ($(this).parent().height() * 0.78 );
+  containerWidth = ($(this).parent().width() * 0.895962732919255);
+  positionFromLeft = ($(this).position().left);
+  positionFromTop = ($(this).position().top);
 
   $('#dialog-message').data('itemId',$(this).attr('id'));
   $('#dialog-message').data('itemName',$(this).attr('name'));
-  $('#dialog-message').data('xRating',(( ($(this).position().left) / (($('#containmentWrapper').width()) * 0.8745 ) * 100)/100));
-  $('#dialog-message').data('yRating',(( (1-(($(this).position().top) / (($('#containmentWrapper').height()) * 0.82 ))) * 100)/100)+1);
+  $('#dialog-message').data('xRating',((Math.round((positionFromLeft / containerWidth) * 100 )/ 100)));
+  $('#dialog-message').data('yRating',((Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100)));
   $("#dialog-message").find(".dialogTextArea").val("");
 
  if($(this).hasClass("bestValue")) {
@@ -316,6 +317,7 @@ $("#show").click(function(){
   $("#show").hide(); 
 });
 
+
 // *****************************************
 // INSERT RATINGS INTO DATABASE ONCLICK
 // *****************************************
@@ -337,10 +339,21 @@ $("#rateNowButton").click(function(){
 
   itemName = $(this).attr('name');
   itemId = $(this).attr('id');
-  xRating = ((($(this).position().left) / ($('#containmentWrapper').width()*0.8745) * 100)/100);
-  yRating = ((1-(($(this).position().top) / ($('#containmentWrapper').height()*0.82)) * 100)/100)+1; 
-  // alert('container height: '+($('#containmentWrapper').height() * 0.82));
-  // alert('position from top: '+($(this).position().top));
+  containerHeight = ($(this).parent().height() * 0.78 );
+  containerWidth = ($(this).parent().width() * 0.895962732919255);
+  positionFromLeft = ($(this).position().left);
+  positionFromTop = ($(this).position().top);
+  xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
+  yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
+
+  // testing code
+  // alert('container height: '+ ($(this).parent().height() * 0.78 ));
+  // alert('position from top: '+ positionFromTop);
+  // alert('container width: '+ ($(this).parent().width() * 0.895962732919255));
+  // alert('position from left: '+ positionFromLeft);
+  // alert('xRating'+ xRating);
+  // alert('yRating' + yRating);
+
   data.items.push({"name": itemName, "itemId": itemId, "xRating":xRating, "yRating":yRating, "textRating":""});
 
 });

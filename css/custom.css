@@ -548,7 +548,7 @@ background: repeating-linear-gradient(
 	display: -webkit-flex;
 	-webkit-flex-direction: row;
 	-webkit-justify-content: space-around;
-	border: 5px solid red;
+/*	border: 5px solid red;*/
   	unicode-bidi: bidi-override;
   	direction: rtl;
   	height: 30%;
@@ -589,8 +589,8 @@ background: repeating-linear-gradient(
     position: absolute;
 /*    padding-bottom: 6%;*/
     color: #000;
-    border: 5px solid red;
-}
+/*    border: 5px solid red;
+*/}
 
 #fourDollars, #threeDollars, #twoDollars, #oneDollar{
 /*	padding: 13% 0px;*/
@@ -665,13 +665,17 @@ background: repeating-linear-gradient(
 	display: inline-block;
 	margin: 5px 0px 0px 0px;
 	color: #1cff2c;
+	font-size: 2em;
 /*	background: grey;*/
 }
 .textRatingsStars {
 	display: inline-block;
+	font-size: 2em;
 	margin: -3px 0px 9px 0px;
-/*	color: yellow;*/
-	background: grey;
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: yellow;
+    text-shadow: 5px 5px 5px #ccc;
 }
 .textRatingsBallBlock {
 	width: 22%;
@@ -955,7 +959,7 @@ a:active {
 .starRating {
 	font-size: 2.0em;
 	margin-top: -4%;
-	border: 3px solid green;
+/*	border: 3px solid green;*/
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -1122,7 +1126,7 @@ hr.line {
 .starRating {
 	font-size: 2.0em;
 	margin-top: -4%;
-	border: 3px solid green;
+/*	border: 3px solid green;*/
 }
 #fbLogOut {
 font-size: 1.2em;

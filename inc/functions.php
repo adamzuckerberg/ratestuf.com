@@ -73,7 +73,9 @@ function get_draggable_balls($search_term) {
 
           while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
       $counter ++;
-      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...doubleclick to add a text rating.\''.'style=\'position: absolute;'.' '.'left:'.$row["xRating"].'%'.';'.' '.'top: '.(80-$row["yRating"]).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($row["itemName"]).'&trade;'.'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
+
+// left and bottom are adjusted by a factor that is added to the rating going in and out of the database to adjust for the width and height of the arrows in the box area.      
+      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...doubleclick to add a text rating.\''.'style=\'position: absolute;'.' '.'left:'.(0.895962732919255*($row["xRating"])).'%'.';'.' '.'bottom: '.(0.78*($row["yRating"])).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($row["itemName"]).'&trade;'.'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
       if ($row["votes"] == 1) {
         echo 'rating'; 
       } else {
