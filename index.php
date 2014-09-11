@@ -32,7 +32,7 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
 
 
   <meta charset="utf-8">
-  <meta property="og:image" content="http://ratestuf.org/images/logo.jpg">
+  <meta property="og:image" content="http://ratestuf.org/images/logo3.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RateStuf | Top 10 Brand Map, Reviews - User-Generated Ratings</title>
 <!--   <title>Ratestuf | <?php echo $_SERVER['QUERY_STRING'] . " - Reviews of The Top 10 Brands and A vs. B Ratings"; ?></title> -->
@@ -68,7 +68,7 @@ userloggedin =<?php
 if (isset($product["fbimage"])) {
   echo $product["fbimage"]; 
 } else {
-  echo 'images/logo.jpg';
+  echo 'images/logo3.jpg';
 }
 
 ?>"/>
@@ -146,7 +146,7 @@ else {
     <div class="container-fluid">
           <header class="row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <img id="logo1" class="logo pull-left" src="images/logo.jpg" alt="RateStuf logo">
+              <img id="logo1" class="logo pull-left" src="images/logo3.jpg" alt="RateStuf logo">
             </div>
             <div class="col-lg-7 col-md-7 hidden-sm hidden-xs"></div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -199,7 +199,7 @@ else {
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
 
 
-              <img id="logo2" class="logo" src="images/logo.jpg" alt="RateStuf logo">
+              <img id="logo2" class="logo" src="images/logo3.jpg" alt="RateStuf logo">
 
                 <form id="mainForm" method="get" action="./" >
                   <div class="right-inner-addon">
@@ -341,7 +341,7 @@ What about (A) 2 item vs search (B) multiple items -->
 <div id="rateTableScreenCapture">
                 <div id="containmentWrapper"></div>
 
-                <img id="rateTable" src="images/rateTable.png">
+                <img id="rateTable" src="images/rateTableWhite.png">
 
                 <div class="starRating"> 
                     <span id="star1" class="star fa fa fa-star"></span>
