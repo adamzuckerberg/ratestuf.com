@@ -75,7 +75,7 @@ function get_draggable_balls($search_term) {
       $counter ++;
 
 // left and bottom are adjusted by a factor that is added to the rating going in and out of the database to adjust for the width and height of the arrows in the box area.      
-      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...doubleclick to add a text rating.\''.'style=\'position: absolute;'.' '.'left:'.(0.895962732919255*($row["xRating"])).'%'.';'.' '.'bottom: '.(0.78*($row["yRating"])).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($row["itemName"]).'&trade;'.'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
+      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...\''.'style=\'position: absolute;'.' '.'left:'.((0.9344)*($row["xRating"])).'%'.';'.' '.'bottom: '.((0.895)*($row["yRating"])).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($row["itemName"]).'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
       if ($row["votes"] == 1) {
         echo 'rating'; 
       } else {
@@ -119,77 +119,11 @@ function get_draggable_balls_text_ratings($search_term) {
 
       }     
   
-function print_textratings_to_screen($search_term) {
-
-          global $user;
-          global $connection;
-          $search_term = stripslashes(mysqli_real_escape_string($connection, strtolower($search_term)));
 
 
-// this is the query I want but I get a mysql num rows error if i use it WTF?
-          // $query = "SELECT ratings_table.ratingDateTime, ratings_table.ratingId, ratings_table.userId, ratings_table.xRating, ratings_table.yRating, ratings_table.itemId, ratings_table.textRating, fblogin.firstname, fblogin.lastname FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `fblogin` ON items_table.createdBy = fblogin.fb_id JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' LIMIT 4"; 
 
-          $query = "SELECT ratings_table.ratingDateTime, ratings_table.xRating, ratings_table.yRating, ratings_table.userId, ratings_table.ratingId,  ratings_table.textRating, items_table.itemId, items_table.itemName FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE ratings_table.textRating <> '' AND subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' LIMIT 5"; 
 
-          $result2 = $connection->query($query);
 
-        $counter = 0;
-
-      if(mysqli_num_rows($result2) > 0) {
-
-          while ($row = $result2->fetch_array(MYSQLI_ASSOC)) {
-      $counter ++;
-
-      echo '<div class="textRatingsBallBlock"><div id="'.$row["ratingId"].'" class="textRatingBall"'.'xposition='.$row["xRating"].' yposition='.$row["yRating"].'></div><p class="textRatingItemName">'.$row["itemName"].'&trade;'.'</p></div><div class="textRatingsTextBlock">'.'<p class="textRatingsDollars">'.get_dollar_rating($row['yRating']).'</p><br>'.'<p class="textRatingsStars">'.get_star_rating($row['xRating']).'</p>'.'<p class="textRatingOutput">'.htmlentities($row['textRating']).'</p>'.'<img id="userImage2" src='.'https://graph.facebook.com/503854370/picture?type=large>'.'<p class="ratingDate">'.date('m/d/Y',strtotime($row["ratingDateTime"])).'</p>'.'</div>';
-      echo '<hr>';
-      // var_dump($row);
-      }     
-    } else {
-      // echo "fahq";
-    }
-
-}
-
-function get_ball_coloring_in_textrating_area($xRating,$yRating) {
-
-if ($yRating >= 0 && $yRating < .25) {
-return "$";
-} elseif ($yRating >= .25 && $yRating < .50) {
-return "$$";
-} elseif ($yRating >= .50 && $yRating < .75) {
-return "$$$";
-} elseif ($yRating >= .75 && $yRating < 1.00) {
-return "$$$$";
-}
-}
-
-function get_dollar_rating($yRating) {
-
-if ($yRating >= 0 && $yRating < .25) {
-return "$";
-} elseif ($yRating >= .25 && $yRating < .50) {
-return "$$";
-} elseif ($yRating >= .50 && $yRating < .75) {
-return "$$$";
-} elseif ($yRating >= .75 && $yRating < 1.00) {
-return "$$$$";
-}
-}
-
-function get_star_rating($xRating) {
-
-if ($xRating >= 0 && $xRating < .20) {
-return "&#9734";
-} elseif ($xRating >= .20 && $xRating < .40) {
-return "&#9734&#9734";
-} elseif ($xRating >= .40 && $xRating < .60) {
-return "&#9734&#9734&#9734";
-} elseif ($xRating >= .60 && $xRating < .80) {
-return "&#9734&#9734&#9734&#9734";
-} elseif ($xRating >= .80 && $xRating <= 1.00) {
-return "&#9734&#9734&#9734&#9734&#9734";
-}
-}
 
 
 ?>

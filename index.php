@@ -34,7 +34,7 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
   <meta charset="utf-8">
   <meta property="og:image" content="http://ratestuf.org/images/logo3.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>RateStuf | Top 10 Brand Map, Reviews - User-Generated Ratings</title>
+	<title>RateStuf | Share Your Ratings</title>
 <!--   <title>Ratestuf | <?php echo $_SERVER['QUERY_STRING'] . " - Reviews of The Top 10 Brands and A vs. B Ratings"; ?></title> -->
   <meta name="description" content="A dynamic user-generated brand map to help you discover the best brands in every category. Real-time user-generated ratings of the top 10 brands in any class: the best hosting services, best airlines, best rental cars, best online ride sharing services...you name it. Add your ratings of price and service quality to help others find the best-value brands or, add a new brand to our database to help others discover new, innovative products and services in any category.">
 <!--   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico?v=2" /> -->
@@ -73,14 +73,14 @@ if (isset($product["fbimage"])) {
 
 ?>"/>
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Hey everyone, this is what I think about <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?>&trade;<?php; ?>"/>
+<meta property="og:title" content="My rating of <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?><?php; ?>"/>
 <meta property="og:description" content="A dynamic user-generated brand map to help you discover the best brands in every category." />
 
 <meta property="og:image" content="https://www.ratestuf.org/<?php  
 
 // <!-- 5 stars -->
-$xOffset = 0.895962732919255;
-$yOffset = 0.78;
+$xOffset = 1.00;
+$yOffset = 1.00;
 if(isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
     echo 'images/fbog/FB_OG_5stars_4dollars.png';
 } elseif (isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
@@ -146,14 +146,20 @@ else {
     <div class="container-fluid">
           <header class="row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <img id="logo1" class="logo pull-left" src="images/logo3.jpg" alt="RateStuf logo">
+              <img id="logo1" class="logo pull-left" src="images/logo3.jpg" alt="RateStuf logo">                
+
+<!-- <div id="logo2block" class="logo pull-left" alt="Ratestuf logo">Ratestuf<span id="
+logo2tm">&0134;</span>
+<div>rate anything and find the best stuf<span id="fallingF"> f</div>logo2
+</div> -->
+  
             </div>
             <div class="col-lg-7 col-md-7 hidden-sm hidden-xs"></div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
               <?php if(!$user){ ?>
                 <a href="<?php echo $facebook->getLoginUrl(array('scope' => 'user_location,user_likes,email,user_about_me','redirect_uri'=>'http://ratestuf.org/?'.$_SERVER['QUERY_STRING'])); ?>">
                 <img id="loginFacebook" src="images/facebook-login.png" alt="Log in with Facebook" title="Log in with facebook to validate your identity"/>
-                <p id="fbTagline">Log in to add YOUR ratings...</p>
+                <p id="fbTagline">Log in to share your ratings...</p>
                 </a>
 <!--                 <img id="arrowUpFB" src="images/arrowUp.png" class="img-responsive"> -->
               <?php }else{ ?>
@@ -247,48 +253,7 @@ else {
 
       <div class="row">
           <div class="col-lg-4 col-md-2 hidden-sm hidden-xs trendingBox">
-            <button type="submit" id="show"> Show Filters </button><button type="submit" id="hide"> Hide Filters </button>
-            <div id="filters">
-                <div id="filter_headline"></div>
-                <div id="filter3_headline">Price:</div>
-                  <form id="filter3" action="#">
-                    <input checked type="checkbox" name="price[]" value="0.25">$<br>
-                    <input checked type="checkbox" name="price[]" value="0.50">$$<br>
-                    <input checked type="checkbox" name="price[]" value="0.75">$$$<br>
-                    <input checked type="checkbox" name="price[]" value="1.00">$$$$<br>
-                  </form>
-                  <hr>
-                <div id="filter4_headline">Quality:</div>
-                  <form id="filter4" action="#">
-                    <input checked type="checkbox" name="quality[]" value="0.2">&#10025;<br>
-                    <input checked type="checkbox" name="quality[]" value="0.4">&#10025;&#10025;<br>
-                    <input checked type="checkbox" name="quality[]" value="0.6">&#10025;&#10025;&#10025;<br>
-                    <input checked type="checkbox" name="quality[]" value="0.8">&#10025;&#10025;&#10025;&#10025;<br>
-                    <input checked type="checkbox" name="quality[]" value="1.0">&#10025;&#10025;&#10025;&#10025;&#10025;<br>
-                  </form>
-                  <hr>
-                  <div id="filter7_headline">Time:</div>
-                  <form id="filter7" action="#">
-                <input type="radio" name="time[]" value="30">Last 30 days<br>
-                <input type="radio" name="time[]" value="180">Last 6 months<br>
-                <input type="radio" name="time[]" value="365">Last 1 year<br>
-                <input checked type="radio" name="time[]" value="1000000000000">Since beginning of time<br>
-                  </form>
-                  <hr>
-                    <div id="filter8_headline">Ratings:</div>
-                  <form id="filter8"  action="#">
-                <input type="radio" name="mine[]" value="$GET[userId]">Only mine<br>
-                <input checked type="radio" name="mine[]" value="1">All ratings<br>
-                  </form>
-                  <hr>
-<!--                   <div id="filter6_headline">Search Item:</div>
-                  <form id="filter6"  action="#">
-                  <br>
-                <input type="radio" name="value[]" value="Display only my search item">Show only my search item<br>
-                <input checked type="radio" name="value[]" value="Display all results">Display all results<br>
-                  </form> -->
-<!--                  <hr> -->
-              </div>
+
 
 <div id="responsiveAd1">
 
@@ -311,7 +276,7 @@ else {
               <div id="container-for-ratetable-and-arrows">
               <div id="arrow-on-the-y-axis-container">
                   <form id="input-on-the-y-axis" method="get" action="./" >
-                    <input type="text" id="" class="items form-control" placeholder="y-axis" name="" value="">
+                    <input type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="y-axis" name="yaxis" value="">
                   </form>
                   <img id="arrow-on-the-y-axis" src="images/arrow_y.png">
               </div>
@@ -409,7 +374,7 @@ What about (A) 2 item vs search (B) multiple items -->
 
                   <form id="input-on-the-x-axis" method="get" action="./" >
 
-                    <input type="text" id="" class="items form-control" placeholder="x-axis" name="" value="">
+                    <input type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="x-axis" name="xaxis" value="">
                 </form>
 
                 <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
@@ -417,7 +382,7 @@ What about (A) 2 item vs search (B) multiple items -->
                   <img id="arrowUp" src="images/arrowUp.png" class="img-responsive">
 <!-- end container for table and arrows -->
               </div>
-                  <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Sign up or log in to add your ratings. You will rate all visible balls, so remove any balls you don't want to rate prior to clicking this button.  To delete a ball, click to select the ball (it will be highlighted in yellow) and press the DELETE key to remove the ball."></button>
+                  <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings.">Rate It!</button>
               <div id="WhiteSpaceFill"></div>
               </div>
 
@@ -488,19 +453,19 @@ What about (A) 2 item vs search (B) multiple items -->
   <p id="DynamicRatingsSectionHeadline">
                 <?php
 
-                if (isset($_GET['s'])) {
-                if (is_a_subcategory($_GET['s'])) {
-                  echo 'Top 10 '.ucwords(strtolower(stripslashes($_GET['s']))).':';
-                } else {
-                if (position_of_vs_term_in_the_search($_GET['s']) > 0 ) {  
-                echo 'User Ratings for '. substr_replace(ucwords(strtolower(stripslashes($_GET['s']))),'v',position_of_vs_term_in_the_search($_GET['s'])+1,1).':';
-                } else {
-                echo 'User Ratings for '.ucwords(strtolower(stripslashes($_GET['s']))).':';
-                }
-                  }
-                }  else {
-                echo ""; 
-                }
+                // if (isset($_GET['s'])) {
+                // if (is_a_subcategory($_GET['s'])) {
+                //   echo 'Top 10 '.ucwords(strtolower(stripslashes($_GET['s']))).':';
+                // } else {
+                // if (position_of_vs_term_in_the_search($_GET['s']) > 0 ) {  
+                // echo 'User Ratings for '. substr_replace(ucwords(strtolower(stripslashes($_GET['s']))),'v',position_of_vs_term_in_the_search($_GET['s'])+1,1).':';
+                // } else {
+                // echo 'User Ratings for '.ucwords(strtolower(stripslashes($_GET['s']))).':';
+                // }
+                //   }
+                // }  else {
+                // echo ""; 
+                // }
 
                 ?>
 
@@ -522,51 +487,30 @@ What about (A) 2 item vs search (B) multiple items -->
 
 <!-- INSERT QUERY TO ECHO THE TEXTRATING, USER, VALUE BASED ON AVERAGE RATING ETC. -->
                     <?php
-                    $search_term="";
-                    if (isset($_GET["s"])) {
-                      $search_term = trim($_GET["s"]);
-                      if ($search_term != "") {
-                      $position_of_vs_term = position_of_vs_term_in_the_search($search_term);
-                        if ($position_of_vs_term !== 0) {
-                            $firstSearchTerm = trim(substr($search_term, 0, ($position_of_vs_term) ));
-                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
-                            $secondSearchTerm = trim(substr($search_term, ($position_of_vs_term + $length_of_vs_term),100));
-                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
-                            print_textratings_to_screen($firstSearchTerm);
-                            print_textratings_to_screen($secondSearchTerm);
-                        } else {
-                            print_textratings_to_screen($search_term);
-                            } 
-                          } 
-                        }
+                    // $search_term="";
+                    // if (isset($_GET["s"])) {
+                    //   $search_term = trim($_GET["s"]);
+                    //   if ($search_term != "") {
+                    //   $position_of_vs_term = position_of_vs_term_in_the_search($search_term);
+                    //     if ($position_of_vs_term !== 0) {
+                    //         $firstSearchTerm = trim(substr($search_term, 0, ($position_of_vs_term) ));
+                    //         $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
+                    //         $secondSearchTerm = trim(substr($search_term, ($position_of_vs_term + $length_of_vs_term),100));
+                    //         $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
+                    //         print_textratings_to_screen($firstSearchTerm);
+                    //         print_textratings_to_screen($secondSearchTerm);
+                    //     } else {
+                    //         print_textratings_to_screen($search_term);
+                    //         } 
+                    //       } 
+                    //     }
                     ?>
                   
 
 
 </div>
-<h3 class='paragraphs'> Online Reviews </h3>
-<p class='paragraphs'> RateStuf&trade; is an <strong>online review website</strong>.  Our users work together to create a dynamic, real-time brand map to help other consumers discover the best-value brands and make better purchase decisions. </p>
-<h3 class='paragraphs'> What is a Brand Map? </h3>
-<p class='paragraphs'> A brand map displays the competing brands in a given class that are all competing for your business.  </p>
-<p class='paragraphs'> Our brand map represents the collective, user-generated <strong>reviews</strong> of any brand which our users care to add to our website.  We collect <strong>user reviews</strong> of our users’ perceived quality and perceived price of each brand.  Based on our proprietary algorithm,  we aggregate the data to display the collective opinion of our users. </p>  
-<p class='paragraphs'> Our brand map is dynamic so it changes over time as users rate the changing quality and price of any brand relative to its current competitors.  Since markets are constantly shifting, brands on our map will shift to reflect the changing perceptions of our users. </p>
-<h3 class='paragraphs'> Why Can’t I Move the Balls Representing the Brands? </h3>
-<p class='paragraphs'> If you can’t move the balls, you’re probably not logged in.  Our site operates like a wiki – once you log in, you can add new items and add your <strong> ratings</strong> to any item in our database by moving the ball representing each brand. Use your mouse or your finger to move the brands on your desktop, your iPhone or Android device – our site is responsive! </p>
-<h3 class='paragraphs'> How Do I Add a New Item to a Category? </h3>
-<p class='paragraphs'> Once you login to RateStuf&trade;, you can add new items.  Our team researches all these new items and will add them to appropriate categories, if applicable and when we see that there is sufficient interest in the item (i.e. many people have added a rating to the same item). </p>
-<h3 class='paragraphs'> How Does RateStuf&trade;  Help Drive Traffic to Innovative, New Companies? </h3>
-<p class='paragraphs'> Let’s say there is a video rental company that charges high late fees and you have to remember to return the video to the store – let’s call it Blickluster&trade; . </p> 
-<p class='paragraphs'> If they’re the only business in the market, the <strong>user reviews</strong> would represent it as a fair value on our map until a competitor emerges. </p>
-<p class='paragraphs'> Let’s say a new company emerges that streams videos for a monthly fee, let’s call it NetFlux&trade;.   This new company would appear instantly on the RateStuf&trade;  website and Blucklister&trade;  would quickly start to move towards a worse value position of high price/low quality in this new market while NetFlux&trade;  would appear as the better value, displaying as a green ball in the right-hand corner of the map as a high-value, low-price brand relative to its competitors. </p>
-<p class='paragraphs'> Every brand on RateStuf&trade;  is rated relative to others in its class, so as new, innovative companies emerge, our users add new brands to the site and our team researches the companies and add them to relevant categories. </p>
-<h3 class='paragraphs'> A Burrito Story by Adam Zuckerberg</h3>
-<p class='paragraphs'> I grew up in the Hollywood Hills and there was a new burrito place, let’s call it Poquito Menos .  The burritos were great and so was the price! </p>  
-<p class='paragraphs'> But every year, I would visit Poquito Menos and the prices would go up while the burritos got smaller and smaller.  In other words, it was just OK and was becoming a worse and worse value over time.  I think they call this ‘value engineering’. I figured that as the company grew, they hired some MBA who advised them to squeeze every dollar out of the company and increase the owner’s profits by making tiny little cuts to the quality and amount of ingredients.  None of these incremental changes were noticeable by themselves, but in aggregate, over time, the burritos started to just be OK, where once they were awesome – ‘death by a thousand cuts.’  </p>
- <p class='paragraphs'> I hate this phenomenon of companies decreasing value of a product over time while riding their brand and I wanted to make a tool for consumers to rate the price and quality of products to help people discover new, innovative brands that are offering a better quality service at the same price and by keeping the legacy companies offering a great value by providing a user-generated feedback loop for companies to easily measure <strong> brand perception in the market.</strong> </p>
-<p class='paragraphs'> The founder of TripAdvisor&trade;  noticed a similar phenomenon in the travel world and it’s why he started his travel review website: </p>
-<blockquote>But the hotel owner that wants to run this crappy place, preying off the brand that they’re under, and maybe their location as being near to something, that person has to kind of shape up, maybe take something out of their profits and put it back into providing a good service for customers, because word is spreading and TripAdvisor™ is the conduit in the travel space for spreading that word (Kaufer, source: Founders at Work: Stories of Startups’ Early Days)</blockquote>
-<p class='paragraphs'> With Ratestuf&trade;  around, I would hope Poquito Menos would see that users rated its quality lower while its price got higher each year on our brand map, thus moving it to the red ‘worse value’ zone from its original position as a best-in-class brand while other restaurants emerged that were offering a better value. </p>
-<p class='paragraphs'> RateStuf&trade;  is around to help consumers discover the best brands in each class and save us the money and trouble of dealing with any brands except those that are offering a truly great value.  I personally hate spending any money on a business in order to discover that it is offering a poor value. Why? In the information age, let’s just let each other know about the best products and services and choose more wisely.  The best companies will listen to our opinions and offer great values – they call this being market-centric – and the others should fade away to be replaced by great new innovative businesses that truly offer great value to us all. </p>
+<h3 class='paragraphs'> Compare & Share Stuf </h3>
+<p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuf and share your opinions with your friends.  You can compare anything <strong>versus</strong> anything else on any factors that YOU choose. Anything? Yes, ANYTHING? Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends.  </p>
 <p class='paragraphs'>  - Adam Zuckerberg, 2014</p>
 
 
@@ -597,22 +541,24 @@ What about (A) 2 item vs search (B) multiple items -->
               echo "not able to get trending data";
             }
           ?>
-          <div class="trending">  Trending Top 10 Searches </div>
-                <ul>
+          <div class="trending" id="trending-top10-headline">  Trending Top 10 Searches </div>
+<!--                 <ul> -->
                 <?php
-                while ($row = mysqli_fetch_assoc($trending)) {
+                // while ($row = mysqli_fetch_assoc($trending)) {
                 ?>
-                <li id="trendingStuf"><a href="?s=<?php echo $row['subcategoryName']; ?>"><?php echo 'top 10 '.$row['subcategoryName']; ?></a></li></br>
+<!--                 <li id="trendingStuf"><a href="?s=<?php echo $row['subcategoryName']; ?>"><?php echo 'top 10 '.$row['subcategoryName']; ?></a></li></br> -->
                 <?php
-                  echo "<li " . $row['count'] . "</li>";
-                    }
+                  // echo "<li " . $row['count'] . "</li>";
+                  //   }
                 ?>
-                </ul>
+<!--                 </ul>
                 <?php 
                   mysqli_free_result($trending);
-                ?>
-          <h3 class="trending" id="trendingVsHeadline"> Trending a vs. b Searches </h3>
+                ?> -->
+          <h3 class="trending" id="trendingVsHeadline"> Trending - Stuf vs Stuf</h3>
                 <ul>
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=batman+vs+superman">batman vs. superman<a></li></br>  
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=chuck+norris+vs+vladimir+putin">chuck norris vs. vladimir putin<a></li></br>  
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=uber+vs.+lyft">uber vs. lyft<a></li></br>
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=geico+vs.+progressive">geico vs. progressive<a></li></br>
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=discover+home+loans+vs.+quicken+loans">discover home loans vs. quicken loans<a></li></br>
@@ -680,70 +626,16 @@ What about (A) 2 item vs search (B) multiple items -->
 <br>
 <br>
 <br>
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!-- Large Rectangle -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:336px;height:280px"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="3848115687"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<br>
-<br>
-<br>
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!-- Responsive1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="6801582082"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<!-- adsense -->
-<br>
 <br>
 <br>
 <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 <!-- Large Rectangle -->
-<ins class="adsbygoogle"
+<!-- <ins class="adsbygoogle"
      style="display:inline-block;width:336px;height:280px"
      data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="3848115687"></ins>
+     data-ad-slot="3848115687"></ins> -->
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<br>
-<br>
-<br>
-<!-- adsense -->
-
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!-- Responsive1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="6801582082"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<!-- adsense -->                  
-<br>
-<br>
-<br>
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!-- Large Rectangle -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:336px;height:280px"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="3848115687"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+// (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <!-- adsense -->
 <br>
@@ -793,21 +685,35 @@ What about (A) 2 item vs search (B) multiple items -->
 <p>this is a canvas 2</p>
 <canvas id="canvas2" width="1000px" height="700px"></canvas> -->
 
+<!-- Use images that are at least 1200 x 630 pixels for the best display on high resolution devices. At the minimum, you should use images that are 600 x 315 pixels to display link page posts with larger images -->
+<!-- <h1>this is the canvas</h1>
+<canvas id="canvas1" width="600" height="315" style="background-color:pink;"></canvas> -->
 <script>
+// var canvas = document.getElementById("canvas1");
+// var ctx = canvas.getContext("2d");
 
+// var data = "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>" +
+//     "<foreignObject width='100%' height='100%'>" +
+//     "<div xmlns='http://www.w3.org/1999/xhtml'>" +
+    
+//     document.getElementById('rateTableFrame').innerHTML +
+    
+//     "</div>" +
+//     "</foreignObject>" +
+//     "</svg>";
 
-// $( "#dialog-message" ).close({
-
-// $(document).ready(function() {
-//         var img = $('#rateTable');
-//         var canvas = $('#canvas')[0];
-//         var context = canvas.getContext('2d');
-
-//         img.load(function() {
-//             context.drawImage(this, 0, 0);
-//         });
+// var DOMURL = self.URL || self.webkitURL || self;
+// var img = new Image();
+// var svg = new Blob([data], {
+//     type: "image/svg+xml;charset=utf-8"
 // });
 
+// var url = DOMURL.createObjectURL(svg);
+// img.onload = function () {
+//     ctx.drawImage(img, 0, 0, 600, 315);
+//     DOMURL.revokeObjectURL(url);
+// };
+// img.src = url;
 </script>
 
 

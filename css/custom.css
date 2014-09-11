@@ -42,7 +42,7 @@ hr {
 }
 
 #responsiveAd1 {
-	margin: -200px 0px 0px 20px;
+	margin: -150px 0px 0px 0px;
 }
 
 #adBoxBelowRatenowButton {
@@ -438,29 +438,30 @@ select option {
     height: auto;
 	position: relative;
 	z-index: 0;
-	border: 5px solid pink;
+/*	border: 5px solid pink;*/
 }
 #arrow-on-the-y-axis-container {
-	height: 120%;
+	height: auto;
 	width: 10%;
-	border: 4px solid black;
 	float: left;
+	border: 2px solid white;
 }
 #arrow-on-the-y-axis {
 	width: 100%;
 	height: auto;
 }
 #arrow-on-the-x-axis {
-	width: 100%;
+	width: 90%;
 	height: 80%;
   	position: relative;
-   	border: 4px solid blue;
+/*   	border: 4px solid blue;*/
+   	margin-left: 10%;
 }
 #input-on-the-x-axis {
 	width: 3em;
 	position: absolute;
 	font-weight: 900;
-	font-size:2em; 
+	font-size:4em; 
 	font-style: bold;
 	z-index: 10;
 	width: 25%;
@@ -477,15 +478,15 @@ select option {
 	margin: 20% 0px 20% -10%;
 }
 #container-for-ratetable-and-arrows {
-	border: 10px solid green;
+/*	border: 10px solid green;*/
 }
 #rateTableFrame {
 	width: 90%;
 	height: 100%;
 	position: relative;
 	z-index: 0;
-	border: 10px solid purple;
 	display: inline-block;
+/*	border: 10px solid purple;*/
 }
 #dialog-message {
 	display: none;
@@ -534,7 +535,26 @@ textarea {
 	background: white;
 	width: 100%;
 }
-.bestValue {
+.bestValue:nth-child(odd) {
+background: repeating-linear-gradient(
+  45deg,
+  #00ff00,
+  #009900 5px,
+  #00ff00 7px,
+  #009900 5px
+);
+}
+.bestValue:nth-child(even) {
+background: repeating-linear-gradient(
+  45deg,
+  #33ccff,
+  #0066cc 5px,
+  #33ccff 7px,
+  #0066cc 5px
+);
+}
+/*this is the old yellow colloring for fair value*/
+.fairValue {
 background: repeating-linear-gradient(
   45deg,
   #00ff00,
@@ -544,6 +564,7 @@ background: repeating-linear-gradient(
 );
 }
 
+/*this is the old yellow colloring for fair value
 .fairValue {
 background: repeating-linear-gradient(
   0deg,
@@ -552,7 +573,7 @@ background: repeating-linear-gradient(
   #ffff33 7px,
   #cc9900 5px
 )
-}
+}*/
 
 .worseValue {
 background: repeating-linear-gradient(
@@ -651,14 +672,11 @@ background: repeating-linear-gradient(
 	color: #1cff2c;
 }
 #rateNowButton {
-	background-image: url('../images/shareonfb.png');
+/*	background-image: url('../images/shareonfb.png');
 	background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-image-border: none;
-	border-color: gray;
-	border:solid 2px;
+    background-image-border: none;*/
 	border-radius: 9px;
-/*	background-color: #e4e4e4;*/
 	color: #726e6f;
 	font-size: 2.3em;
 	font-weight: bold;
@@ -705,7 +723,11 @@ background: repeating-linear-gradient(
 	padding: 0px 0px 0px 15px;
 	border-style:solid;
 	border-width: 2px;
+	display: none;
 /*	border: 10px solid green;*/
+}
+#trending-top10-headline {
+	display: none;
 }
 .textRatingsDollars {
 	display: inline-block;
@@ -755,6 +777,7 @@ h3.trending {
 	font-size: 1.6em;
 	line-height: .7em;
 	margin: 0px 0px 0px -30px;
+	display:none;
 }
 .trendingVS {
 	font-family: "Arial Bold", sans-serif; 
@@ -853,8 +876,16 @@ width: 25px;
 position: absolute;
 box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
 z-index: 3;
-margin-left: 6%;
-margin-bottom: 7%;
+background: repeating-linear-gradient(
+  45deg,
+  #00ff00,
+  #009900 5px,
+  #00ff00 7px,
+  #009900 5px
+);
+}
+/*margin-left: 6%;
+margin-bottom: 7%;*/
 }
 .textRatingItemName {
 /*	margin: 0px 0px 0px 0px;*/
@@ -895,14 +926,14 @@ p.itemName {
 }
 
 #containmentWrapper { 
- 	width: 100%;
- 	height: 100%;
- 	opacity:0.45; 
-	background-color: green;
+ 	width: 109%;
+ 	height: 109%;
+/* 	opacity:0.45; 
+	background-color: green;*/
 /* 	margin: -15px 0px 0px 5%;*/
 /* 	min-height: 200px;*/
  	border:0px;
- 	background: hsla(50,50%,62%,.3);
+ 	background: hsla(50,50%,62%,0.3);
  	position: absolute;
  	z-index: 1;
 	overflow-y: hidden;
@@ -1031,12 +1062,16 @@ width: 40px;
 position: absolute;
 box-shadow: inset -5px -5px 8px rgba(0,0,0,.5);
 z-index: 3;
-margin-left: 6%;
-margin-bottom: 5%;
-margin-right: -2%;
+margin-top: -1%;
+margin-bottom: -1.5%;
+margin-right: -1.5%;
+}
+#DynamicRatingsSection {
+	display: none;
 }
 #DynamicRatingsSectionHeadline {
 	margin: 20px 0px 20px 0px;	
+	display:none;
 }
 #headline {
 	display: none;
@@ -1072,7 +1107,7 @@ margin-right: -2%;
 #logo2 {
 	display: inline-block;
 	width: 350px;
-	margin: 40px 0px 50px 25%;
+	margin: -30px 0px 20px 25%;
 }
 
 input[id="searchTags"] {
