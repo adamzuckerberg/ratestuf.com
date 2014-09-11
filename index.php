@@ -204,7 +204,7 @@ else {
                 <form id="mainForm" method="get" action="./" >
                   <div class="right-inner-addon">
 
-                    <input type="text" id="searchTags" class="items form-control" placeholder="find, add or compare stuff" name="s" value="">
+                    <input type="text" id="searchTags" class="items form-control" placeholder="find, add or compare stuf" name="s" value="">
                         <i class="glyphicon glyphicon-search"></i>
                 </div>
                 </form>
@@ -308,8 +308,13 @@ else {
 
           </div>
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
-                
-
+              <div id="container-for-ratetable-and-arrows">
+              <div id="arrow-on-the-y-axis-container">
+                  <form id="input-on-the-y-axis" method="get" action="./" >
+                    <input type="text" id="" class="items form-control" placeholder="y-axis" name="" value="">
+                  </form>
+                  <img id="arrow-on-the-y-axis" src="images/arrow_y.png">
+              </div>
 
               <div id="rateTableFrame">
               <div class="dollarRating">
@@ -343,13 +348,17 @@ What about (A) 2 item vs search (B) multiple items -->
 
                 <img id="rateTable" src="images/rateTableWhite.png">
 
+
+
+
+<!-- 
                 <div class="starRating"> 
                     <span id="star1" class="star fa fa fa-star"></span>
                     <span id="star2" class="star fa fa fa-star"></span>
                     <span id="star3" class="star fa fa fa-star"></span>
                     <span id="star4" class="star fa fa fa-star"></span>
                     <span id="star5" class="star fa fa fa-star"></span>
-               </div>
+               </div> -->
 
     
                     <?php
@@ -398,8 +407,17 @@ What about (A) 2 item vs search (B) multiple items -->
 <!-- end screen capture -->
 </div>
 
+                  <form id="input-on-the-x-axis" method="get" action="./" >
+
+                    <input type="text" id="" class="items form-control" placeholder="x-axis" name="" value="">
+                </form>
+
+                <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
+
                   <img id="arrowUp" src="images/arrowUp.png" class="img-responsive">
-                  <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Sign up or log in to add your ratings. You will rate all visible balls, so remove any balls you don't want to rate prior to clicking this button.  To delete a ball, click to select the ball (it will be highlighted in yellow) and press the DELETE key to remove the ball.">Rate Now!</button>
+<!-- end container for table and arrows -->
+              </div>
+                  <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Sign up or log in to add your ratings. You will rate all visible balls, so remove any balls you don't want to rate prior to clicking this button.  To delete a ball, click to select the ball (it will be highlighted in yellow) and press the DELETE key to remove the ball."></button>
               <div id="WhiteSpaceFill"></div>
               </div>
 

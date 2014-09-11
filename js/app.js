@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 // $("#rateTableFrame").css('border', '2px solid blue');
-// $('.draggable').parent().css('border', '5px solid red');
+$('#rateTableFrame').parent().css('border', '5px solid red');
 });
 
 $(document).mouseover(function() {
