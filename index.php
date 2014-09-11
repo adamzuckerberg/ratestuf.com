@@ -73,59 +73,61 @@ if (isset($product["fbimage"])) {
 
 ?>"/>
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Hey everyone, this is what I think about <?php echo ((isset($_GET['s'])? $_GET['s']:"")); ?>"/>
+<meta property="og:title" content="Hey everyone, this is what I think about <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?>&trade;<?php; ?>"/>
 <meta property="og:description" content="A dynamic user-generated brand map to help you discover the best brands in every category." />
 
 <meta property="og:image" content="https://www.ratestuf.org/<?php  
 
 // <!-- 5 stars -->
-if(isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0.75){ 
+$xOffset = 0.895962732919255;
+$yOffset = 0.78;
+if(isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
     echo 'images/fbog/FB_OG_5stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0.50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
     echo 'images/fbog/FB_OG_5stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0.25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
     echo 'images/fbog/FB_OG_5stars_2dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.80 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>0){ 
     echo 'images/fbog/FB_OG_5stars_1dollars.png';
 }
 
 // <!-- 4 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0.75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
     echo 'images/fbog/FB_OG_4stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0.50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
     echo 'images/fbog/FB_OG_4stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0.25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
     echo 'images/fbog/FB_OG_4stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.60 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>0){ 
     echo 'images/fbog/FB_OG_4stars_3dollars.png';
 }
 
 // <!-- 3 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0.75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
     echo 'images/fbog/FB_OG_3stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0.50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
     echo 'images/fbog/FB_OG_3stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0.25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
     echo 'images/fbog/FB_OG_3stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.40 && isset($_GET['y']) && $_GET['y']>0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>0){ 
     echo 'images/fbog/FB_OG_3stars_3dollars.png';
 }
 // <!-- 2 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
     echo 'images/fbog/FB_OG_2stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
     echo 'images/fbog/FB_OG_2stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
     echo 'images/fbog/FB_OG_2stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0.20 && isset($_GET['y']) && $_GET['y']>0.0){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>0.0){ 
     echo 'images/fbog/FB_OG_2stars_3dollars.png';
 }
 // <!-- 1 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.75){ 
+elseif(isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
     echo 'images/fbog/FB_OG_1stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.50){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
     echo 'images/fbog/FB_OG_1stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.25){ 
+} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
     echo 'images/fbog/FB_OG_1stars_3dollars.png';
 } elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.0){ 
     echo 'images/fbog/FB_OG_1stars_3dollars.png';
