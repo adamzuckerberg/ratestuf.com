@@ -34,12 +34,12 @@ function saveratings(data) {
 
 
 //user is able to select a draggable ball and delete it from the screen using BACKSPSACE or DELETE
-// $(".draggable").click(function(){
-//   if (userloggedin) {
-//     $(".draggable").not(this).removeClass("active");
-//     $(this).toggleClass("active");
-//   }
-// });
+$(".draggable").click(function(){
+  // if (userloggedin) {
+    $(".draggable").not(this).removeClass("active");
+    $(this).toggleClass("active");
+  // }
+});
 
 
 $(document.body).keyup(function(event){
@@ -96,9 +96,9 @@ $( ".draggable" ).parent().css( "background-color", "20px red" );
 
              // draggable within a box and others
             $(function() {
-              if (userloggedin) {
+              // if (userloggedin) {
               $(".draggable").draggable({ containment: "#containmentWrapper" });
-            } 
+            // } 
               });
 
 // *****************************************

@@ -275,9 +275,18 @@ logo2tm">&0134;</span>
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
               <div id="container-for-ratetable-and-arrows">
               <div id="arrow-on-the-y-axis-container">
-                  <form id="input-on-the-y-axis" method="get" action="./" >
-                    <input type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="y-axis" name="yaxis" value="">
-                  </form>
+
+                    <input list="suggested-list-y-axis" type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="enter stuf here" name="yaxis" value=""></input>                
+                      <datalist id="suggested-list-y-axis">
+                        <option value="strength">
+                        <option value="electability">
+                        <option value="intelligence">
+                        <option value="evilness">
+                        <option value="sex appeal">
+                        <option value="beauty">
+                        <option value="wealth">
+                      </datalist>
+
                   <img id="arrow-on-the-y-axis" src="images/arrow_y.png">
               </div>
 
@@ -372,17 +381,29 @@ What about (A) 2 item vs search (B) multiple items -->
 <!-- end screen capture -->
 </div>
 
-                  <form id="input-on-the-x-axis" method="get" action="./" >
-
-                    <input type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="x-axis" name="xaxis" value="">
-                </form>
+              <div id="box-around-xaxis-input">
+                    <input list="suggested-list-x-axis" type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="enter stuf here" name="xaxis" value="">
+                
+                      <datalist id="suggested-list-x-axis">
+                        <option value="strength">
+                        <option value="electability">
+                        <option value="intelligence">
+                        <option value="evilness">
+                        <option value="sex appeal">
+                        <option value="beauty">
+                        <option value="wealth">
+                      </datalist>
+            </div>
 
                 <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
 
                   <img id="arrowUp" src="images/arrowUp.png" class="img-responsive">
 <!-- end container for table and arrows -->
               </div>
-                  <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings.">Rate It!</button>
+<!--                                 <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings.">Rate It!</button> -->
+<div id="box-around-ratenowbutton">
+                  <input type="image" src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings."></input>
+</div>
               <div id="WhiteSpaceFill"></div>
               </div>
 
@@ -719,7 +740,7 @@ What about (A) 2 item vs search (B) multiple items -->
 
       <footer class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-               <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><div id="footerLinks" class="hidden-sm hidden-xs"> <a href="http://areas.kenan-flagler.unc.edu/Marketing/FacultyStaff/zeithaml/Selected%20Publications/Consumer%20Perceptions%20of%20Price,%20Quality,%20and%20Value-%20A%20Means-End%20Model%20and%20Snthesis%20of%20Evidence.pdf">Scholary Stuf on Perceived Value and Price</a>  | <a href="http://www.comm.ucsb.edu/faculty/flanagin/CV/FlanaginandMetzger2013(CiHB).pdf">Scholary Stuf on User-Generated Ratings</a> | <a href="http://www.demandforce.com/_assets/downloads/pdf/resources/heres-looking-out-for-you-kid-the-unselfish-reasons-why-people-write-online-reviews.pdf">The Unselfish Reasons Why People Write Online Reviews</a></p><div>
+               <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><div id="footerLinks" class="hidden-sm hidden-xs"></p><div>
           </div>
       </footer>
 <!-- close container -->
