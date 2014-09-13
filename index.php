@@ -210,7 +210,7 @@ logo2tm">&0134;</span>
                 <form id="mainForm" method="get" action="./" >
                   <div class="right-inner-addon">
 
-                    <input type="text" id="searchTags" class="items form-control" placeholder="find, add or compare stuf" name="s" value="">
+                    <input type="text" id="searchTags" class="items form-control" placeholder="compare stuff" name="s" value="">
                         <i class="glyphicon glyphicon-search"></i>
                 </div>
                 </form>
@@ -276,7 +276,7 @@ logo2tm">&0134;</span>
               <div id="container-for-ratetable-and-arrows">
               <div id="arrow-on-the-y-axis-container">
 
-                    <input list="suggested-list-y-axis" type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="enter stuf here" name="yaxis" value=""></input>                
+                    <input list="suggested-list-y-axis" type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="enter stuff here" name="yaxis" value=""></input>                
                       <datalist id="suggested-list-y-axis">
                         <option value="strength">
                         <option value="electability">
@@ -382,7 +382,7 @@ What about (A) 2 item vs search (B) multiple items -->
 </div>
 
               <div id="box-around-xaxis-input">
-                    <input list="suggested-list-x-axis" type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="enter stuf here" name="xaxis" value="">
+                    <input list="suggested-list-x-axis" type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="enter stuff here" name="xaxis" value="">
                 
                       <datalist id="suggested-list-x-axis">
                         <option value="strength">
@@ -402,7 +402,7 @@ What about (A) 2 item vs search (B) multiple items -->
               </div>
 <!--                                 <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings.">Rate It!</button> -->
 <div id="box-around-ratenowbutton">
-                  <input type="image" src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings."></input>
+                  <input type="image" src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings."></input>
 </div>
               <div id="WhiteSpaceFill"></div>
               </div>

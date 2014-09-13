@@ -79,7 +79,6 @@ $( ".draggable" ).parent().css( "background-color", "20px red" );
                           $("#arrowUp").fadeIn(2000);
                       });
 
-
                       $("#rateNowButton").click(function() {
                           $("#arrowUp").fadeIn(2000);
                       });
@@ -92,8 +91,22 @@ $( ".draggable" ).parent().css( "background-color", "20px red" );
                       $("#rateNowButton").hover(function() {
                           $("#arrowUp").fadeOut(200);
                       });
+
+                      $("#rateNowButton").hover(function() {
+                          $("#loginFacebook").fadeIn(50).css('border', '10px solid #1cff2c');
+                          $("#loginFacebook").css('borderRadius','10px');
+                      });
+                      $("#rateNowButton").click(function() {
+                          $("#loginFacebook").css('border', 'none');
+                      });
+                      $("#rateNowButton").mouseout(function() {
+                          $("#loginFacebook").css('border', 'none');
+                      });
+
                     });
 
+
+                      
              // draggable within a box and others
             $(function() {
               // if (userloggedin) {

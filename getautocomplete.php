@@ -18,8 +18,10 @@ $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
  while($row = mysqli_fetch_array($result)) { 
          $json[]=array(
-                    'value'=> $row["subcategoryName"],
-                    'label'=> $row["itemName"]." < ".$row["subcategoryName"]
+                    // 'value'=> $row["subcategoryName"],
+                    // 'label'=> $row["itemName"]." < ".$row["subcategoryName"]
+                    'value'=> $row["itemName"],
+                    'label'=> $row["itemName"]." < "."stuf to rate"                 
                         );
 }
  

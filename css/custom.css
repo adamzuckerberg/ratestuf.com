@@ -458,8 +458,9 @@ select option {
 #input-value-on-the-y-axis {
 	position: absolute;
 	margin: 22% 0px 20% -20%;
+	z-index:100;
 	display: block;
-	width: 250px;
+	width: 200px;
 	height: 2.0em;
 	padding: 6px 12px;
 	font-size: 1.7em;

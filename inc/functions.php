@@ -106,7 +106,9 @@ function get_draggable_balls($search_term) {
 
         } else {
 
-          echo '<script> verticallyAlignDollarIcons(); alert("One or more of your search terms is new to our database. Please log in to continue.")</script>';
+// "One or more of your search terms is new to our database. Please log in to continue."
+
+          echo '<script> alert("Please log in to rate this new item")</script>';
         }
       }     
     } 
