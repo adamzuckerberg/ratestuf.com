@@ -3,11 +3,16 @@
 // $('.draggable').parent().css('border', '1px solid red');
 // });
 
-
-// $(document).on('scroll', function() {
-//   $(document).scrollLeft(0);
-//   $(document).scrollRight(0);
-// });
+$("#logo3-container").hover(function(){
+    $("#logo3-falling-f").css("position", "absolute" );
+    $("#logo3-falling-f").css("z-index", "100" );
+    $("#logo3-falling-f").css("font-size", "3em" );
+    $("#logo3-falling-f").css("margin", "1000px 0px 0px 35px" );
+    $("#logo3-falling-f").css("-webkit-transform", "rotate(35deg)" );
+    $("#logo3-falling-f").css("-moz-transform", "rotate(35deg)" );
+    $("#logo3-falling-f").css("-ms-transform", "rotate(35deg)" );
+    $("#logo3-falling-f").css("-o-transform", "rotate(35deg)" );
+});
 
 
 function capitaliseFirstLetter(text)

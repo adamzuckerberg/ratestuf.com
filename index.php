@@ -146,7 +146,8 @@ else {
     <div class="container-fluid">
           <header class="row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <img id="logo1" class="logo pull-left" src="images/logo3.jpg" alt="RateStuf logo">                
+
+<!--               <img id="logo1" class="logo pull-left" src="images/logo3.jpg" alt="RateStuf logo"> -->                
 
 <!-- <div id="logo2block" class="logo pull-left" alt="Ratestuf logo">Ratestuf<span id="
 logo2tm">&0134;</span>
@@ -205,7 +206,12 @@ logo2tm">&0134;</span>
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
 
 
-              <img id="logo2" class="logo" src="images/logo3.jpg" alt="RateStuf logo">
+              <div id="logo3-container" class="logo pull-left" alt="RateStuf logo">
+                <p id="logo3">Ratestuf</p>
+                <p id="logo3trademark" >&trade;</p>
+                <p id="logo3tagline">rate anything and compare stuf<span id="logo3-falling-f">f.</span></p>
+
+              </div>
 
                 <form id="mainForm" method="get" action="./" >
                   <div class="right-inner-addon">
