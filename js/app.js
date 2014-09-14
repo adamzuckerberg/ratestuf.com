@@ -3,6 +3,13 @@
 // $('.draggable').parent().css('border', '1px solid red');
 // });
 
+
+// $(document).on('scroll', function() {
+//   $(document).scrollLeft(0);
+//   $(document).scrollRight(0);
+// });
+
+
 function capitaliseFirstLetter(text)
 {
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -34,7 +41,7 @@ function saveratings(data) {
 
 
 //user is able to select a draggable ball and delete it from the screen using BACKSPSACE or DELETE
-$(".draggable").click(function(){
+$(".draggable").dblclick(function(){
   // if (userloggedin) {
     $(".draggable").not(this).removeClass("active");
     $(this).toggleClass("active");
@@ -95,12 +102,14 @@ $( ".draggable" ).parent().css( "background-color", "20px red" );
                       $("#rateNowButton").hover(function() {
                           $("#loginFacebook").fadeIn(50).css('border', '10px solid #1cff2c');
                           $("#loginFacebook").css('borderRadius','10px');
+                          $("#loginFacebook").css('margin-top','22px');
                       });
                       $("#rateNowButton").click(function() {
                           $("#loginFacebook").css('border', 'none');
                       });
                       $("#rateNowButton").mouseout(function() {
                           $("#loginFacebook").css('border', 'none');
+                          $("#loginFacebook").css('margin-top','40px');
                       });
 
                     });

@@ -86,8 +86,16 @@ function get_draggable_balls($search_term) {
 
       } else {
 
+//ADDED THIS NEW SECTION TO ALLOW PEOPLE TO RATESTUF WITHOUT LOGGING IN 
+
+      if (!$user) {
+      echo '<div'.' class='.'\'draggable'.'1'.' '.'draggable'.' name=\''.$search_term.'\''.' '.'title=\'This is a ball. Move it to rate to rate this item.\''.'style=\'position: absolute;'.' '.'left:50%'.';'.' '.'top:50%'.'\''.'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($search_term).'</p>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.'0'.'<br>ratings</p>'.'</div>';
+
+}
       // IF THE ITEM DOESN'T EXIST (AND THE USER IS LOGGED IN) ADD THE ITEM TO THE DATABASE
-      if ($user) {
+      // if ($user) {
+
+      elseif ($user) {
       $query = "INSERT INTO items_table (itemName, createdBy) VALUES ('$search_term',$user)";
       $result = $connection->query($query);
       // $itemId = $connection->insert_id;

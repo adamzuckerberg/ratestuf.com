@@ -36,7 +36,7 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RateStuf | Share Your Ratings</title>
 <!--   <title>Ratestuf | <?php echo $_SERVER['QUERY_STRING'] . " - Reviews of The Top 10 Brands and A vs. B Ratings"; ?></title> -->
-  <meta name="description" content="A dynamic user-generated brand map to help you discover the best brands in every category. Real-time user-generated ratings of the top 10 brands in any class: the best hosting services, best airlines, best rental cars, best online ride sharing services...you name it. Add your ratings of price and service quality to help others find the best-value brands or, add a new brand to our database to help others discover new, innovative products and services in any category.">
+  <meta name="description" content="Ratestuf&trade; is the easiest way to rate and share stuf.">
 <!--   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico?v=2" /> -->
   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico" />
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -210,7 +210,7 @@ logo2tm">&0134;</span>
                 <form id="mainForm" method="get" action="./" >
                   <div class="right-inner-addon">
 
-                    <input type="text" id="searchTags" class="items form-control" placeholder="compare stuff" name="s" value="">
+                    <input type="text" id="searchTags" class="items form-control" placeholder="obama vs. batman" name="s" value="">
                         <i class="glyphicon glyphicon-search"></i>
                 </div>
                 </form>
@@ -285,6 +285,9 @@ logo2tm">&0134;</span>
                         <option value="sex appeal">
                         <option value="beauty">
                         <option value="wealth">
+                        <option value="price">
+                        <option value="value">
+                        <option value="naughtiness">
                       </datalist>
 
                   <img id="arrow-on-the-y-axis" src="images/arrow_y.png">
@@ -392,17 +395,21 @@ What about (A) 2 item vs search (B) multiple items -->
                         <option value="sex appeal">
                         <option value="beauty">
                         <option value="wealth">
+                        <option value="price">
+                        <option value="value">
+                        <option value="naughtiness">
                       </datalist>
             </div>
 
                 <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
 
-                  <img id="arrowUp" src="images/arrowUp.png" class="img-responsive">
+<!--                   <img id="arrowUp" src="images/arrowUp.png" class="img-responsive"> -->
 <!-- end container for table and arrows -->
               </div>
 <!--                                 <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings.">Rate It!</button> -->
 <div id="box-around-ratenowbutton">
-                  <input type="image" src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings."></input>
+<!--                   <input type="image" src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings."></input> -->
+                  <img src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings.">
 </div>
               <div id="WhiteSpaceFill"></div>
               </div>
@@ -531,8 +538,8 @@ What about (A) 2 item vs search (B) multiple items -->
 
 </div>
 <h3 class='paragraphs'> Compare & Share Stuf </h3>
-<p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuf and share your opinions with your friends.  You can compare anything <strong>versus</strong> anything else on any factors that YOU choose. Anything? Yes, ANYTHING? Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends.  </p>
-<p class='paragraphs'>  - Adam Zuckerberg, 2014</p>
+<p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuff and share your opinions with your friends.</p><p class='paragraphs'>You can <strong> compare anything</strong> versus anything else on any factors that YOU choose. Anything? Yes, anything you want (within socially acceptable norms of course).  Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends. Have fun and don't forget to share your ratings on the facebook&trade; and all over the interweb.</p>
+<p class='paragraphs'>  - Adam Zuckerberg (Founder), 2014</p>
 
 
 
