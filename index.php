@@ -32,12 +32,11 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
 
 
   <meta charset="utf-8">
-  <meta property="og:image" content="http://ratestuf.org/images/logo3.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RateStuf | Share Your Ratings</title>
-<!--   <title>Ratestuf | <?php echo $_SERVER['QUERY_STRING'] . " - Reviews of The Top 10 Brands and A vs. B Ratings"; ?></title> -->
   <meta name="description" content="Ratestuf&trade; is the easiest way to rate and share stuf.">
 <!--   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico?v=2" /> -->
+  <link href='http://fonts.googleapis.com/css?family=Lilita+One|Passion+One:700,400,900|Chivo:400,900,900italic' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico" />
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
@@ -63,19 +62,9 @@ userloggedin =<?php
 <meta property="fb:app_id" content="228744763916305" />
 <!-- i want to add explicitly share so it goes in the news feed how? -->
 <!-- "fb:explicitly_shared=true" -->
-<meta property="og:site_name" content="RateStuf" />
-<meta property="og:image" content="https://ratestuf.org/<?php
-if (isset($product["fbimage"])) {
-  echo $product["fbimage"]; 
-} else {
-  echo 'images/logo3.jpg';
-}
-
-?>"/>
 <meta property="og:type" content="website" />
 <meta property="og:title" content="My rating of <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?><?php; ?>"/>
-<meta property="og:description" content="A dynamic user-generated brand map to help you discover the best brands in every category." />
-
+<meta property="og:description" content="Rate anything and share your stuf with RateStuf&trade;" />
 <meta property="og:image" content="https://www.ratestuf.org/<?php  
 
 // <!-- 5 stars -->
@@ -282,7 +271,7 @@ logo2tm">&0134;</span>
               <div id="container-for-ratetable-and-arrows">
               <div id="arrow-on-the-y-axis-container">
 
-                    <input list="suggested-list-y-axis" type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="enter stuff here" name="yaxis" value=""></input>                
+                    <input list="suggested-list-y-axis" type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="enter stuf here" name="yaxis" value=""></input>                
                       <datalist id="suggested-list-y-axis">
                         <option value="strength">
                         <option value="electability">
@@ -348,6 +337,9 @@ What about (A) 2 item vs search (B) multiple items -->
                     $search_term="";
                     if (isset($_GET["s"])) {
                       $search_term = trim($_GET["s"]);
+                      // if (!isset($_SESSION['refresh'])) { 
+                      // $_SESSION['refresh']=1;
+                      //  }  
                       if ($search_term != "") {
                       $position_of_vs_term = position_of_vs_term_in_the_search($search_term);
                         if ($position_of_vs_term !== 0) {
@@ -357,19 +349,19 @@ What about (A) 2 item vs search (B) multiple items -->
                             $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
                             get_draggable_balls($firstSearchTerm); 
                             get_draggable_balls($secondSearchTerm);   
+                        // if  ($_SESSION['refresh']==1) {    
+                            save_search_term($firstSearchTerm.' vs. '.$secondSearchTerm);
 
-                            // print_textratings_to_screen($firstSearchTerm);
-                            // print_textratings_to_screen($secondSearchTerm);
-
+                        //   }
                         } else {
                             get_draggable_balls($search_term);
-
                             // print_textratings_to_screen($search_term);
-
-
-                            } 
-                          } 
-                        }
+                        // if  ($_SESSION['refresh']==1) {    
+                            save_search_term($search_term);
+                        //   }
+                        } 
+                      } 
+                    }
                     ?>
                     <?php
                     // is this running????
@@ -391,7 +383,7 @@ What about (A) 2 item vs search (B) multiple items -->
 </div>
 
               <div id="box-around-xaxis-input">
-                    <input list="suggested-list-x-axis" type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="enter stuff here" name="xaxis" value="">
+                    <input list="suggested-list-x-axis" type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="enter stuf here" name="xaxis" value="">
                 
                       <datalist id="suggested-list-x-axis">
                         <option value="strength">

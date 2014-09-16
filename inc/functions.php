@@ -56,6 +56,19 @@ function is_a_subcategory($search_term)  {
           // 2. uber vs. lyft "User Ratings for"
           // 3. ridesharing services -> "Top 10"
 }
+
+function save_search_term($search_term) {
+
+          global $user;
+          global $connection;
+
+        if ($user) {
+          $connection->query("INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user')");
+        }
+}
+
+
+
 function get_draggable_balls($search_term) {
 
           global $user;
@@ -121,15 +134,8 @@ function get_draggable_balls($search_term) {
       }     
     } 
 //   }             
-// }
-
-function get_draggable_balls_text_ratings($search_term) {
-
-// GET ALL TEXTRATINGS FOR ALL BALLS PRINTED. SORT BY BEST-VALUE, FAIR VALUE, WORSE VALUE AND ECHO TEXTRATING WITH NO USER FB IMAGE YET BUT IN THE FUTURE WHEN ITS NOT JUST ADAM. IF ONE ITEM.  IF TWO OR MORE ITEMS EACH WITH BEST, FAIR, and WORSE NOT SURE WHAT TO DO
-
-      }     
-  
-
+// }  
+     
 
 
 

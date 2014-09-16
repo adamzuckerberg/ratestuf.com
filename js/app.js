@@ -7,7 +7,7 @@ $("#logo3-container").hover(function(){
     $("#logo3-falling-f").css("position", "absolute" );
     $("#logo3-falling-f").css("z-index", "100" );
     $("#logo3-falling-f").css("font-size", "3em" );
-    $("#logo3-falling-f").css("margin", "1000px 0px 0px 35px" );
+    $("#logo3-falling-f").css("margin", "2000px 0px 0px 35px" );
     $("#logo3-falling-f").css("-webkit-transform", "rotate(35deg)" );
     $("#logo3-falling-f").css("-moz-transform", "rotate(35deg)" );
     $("#logo3-falling-f").css("-ms-transform", "rotate(35deg)" );
@@ -173,8 +173,10 @@ $("#rateNowButton").click(function(){
 });
 
 // *************share on fb
-              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&redirect_uri=https://www.facebook.com",
-                '_blank');
+
+
+              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org&redirect_uri=https://www.facebook.com",
+                '_parent');
 // *************share on fb
  
  $.ajax({ 
@@ -193,6 +195,7 @@ $("#rateNowButton").click(function(){
     alert("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends on the facebook.");
     // alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
 
+// HERE IS THE RELOAD
     location.reload();
     }
     // Location.reload(true);
@@ -214,34 +217,34 @@ $("#rateNowButton").click(function(){
 
 
 
-$(".draggable").each(function(){
+// $(".draggable").each(function(){
 
-  xPosition = (Math.round(($(this).position().left / ($(this).parent().width())) * 100));
-  yPosition = (100-(Math.round(($(this).position().top / ($(this).parent().height())) * 100)));
-  UpperLineSlope = 0.8965;
-  yPositionOnUpperLine = ((UpperLineSlope * xPosition) + 25);
-  LowerLineSlope = 0.8977;
-  yPositionOnLowerLine = ((LowerLineSlope * xPosition) + 5);
-  // alert('xposition: ' + xPosition + ', yposition: ' + yPosition + ' yposition of lowerline: ' + yPositionOnLowerLine + ' yposition of upperline: ' + yPositionOnUpperLine);
+//   xPosition = (Math.round(($(this).position().left / ($(this).parent().width())) * 100));
+//   yPosition = (100-(Math.round(($(this).position().top / ($(this).parent().height())) * 100)));
+//   UpperLineSlope = 0.8965;
+//   yPositionOnUpperLine = ((UpperLineSlope * xPosition) + 25);
+//   LowerLineSlope = 0.8977;
+//   yPositionOnLowerLine = ((LowerLineSlope * xPosition) + 5);
+//   // alert('xposition: ' + xPosition + ', yposition: ' + yPosition + ' yposition of lowerline: ' + yPositionOnLowerLine + ' yposition of upperline: ' + yPositionOnUpperLine);
 
-  if (yPosition > yPositionOnUpperLine) {
-        // $(this).removeClass('bestValue');
-        // $(this).removeClass('fairValue');  
-        $(this).addClass('bestValue');
-  }
+//   if (yPosition > yPositionOnUpperLine) {
+//         // $(this).removeClass('bestValue');
+//         // $(this).removeClass('fairValue');  
+//         $(this).addClass('bestValue');
+//   }
   
-  if (yPosition <= yPositionOnUpperLine && yPosition >= yPositionOnLowerLine) {
-        // $(this).removeClass('worseValue');
-        // $(this).removeClass('bestValue');        
-        $(this).addClass('bestValue'); 
-  } 
+//   if (yPosition <= yPositionOnUpperLine && yPosition >= yPositionOnLowerLine) {
+//         // $(this).removeClass('worseValue');
+//         // $(this).removeClass('bestValue');        
+//         $(this).addClass('bestValue'); 
+//   } 
   
-  if (yPosition < yPositionOnLowerLine) {
-        // $(this).removeClass('worseValue');
-        // $(this).removeClass('fairValue');  
-        $(this).addClass('bestValue'); 
-  }
-}); 
+//   if (yPosition < yPositionOnLowerLine) {
+//         // $(this).removeClass('worseValue');
+//         // $(this).removeClass('fairValue');  
+//         $(this).addClass('bestValue'); 
+//   }
+// }); 
 
   
 

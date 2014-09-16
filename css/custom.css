@@ -2,9 +2,9 @@
 	padding: 40px 0px 0px 0px;
 }
 #logo3 {
-	font-family: "Arial Bold", Charcoal, sans-serif;
+font-family: 'Chivo', sans-serif;
 	font-size: 2.0em;
-	font-weight: 900;
+	font-weight: 700;
 }
 #logo3 {
 	display: inline-block;
@@ -16,7 +16,7 @@
 	width: 100%;
 	min-height: 30px;
 	margin-left: 0%;
-	border: 2px solid red;
+/*	border: 2px solid red;*/
 	margin-top: 0px;
 	text-align:center;
 	padding: 10px;
@@ -30,7 +30,7 @@
 #logo3tagline {
 	font-size: 0.9em;
 	font-weight: 900;
-	border: 2px solid blue;
+/*	border: 2px solid blue;*/
 	position: relative;
 	margin-top: 0.5em;
 	max-height: 2.0em;
@@ -42,7 +42,7 @@
 	font-weight: 900;
 	margin: 2px 0px 0px 1px;
 	transition-property: position, z-index, font-size, margin, -webkit-transform;
-	transition-duration: 4s, 4s, 4s, 4s, 4s;
+	transition-duration: 7s;
 }
 #userImage2 {
 	border-radius: 50px;
@@ -207,7 +207,7 @@ input[id="searchTags"] {
 	font-size: 1.4em;
 /*    border: 2px solid blue;*/
     margin-right: -3%;
-    margin-top: 65px;
+    margin-top: 57px;
 }
 .right-inner-addon {
     position: relative;
@@ -481,7 +481,7 @@ select option {
 	width: 90%;
 	height: 100%;
 	margin-left: 10%;
-   	border: 4px solid blue;
+/*   	border: 4px solid blue;*/
 }
 #input-value-on-the-y-axis {
 	position: absolute;
@@ -759,6 +759,7 @@ background: repeating-linear-gradient(
 	font-weight: bold;
 	height: 3.0em;*/
 	width: 70%;
+	opacity: 0.9;
 /*	margin-top: 2.0%;
 	margin-left: -25%;*/
 /*	box-shadow: 4px 4px 0px 0px;*/
@@ -786,6 +787,7 @@ background: repeating-linear-gradient(
 #rateNowButton:hover  {
 /*	background: #1cff2c;
 		color: #2d3333;*/
+		opacity: 1.0;
 }
 #arrowUp {
   position: absolute;
@@ -1003,10 +1005,12 @@ margin-bottom: 7%;*/
 }
 .itemName {
 	font-size: 1.6em;
-	margin: 45px 0px 0px -80px;
+	margin: 25px 0px 0px -80px;
 	font-weight: bold;
 	color: #0000EE;
 	display: none;
+/*	border: 2px solid red;*/
+	padding-left: 40px;
 }
 p.itemName {
 	white-space:nowrap;
@@ -1140,6 +1144,9 @@ body {
 	margin-right: 5%;
 	margin-left: 5%;
 }
+.itemName {
+	margin: 45px 0px 0px -80px;
+}
 #logo3 {
 	font-size: 2.0em;
 	font-weight: 900;
@@ -1156,20 +1163,20 @@ body {
 	position: relative;
 	font-size: 2.0em;
 	font-weight: 900;
-	margin: -3.5em 0px 0px 11.3em;
+	margin: -3.5em 0px 0px 12.3em;
 }
 #logo3tagline {
 	font-size: 1.3em;
 	font-weight: 900;
 /*	border: 2px solid blue;*/
 	position: relative;
-	margin-top: 1.2em;
+	margin-top: 1.4em;
 }
 #logo3-falling-f {
 	display: inline-block;
 	font-size: 1.0em;
 	font-weight: 900;
-	margin: 2px 0px 0px 0px;
+	margin: 1px 0px 0px 0px;
 }
 #input-value-on-the-y-axis {
 	margin: 22% 0px 20% -20%;
@@ -1338,7 +1345,9 @@ font-size: 1.2em;
 /*	display: block;*/
 }
 .glyphicon-search {
-    margin-top: 110px;
+    margin-top: 105px;
+    margin-right: 0%;
+
 }
 }
 /*Special media query for adsense to prevent overlap of ad*/

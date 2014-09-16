@@ -1,7 +1,9 @@
 <?php
 session_start();
-require (__dir__."/../../inc/config.php");
-require(__dir__. "/../../facebook.php");
+require (__dir__."/../inc/config.php");
+require(__dir__. "/../facebook.php");
+// require (__dir__."/../../inc/config.php");
+// require(__dir__. "/../../facebook.php");
 header('Content-Type:application/json');
 $json=file_get_contents('php://input');
 $json=json_decode($json,true);
