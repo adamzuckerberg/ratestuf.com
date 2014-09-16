@@ -1135,7 +1135,9 @@ a:active {
 /*	border: 3px solid green;*/
 }
 #input-value-on-the-x-axis {
-	margin-left: -15%;
+/*	border: 2px solid red;*/
+	margin-left: -10%;
+	margin-top: 5%;
 	opacity: 1.0;
 }
 /* Medium devices (desktops, 992px and up) */
@@ -1180,6 +1182,12 @@ body {
 }
 #input-value-on-the-y-axis {
 	margin: 22% 0px 20% -20%;
+	opacity: 1.0;
+}
+#input-value-on-the-x-axis {
+/*	border: 2px solid blue;*/
+	margin-left: -20%;
+	margin-top: 5%;
 	opacity: 1.0;
 }
 h3.paragraphs {

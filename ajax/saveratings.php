@@ -32,8 +32,8 @@ foreach ( $json['items'] as $ratingObject ) {
 
 	}  else {
 //otherwise add the first rating for this item
-	$query = "INSERT INTO `ratings_table` (`userId`, `itemId`, `xAxis`, `xRating`, `yAxis`, `yRating`, `textRating`) "; 
-    $query .= "VALUES('$user', '".$ratingObject['itemId']."', '".$ratingObject['xAxis']."', '".$ratingObject['xRating']."', '".$ratingObject['yAxis']."', '".$ratingObject['yRating']."','".(isset($ratingObject['textRating']) ? $ratingObject['textRating'] : "")."' );";
+	$query = "INSERT INTO `ratings_table` (`userId`, `itemId`, `xAxis`, `xRating`, `yAxis`, `yRating`) "; 
+    $query .= "VALUES('$user', '".$ratingObject['itemId']."', '".$ratingObject['xAxis']."', '".$ratingObject['xRating']."', '".$ratingObject['yAxis']."', '".$ratingObject['yRating']."' );";
 	mysqli_query($connection,$query);
 // error_log(mysqli_error($connection));	
 		}
