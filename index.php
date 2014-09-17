@@ -64,71 +64,8 @@ userloggedin =<?php
 <!-- "fb:explicitly_shared=true" -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="My rating of <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?><?php; ?>"/>
-<meta property="og:description" content="Rate anything and share your stuf with RateStuf&trade;" />
-<meta property="og:image" content="https://www.ratestuf.org/<?php  
-
-// <!-- 5 stars -->
-$xOffset = 1.00;
-$yOffset = 1.00;
-if(isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_5stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_5stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_5stars_2dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.80 * $xOffset) && isset($_GET['y']) && $_GET['y']>0){ 
-    echo 'images/fbog/FB_OG_5stars_1dollars.png';
-}
-
-// <!-- 4 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_4stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_4stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_4stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.60 * $xOffset) && isset($_GET['y']) && $_GET['y']>0){ 
-    echo 'images/fbog/FB_OG_4stars_3dollars.png';
-}
-
-// <!-- 3 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_3stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_3stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_3stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.40 * $xOffset) && isset($_GET['y']) && $_GET['y']>0){ 
-    echo 'images/fbog/FB_OG_3stars_3dollars.png';
-}
-// <!-- 2 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_2stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_2stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_2stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >(0.20 * $xOffset) && isset($_GET['y']) && $_GET['y']>0.0){ 
-    echo 'images/fbog/FB_OG_2stars_3dollars.png';
-}
-// <!-- 1 stars -->
-elseif(isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>(0.75 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_1stars_4dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>(0.50 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_1stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>(0.25 * $yOffset)){ 
-    echo 'images/fbog/FB_OG_1stars_3dollars.png';
-} elseif (isset($_GET['x']) && $_GET['x'] >0 && isset($_GET['y']) && $_GET['y']>0.0){ 
-    echo 'images/fbog/FB_OG_1stars_3dollars.png';
-}
-else {
-     echo 'images/fbog/FB_OG_2stars_3dollars.png'; 
-}
-
-?>">
-
-
-
+<meta property="og:description" content="Rate anything and share your stuf." />
+<meta property="og:image" content="https://www.ratestuf.org/screenshots/<?php echo $_GET['i']; ?>">
 
 </head>
   <body>
@@ -201,7 +138,13 @@ logo2tm">&0134;</span>
                 <p id="logo3tagline">rate anything and compare stuf<span id="logo3-falling-f">f.</span></p>
 
               </div>
-
+<!-- <pre>
+  <h1>
+  <?php
+  // print_r($_GET['s']);
+  ?>
+</h1>
+</pre> -->
                 <form id="mainForm" method="get" action="./" >
                   <div class="right-inner-addon">
 
@@ -350,19 +293,27 @@ What about (A) 2 item vs search (B) multiple items -->
                             get_draggable_balls($firstSearchTerm); 
                             get_draggable_balls($secondSearchTerm);   
                         // if  ($_SESSION['refresh']==1) {    
-                            save_search_term($firstSearchTerm.' vs. '.$secondSearchTerm);
+                            // save_search_term_to_separate_table($firstSearchTerm.' vs. '.$secondSearchTerm);
+// this is the actual searchterm just trimmed vs the above which is cleaned and recreated
+                          save_search_term_to_separate_table($search_term);
+
 
                         //   }
                         } else {
                             get_draggable_balls($search_term);
                             // print_textratings_to_screen($search_term);
                         // if  ($_SESSION['refresh']==1) {    
-                            save_search_term($search_term);
+                            save_search_term_to_separate_table($search_term);
                         //   }
                         } 
                       } 
                     }
                     ?>
+
+
+
+
+
                     <?php
                     // is this running????
                     $item = 'citibank'; 

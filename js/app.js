@@ -159,6 +159,7 @@ $("#rateNowButton").click(function(){
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
+  searchTerm = 'searchtermGetvariable';
 
   // testing code
   // alert('container height: '+ containerHeight);
@@ -168,56 +169,70 @@ $("#rateNowButton").click(function(){
   // alert('xRating'+ xRating);
   // alert('yRating' + yRating);
 
-  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating, "textRating":""});
+  data.items.push({"name": itemName, "itemId": itemId, "searchTerm": searchTerm, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating});
 
 });
 
-// *************share on fb
+       $.ajax({ 
 
+        type: "POST",
+        url: "ajax/saveratings.php",
+        data: JSON.stringify(data),
+        contentType: "application/json",
 
-              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org&redirect_uri=https://www.facebook.com",
+        success: function(res) {
+          console.log(res);
+          if (res.hasOwnProperty('alreadyRated')) {
+            alert("You've already rated this stuf.");
+          } else {
+
+                $.ajax({ 
+
+              type: "GET",
+              url: "screenshot.php?s="+encodeURI($("#searchTags").val()),
+              contentType: "application/json",
+
+              success: function(res) {
+                console.log(res);
+
+              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org?i="+res.imageName+"&redirect_uri=https://www.facebook.com",
                 '_parent');
-// *************share on fb
- 
- $.ajax({ 
 
-  type: "POST",
-  url: "ajax/saveratings.php",
-  data: JSON.stringify(data),
-  contentType: "application/json",
+              },
+              error: function(res) {
+                // console.log(res);
+              }
+              ,dataType:'json'});
 
-  success: function(res) {
-    console.log(res);
-    if (res.hasOwnProperty('alreadyRated')) {
-      alert("You've already rated this stuf.");
-    } else {
 
-    alert("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends on the facebook.");
-    // alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
+          alert("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends on the facebook.");
+          // alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
 
-// HERE IS THE RELOAD
-    location.reload();
-    }
-    // Location.reload(true);
+      // HERE IS THE RELOAD
+          location.reload();
+          }
+          // Location.reload(true);
 
-  },
-  error: function(res) {
-    // console.log(res);
-  }
-  ,dataType:'json'});
+        },
+        error: function(res) {
+          // console.log(res);
+        }
+        ,dataType:'json'});
 
+      });
+
+
+
+
+
+
+
+
+
+
+$(".draggable").each(function(){
+$(this).addClass('bestValue');
 });
-
-
-
-
-
-
-
-
-
-
-// $(".draggable").each(function(){
 
 //   xPosition = (Math.round(($(this).position().left / ($(this).parent().width())) * 100));
 //   yPosition = (100-(Math.round(($(this).position().top / ($(this).parent().height())) * 100)));

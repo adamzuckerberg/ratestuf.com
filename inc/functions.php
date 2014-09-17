@@ -57,7 +57,7 @@ function is_a_subcategory($search_term)  {
           // 3. ridesharing services -> "Top 10"
 }
 
-function save_search_term($search_term) {
+function save_search_term_to_separate_table($search_term) {
 
           global $user;
           global $connection;
@@ -66,7 +66,6 @@ function save_search_term($search_term) {
           $connection->query("INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user')");
         }
 }
-
 
 
 function get_draggable_balls($search_term) {
