@@ -2,8 +2,7 @@
 session_start();
 require (__dir__."/../inc/config.php");
 require(__dir__. "/../facebook.php");
-// require (__dir__."/../../inc/config.php");
-// require(__dir__. "/../../facebook.php");
+
 header('Content-Type:application/json');
 $json=file_get_contents('php://input');
 $json=json_decode($json,true);
@@ -12,15 +11,17 @@ $facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb
 $user=$facebook->getUser();
 
 
+$ratings_to_be_joined = [];
+
+
 if ($user) {
 $result = array(); 
 foreach ( $json['items'] as $ratingObject ) {
 
 	$alreadyRated = mysqli_query($connection, "SELECT `ratingId` FROM `ratings_table` WHERE `userId` = '$user' AND `itemId` = '".(int)$ratingObject['itemId']."'");  
-// should users be allowed to rate the same item more than once? more than twice? i want to show how a users rating changed over time though? if I allow this, then I can't use average rating since voting twice skews and average.
 
 // WARNING i changed 0 to 10, change back to 0 to limit ratings	
-	if (mysqli_num_rows($alreadyRated)>10) {
+	if (mysqli_num_rows($alreadyRated)>20) {
 	$alreadyRatedArray = mysqli_fetch_assoc($alreadyRated);
 
 	$query = "UPDATE `ratings_table` SET `xRating` = '".$ratingObject['xRating']."', `yRating` = '".$ratingObject['yRating']."' WHERE `ratingId` = '".$alreadyRatedArray['ratingId']."'";
@@ -32,14 +33,24 @@ foreach ( $json['items'] as $ratingObject ) {
 
 	}  else {
 //otherwise add the first rating for this item
+
 	$query = "INSERT INTO `ratings_table` (`userId`, `itemId`, `searchTerm`, `xAxis`, `xRating`, `yAxis`, `yRating`) "; 
     $query .= "VALUES('$user', '".$ratingObject['itemId']."', '".$ratingObject['searchTerm']."', '".$ratingObject['xAxis']."', '".$ratingObject['xRating']."', '".$ratingObject['yAxis']."', '".$ratingObject['yRating']."' );";
 	mysqli_query($connection,$query);
-// error_log(mysqli_error($connection));	
+
+    // $query = "SELECT ratingId FROM `ratings_table` ORDER BY ratingId DESC LIMIT 1";	
+		
+    // $rating = $connection->query($query);
+    // array_push($ratings_to_be_joined, $rating)
+		
 		}
 
 	}	
-	echo json_encode($result);
+
+	// $query = "INSERT INTO `comparisons` (`ratingIdA`, `ratingIdB`) VALUES ('".$ratings_to_be_joined[1]."', '".$ratings_to_be_joined[2]."');";
+	// mysqli_query($connection,$query);
+
+	// echo json_encode($result);
 }
 
 ?>

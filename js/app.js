@@ -5,13 +5,13 @@
 
 $("#logo3-container").hover(function(){
     $("#logo3-falling-f").css("position", "absolute" );
-    $("#logo3-falling-f").css("z-index", "100" );
-    $("#logo3-falling-f").css("font-size", "3em" );
-    $("#logo3-falling-f").css("margin", "2000px 0px 0px 35px" );
-    $("#logo3-falling-f").css("-webkit-transform", "rotate(35deg)" );
-    $("#logo3-falling-f").css("-moz-transform", "rotate(35deg)" );
-    $("#logo3-falling-f").css("-ms-transform", "rotate(35deg)" );
-    $("#logo3-falling-f").css("-o-transform", "rotate(35deg)" );
+    $("#logo3-falling-f").css("z-index", "-9999" );
+    $("#logo3-falling-f").css("font-size", "1em" );
+    $("#logo3-falling-f").css("margin", "25px 0px 0px 4px" );
+    $("#logo3-falling-f").css("-webkit-transform", "rotate(75deg)" );
+    $("#logo3-falling-f").css("-moz-transform", "rotate(75deg)" );
+    $("#logo3-falling-f").css("-ms-transform", "rotate(75deg)" );
+    $("#logo3-falling-f").css("-o-transform", "rotate(75deg)" );
 });
 
 
@@ -189,7 +189,8 @@ $("#rateNowButton").click(function(){
                 $.ajax({ 
 
               type: "GET",
-              url: "screenshot.php?s="+encodeURI($("#searchTags").val()),
+              url: "htmlcanvas.php",
+              // url: "screenshot.php?s="+encodeURI($("#searchTags").val()),
               contentType: "application/json",
 
               success: function(res) {
@@ -234,32 +235,168 @@ $(".draggable").each(function(){
 $(this).addClass('bestValue');
 });
 
-//   xPosition = (Math.round(($(this).position().left / ($(this).parent().width())) * 100));
-//   yPosition = (100-(Math.round(($(this).position().top / ($(this).parent().height())) * 100)));
-//   UpperLineSlope = 0.8965;
-//   yPositionOnUpperLine = ((UpperLineSlope * xPosition) + 25);
-//   LowerLineSlope = 0.8977;
-//   yPositionOnLowerLine = ((LowerLineSlope * xPosition) + 5);
-//   // alert('xposition: ' + xPosition + ', yposition: ' + yPosition + ' yposition of lowerline: ' + yPositionOnLowerLine + ' yposition of upperline: ' + yPositionOnUpperLine);
 
-//   if (yPosition > yPositionOnUpperLine) {
-//         // $(this).removeClass('bestValue');
-//         // $(this).removeClass('fairValue');  
-//         $(this).addClass('bestValue');
-//   }
-  
-//   if (yPosition <= yPositionOnUpperLine && yPosition >= yPositionOnLowerLine) {
-//         // $(this).removeClass('worseValue');
-//         // $(this).removeClass('bestValue');        
-//         $(this).addClass('bestValue'); 
-//   } 
-  
-//   if (yPosition < yPositionOnLowerLine) {
-//         // $(this).removeClass('worseValue');
-//         // $(this).removeClass('fairValue');  
-//         $(this).addClass('bestValue'); 
-//   }
-// }); 
+// ************
+// HTML5 Canvas
+// ************
+var comparison = [{
+    "name": "obama",
+    "itemId": 123,
+    "searchTerm": "Obama vs. Batman",
+    "xAxis": "evilness",
+    "xRating": 0.9,
+    "yAxis": "intelligence",
+    "yRating": 0.4,
+    "color": '#009900'
+  },
+    {
+      "name": "batman",
+      "itemId": 123,
+      "searchTerm": "Obama vs. Batman",
+      "xAxis": "evilness",
+      "xRating": 0.5,
+      "yAxis": "intelligence",
+      "yRating": 0.2,
+      "color": '#33ccff'
+    }];
+
+var canvas = $("canvas")[0];
+canvas.width = 1000;
+canvas.height = 533;
+
+// why this no worky?
+// var canvas = document.getElementsByTagName("canvas")[0];
+// var ctx = $("canvas")[0].getContext("2d");
+// var canvas = document.createElement("canvas");
+var ctx = canvas.getContext("2d");
+var centerX = $("canvas").width() / 2;
+var centerY = $("canvas").height() / 2;
+var radius = 25;
+var canvas = $("canvas")[0];
+
+// canvas.width = 1000;
+// canvas.height= 533;
+
+// //Background
+ctx.beginPath();
+ctx.rect(70, 0, canvas.width-70, canvas.height-63);
+ctx.fillStyle = "#cccccc";
+ctx.fill();
+ctx.lineWidth = 2;
+ctx.strokeStyle = '#000';
+ctx.stroke();
+      var grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      // light blue
+      grd.addColorStop(0, '#8ED6FF');   
+      // dark blue
+      grd.addColorStop(1, '#0066cc');
+      ctx.fillStyle = grd;
+      ctx.fill();
+
+// // Arrow up/down
+ctx.fillStyle = "grey";
+ctx.fillRect(25, 50, 20,
+  canvas.height  - 110);
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(35, 0);
+ctx.lineTo(10, 50);
+ctx.lineTo(60, 50);
+ctx.fill();
+
+
+// // Arrow left/right
+ctx.fillStyle = "grey";
+ctx.fillRect(
+  70, // x
+  canvas.height - 40, // y
+  canvas.width - 130,
+  20
+);
+ctx.fillStyle = "grey";
+ctx.beginPath();
+ctx.moveTo(1000, 505); //point
+ctx.lineTo(940, 480);
+ctx.lineTo(940, 525);
+ctx.fill();
+
+// // Input x-axis
+ctx.beginPath();
+ctx.rect(  380, // x
+  canvas.height - 50, // y
+  300,
+  40
+);
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.lineWidth = 2;
+ctx.strokeStyle = 'grey';
+ctx.stroke();
+
+// // Input y-axis
+ctx.beginPath();
+ctx.rect(
+  0, // x
+  220, // y
+  300,
+  40
+);
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.lineWidth = 2;
+ctx.strokeStyle = 'grey';
+ctx.stroke();
+
+// // Draw ratings
+comparison.forEach(function (data) {
+  ctx.beginPath();
+  ctx.arc(canvas.width * data.xRating,
+          canvas.height * data.yRating,
+          radius, 0, 2 * Math.PI, false);
+  ctx.fillStyle = data.color;
+  ctx.fill();
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = '#003300';
+  ctx.stroke();
+  ctx.fill();
+
+  ctx.fillStyle = "black";
+  ctx.textAlign = 'center';
+  ctx.font = "normal 800 32px Arial";
+
+  ctx.fillText(
+    data.name,
+    canvas.width * data.xRating,
+    canvas.height * data.yRating + 55
+  );
+});
+
+
+// // X legend
+ctx.fillStyle = "black";
+ctx.textAlign = 'center';
+ctx.font = "36px Arial";
+ctx.fillText(
+  comparison[0].xAxis,
+  canvas.width / 2 + 27,
+  canvas.height - 17
+);
+
+
+// // Y legend
+ctx.fillStyle = "black";
+ctx.textAlign = 'center';
+ctx.font = "36px Arial";
+ctx.fillText(
+  comparison[0].yAxis,
+  152,
+  252
+);
+
+var data_url = canvas.toDataURL();
+document.getElementById('result').src = data_url;
+console.log(data_url);
+
 
   
 

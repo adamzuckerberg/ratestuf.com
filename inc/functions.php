@@ -62,10 +62,27 @@ function save_search_term_to_separate_table($search_term) {
           global $user;
           global $connection;
 
-        if ($user) {
-          $connection->query("INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user')");
+        //record all users' search terms whether logged in or out (for data analysis)
+        $query = "SELECT * FROM `search_terms` ORDER BY `searchDateTime` DESC LIMIT 1"; 
+        $result = $connection->query($query);
+        if (!$result) {
+          die("database query failed");
         }
+
+        //stop duplicating records. if the search term is the same as the last term entered in db, then don't insert
+        while($row = mysqli_fetch_assoc($result)) {
+          $last_search_term = $row["searchTerm"];
+
+          if ($search_term == $row["searchTerm"])  {
+            return;
+          } else {
+
+        $query = "INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user')";      
+        $result = $connection->query($query);         
+    }
+  }
 }
+
 
 
 function get_draggable_balls($search_term) {
@@ -74,7 +91,7 @@ function get_draggable_balls($search_term) {
           global $connection;
           $search_term = stripslashes(mysqli_real_escape_string($connection, strtolower($search_term)));
 
-          $query = "SELECT (AVG(xRating)*100) AS xRating, (AVG(yRating)*100)  AS yRating, COUNT(xRating) AS votes, items_table.itemName, items_table.itemId, items_table.itemUrl, subcategories_table.subcategoryName FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' GROUP BY items_table.itemName LIMIT 10"; 
+          $query = "SELECT items_table.itemName, items_table.itemId, items_table.itemUrl, subcategories_table.subcategoryName FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' GROUP BY items_table.itemName LIMIT 10"; 
 
           $result = $connection->query($query);
 
@@ -126,20 +143,10 @@ function get_draggable_balls($search_term) {
 
         } else {
 
-// "One or more of your search terms is new to our database. Please log in to continue."
-
           echo '<script> alert("Please log in to rate this new item")</script>';
         }
       }     
     } 
-//   }             
-// }  
-     
-
-
-
-
-
 
 ?>
 

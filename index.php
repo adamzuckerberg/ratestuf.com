@@ -3,8 +3,6 @@ session_start();
 require("inc/config.php");
 require("facebook.php");
 require("inc/functions.php");
-// require(ROOT_PATH . "facebook.php");
-// require(ROOT_PATH . "inc/functions.php");
 ?>
 
 <?php 
@@ -29,13 +27,10 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
 
 <head>
-
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RateStuf | Share Your Ratings</title>
   <meta name="description" content="Ratestuf&trade; is the easiest way to rate and share stuf.">
-<!--   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico?v=2" /> -->
   <link href='http://fonts.googleapis.com/css?family=Lilita+One|Passion+One:700,400,900|Chivo:400,900,900italic' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico" />
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -71,16 +66,7 @@ userloggedin =<?php
   <body>
     <div class="container-fluid">
           <header class="row">
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-
-<!--               <img id="logo1" class="logo pull-left" src="images/logo3.jpg" alt="RateStuf logo"> -->                
-
-<!-- <div id="logo2block" class="logo pull-left" alt="Ratestuf logo">Ratestuf<span id="
-logo2tm">&0134;</span>
-<div>rate anything and find the best stuf<span id="fallingF"> f</div>logo2
-</div> -->
-  
-            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
             <div class="col-lg-7 col-md-7 hidden-sm hidden-xs"></div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
               <?php if(!$user){ ?>
@@ -99,44 +85,17 @@ logo2tm">&0134;</span>
           </header>
           <div class="row">
             <div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
-                <?php
-                  // $query = "SELECT COUNT(ratingId) as total FROM ratings_table"; 
-                  // $ratingsCounter = mysqli_query($connection, $query);
-                  // if (!$ratingsCounter) {
-                  //   die("Database query ratings counted failed");
-                  //   echo "not able to count ratings";
-                  // }
-                ?>
-                <?php
-                  // while ($row = mysqli_fetch_assoc($ratingsCounter)) {
-                  //     echo "<h2 id='counter' title='but who&apos;s counting? ;)' >" . "OVER " . number_format($row['total']) . " RATINGS!" . "</h2>";
-                  //     echo "<div id='byPeopleLikeYou' title='or maybe not like you? ;)' >"."(by users like YOU...)"."</div>";
-                  //   // echo $ratingsCounter["count"] . "<br />";
-                  //   }
-                ?>
-                <?php 
-                //Step 4. Release returned data
-                  // mysqli_free_result($ratingsCounter);
-                ?>
               </div>
-            <div class="col-lg-6 col-md-6 hidden-xs hidden-sm">
-<!-- adsense -->
-<div id="heightRestriction">
-</div>
-<!-- adsense -->
-            </div>         
+            <div class="col-lg-6 col-md-6 hidden-xs hidden-sm"></div>         
             <div class="col-lg-3 col-md-3 hidden-xs hidden-sm"></div>
           </div>   
           <div class="row">
             <div class="col-lg-4 col-md-2 hidden-sm hidden-xs"></div>
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
-
-
               <div id="logo3-container" class="logo pull-left" alt="RateStuf logo">
                 <p id="logo3">Ratestuf</p>
                 <p id="logo3trademark" >&trade;</p>
-                <p id="logo3tagline">rate anything and compare stuf<span id="logo3-falling-f">f.</span></p>
-
+                <p id="logo3tagline">rate anything and compare stuf<span style="margin-left:1px;margin-top:-2px" id="logo3-falling-f">f.</span></p>
               </div>
 <!-- <pre>
   <h1>
@@ -192,22 +151,18 @@ logo2tm">&0134;</span>
       <div class="row">
           <div class="col-lg-4 col-md-2 hidden-sm hidden-xs trendingBox">
 
-
+<!-- Google Adsense Code -->
 <div id="responsiveAd1">
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Large Skyscraper -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:600px"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="5824155682"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:300px;height:600px"
+       data-ad-client="ca-pub-1429880673944819"
+       data-ad-slot="5824155682"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </div>
-                  
-
+ <!-- Google Adsense Code -->                 
 
           </div>
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
@@ -220,7 +175,7 @@ logo2tm">&0134;</span>
                         <option value="electability">
                         <option value="intelligence">
                         <option value="evilness">
-                        <option value="sex appeal">
+                        <option value="sexiness">
                         <option value="beauty">
                         <option value="wealth">
                         <option value="price">
@@ -232,12 +187,6 @@ logo2tm">&0134;</span>
               </div>
 
               <div id="rateTableFrame">
-              <div class="dollarRating">
-                  <div id="fourDollars"><span>$$$$</span></div>
-                  <div id="threeDollars"><span>$$$</span></div>
-                  <div id="twoDollars"><span>$$</span></div>
-                  <div id="oneDollar"><span>$</span></div>
-              </div>
 
 <div id="dialog-message" title="" data-itemId="" data-itemName="" data-xRating="" data-yRating="">
     <span class="dialogBall" style="float:left; margin:0 7px 50px 0;"></span> 
@@ -245,35 +194,12 @@ logo2tm">&0134;</span>
 
                 <textarea class="dialogTextArea"></textarea> 
 
-<!-- <h2>Share Your Rating on Facebook: </h2> -->
-<!-- this is the facebook sharing widget stuff from SpaGroups for the dialog box on RateStuf -->
-<!-- src="images/share-on-facebook-nonhover.png"
- -->
-
-<!-- This is what I think about Brand&trade;
-What about (A) 2 item vs search (B) multiple items -->
-<!-- <a href="#" onclick="fbs_click('https://www.facebook.com/share.php?u=https://ratestuf.org/group.php?id=<?php echo $_GET['id']; ?>')" class="fb-share-button" data-width="1000" data-type="button" id="facebookShareButtonGroup"><img src="https://spagroups.com/images/share-on-facebook-nonhover.png" onmouseover="this.setAttribute('src','https://spagroups.com/images/share-on-facebook-hover.png');" onmouseout="this.setAttribute('src','https://spagroups.com/images/share-on-facebook-nonhover.png');"/></a>  -->
-
-<!-- <div class="fb-share-button" data-href="https://spagroups.com/group.php?id=<?php echo $_GET['id']; ?>" data-width="1000" data-type="button"></div> -->
-
 </div>
 
 <div id="rateTableScreenCapture">
                 <div id="containmentWrapper"></div>
 
                 <img id="rateTable" src="images/rateTableWhite.png">
-
-
-
-
-<!-- 
-                <div class="starRating"> 
-                    <span id="star1" class="star fa fa fa-star"></span>
-                    <span id="star2" class="star fa fa fa-star"></span>
-                    <span id="star3" class="star fa fa fa-star"></span>
-                    <span id="star4" class="star fa fa fa-star"></span>
-                    <span id="star5" class="star fa fa fa-star"></span>
-               </div> -->
 
     
                     <?php
@@ -296,8 +222,6 @@ What about (A) 2 item vs search (B) multiple items -->
                             // save_search_term_to_separate_table($firstSearchTerm.' vs. '.$secondSearchTerm);
 // this is the actual searchterm just trimmed vs the above which is cleaned and recreated
                           save_search_term_to_separate_table($search_term);
-
-
                         //   }
                         } else {
                             get_draggable_balls($search_term);
@@ -309,26 +233,7 @@ What about (A) 2 item vs search (B) multiple items -->
                       } 
                     }
                     ?>
-
-
-
-
-
-                    <?php
-                    // is this running????
-                    $item = 'citibank'; 
-                      $query = "SELECT COUNT(items_table.itemId) AS votes, items_table.itemId, items_table.itemName "; 
-                      $query .= "FROM ratings_table "; 
-                      $query .= "JOIN items_table ON ratings_table.itemId=items_table.itemId ";
-                      $query .= "WHERE items_table.itemName = '{$item}'";
-                      $ratingBubble = mysqli_query($connection, $query);
-                      if (!$ratingBubble) {
-                        die("Database query rating bubble failed");
-                        echo "not able to get rating bubble";
-                      }
-                    ?>
 <!-- important divs that keep the draggable, stars, dollars in the same parent element for accurate ratings -->
-
               </div>
 <!-- end screen capture -->
 </div>
@@ -341,7 +246,7 @@ What about (A) 2 item vs search (B) multiple items -->
                         <option value="electability">
                         <option value="intelligence">
                         <option value="evilness">
-                        <option value="sex appeal">
+                        <option value="sexiness">
                         <option value="beauty">
                         <option value="wealth">
                         <option value="price">
@@ -351,11 +256,8 @@ What about (A) 2 item vs search (B) multiple items -->
             </div>
 
                 <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
-
-<!--                   <img id="arrowUp" src="images/arrowUp.png" class="img-responsive"> -->
 <!-- end container for table and arrows -->
               </div>
-<!--                                 <button id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in to share your ratings.">Rate It!</button> -->
 <div id="box-around-ratenowbutton">
 <!--                   <input type="image" src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings."></input> -->
                   <img src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings.">
@@ -364,16 +266,9 @@ What about (A) 2 item vs search (B) multiple items -->
               </div>
 
             <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12">
-
-
 <div id="adBoxBelowRatenowButton">
 
 </div>
-
-
-
-
-
             </div>
          </div>           
      </div>
@@ -392,110 +287,16 @@ What about (A) 2 item vs search (B) multiple items -->
       </div>
       <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"> 
-  <?php
-                // // Step 2. Perform database query to get the 5 most TRENDING ratings
-                //   $query = "SELECT COUNT(items_table.itemId) AS count,items_table.itemId, items_table.itemName "; 
-                //   $query .= "FROM ratings_table JOIN items_table ON ratings_table.itemId=items_table.itemId ";
-                //   $query .= "JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN subcategories_table ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId ";
-                //   //switch interval from 30 to 7 to 1 etc. when site has more traffic
-                //   $query .= "WHERE ratings_table.ratingDateTime >= CURDATE() - INTERVAL 30 DAY ";
-                //   $query .= "GROUP BY itemName ";
-                //   $query .= "ORDER BY count DESC "; 
-                //   $query .= "LIMIT 5;"; 
-                //   $trending = mysqli_query($connection, $query);
-                // //test is there was a query error
-                //   if (!$trending) {
-                //     die("Database query trending failed");
-                //     echo "not able to get trending data";
-                //   }
-                ?>
-<!--                 <h3 class="trending">  Trending Items: </h3>
-                <ul> -->
-                <?php
-                  // Step 3. Use returned data (if any)
-                  // $count = 1;
-                  // while ($row = mysqli_fetch_assoc($trending)) {
-                ?>
-<!--                 <li id="trendingStuf"><a href="<?php echo BASE_URL; ?>?s=<?php echo $row['itemName']; ?>"><?php echo $row['itemName']; ?></a></li></br> -->
-                <?php
-                    // echo "<li " . $row['count'] . "</li>";
-                    // }
-                ?>
-<!--                 </ul> -->
-                <?php 
-                //Step 4. Release returned data
-                  // mysqli_free_result($trending);
-                ?>        
-
   <p id="DynamicRatingsSectionHeadline">
-                <?php
-
-                // if (isset($_GET['s'])) {
-                // if (is_a_subcategory($_GET['s'])) {
-                //   echo 'Top 10 '.ucwords(strtolower(stripslashes($_GET['s']))).':';
-                // } else {
-                // if (position_of_vs_term_in_the_search($_GET['s']) > 0 ) {  
-                // echo 'User Ratings for '. substr_replace(ucwords(strtolower(stripslashes($_GET['s']))),'v',position_of_vs_term_in_the_search($_GET['s'])+1,1).':';
-                // } else {
-                // echo 'User Ratings for '.ucwords(strtolower(stripslashes($_GET['s']))).':';
-                // }
-                //   }
-                // }  else {
-                // echo ""; 
-                // }
-
-                ?>
 
   </p>
-<div id="DynamicRatingsSection">
-
-
-<!-- <div class="textRatingsBallBlock">
-<div id="GetTheIdFromTheRating" class="textRatingBall worseValue"></div>
-<p class="textRatingItemName">itemName&trade;</p>
-</div>
-<div class="textRatingsTextBlock">
-<img id="userImage2" src='https://graph.facebook.com/503854370/picture?type=large'>
-<p class="textRatingsDollars">$$$$</p><br>
-<p class="textRatingsStars">&#9734</p>
-<p>"Lorem ipsum dolor sit amet, this stuff sucks bumlickidiocious."</p><a href="#"><p>Read more</p></a>
-</div> -->
-
-
-<!-- INSERT QUERY TO ECHO THE TEXTRATING, USER, VALUE BASED ON AVERAGE RATING ETC. -->
-                    <?php
-                    // $search_term="";
-                    // if (isset($_GET["s"])) {
-                    //   $search_term = trim($_GET["s"]);
-                    //   if ($search_term != "") {
-                    //   $position_of_vs_term = position_of_vs_term_in_the_search($search_term);
-                    //     if ($position_of_vs_term !== 0) {
-                    //         $firstSearchTerm = trim(substr($search_term, 0, ($position_of_vs_term) ));
-                    //         $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
-                    //         $secondSearchTerm = trim(substr($search_term, ($position_of_vs_term + $length_of_vs_term),100));
-                    //         $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
-                    //         print_textratings_to_screen($firstSearchTerm);
-                    //         print_textratings_to_screen($secondSearchTerm);
-                    //     } else {
-                    //         print_textratings_to_screen($search_term);
-                    //         } 
-                    //       } 
-                    //     }
-                    ?>
-                  
-
-
+<div id="DynamicRatingsSection">          
 </div>
 <h3 class='paragraphs'> Compare & Share Stuf </h3>
 <p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuff and share your opinions with your friends.</p><p class='paragraphs'>You can <strong> compare anything</strong> versus anything else on any factors that YOU choose. Anything? Yes, anything you want (within socially acceptable norms of course).  Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends. Have fun and don't forget to share your ratings on the facebook&trade; and all over the interweb.</p>
 <p class='paragraphs'>  - Adam Zuckerberg (Founder), 2014</p>
 
-
-
-
         </div>
-
-
         <div class="col-lg-5 col-md-5 hidden-xs hidden-sm">
 
 <!-- ///Trending Categories -->
@@ -598,101 +399,10 @@ What about (A) 2 item vs search (B) multiple items -->
                         </span>
                         <?php endforeach; ?>
                   </div>
-
-<!-- adsense -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!-- Large Rectangle -->
-<!-- <ins class="adsbygoogle"
-     style="display:inline-block;width:336px;height:280px"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="3848115687"></ins> -->
-<script>
-// (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<!-- adsense -->
-<br>
-<br>
-<br>
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!-- Responsive1 -->
-<!-- <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="6801582082"
-     data-ad-format="auto"></ins> -->
-<script>
-// (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<!-- adsense -->    
-<br>
-<br>
-<br>
-<!-- adsense -->
-
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!-- Responsive1 -->
-<!-- <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1429880673944819"
-     data-ad-slot="6801582082"
-     data-ad-format="auto"></ins> -->
-<script>
-// (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<!-- adsense -->    
-
-
-
-
-
           </div>
       </div>
 
-<!-- <br>
-
-<p>this is a canvas</p>
-<canvas id="canvas" width="1000px" height="700px"></canvas>
-<p>this is a canvas 2</p>
-<canvas id="canvas2" width="1000px" height="700px"></canvas> -->
-
-<!-- Use images that are at least 1200 x 630 pixels for the best display on high resolution devices. At the minimum, you should use images that are 600 x 315 pixels to display link page posts with larger images -->
-<!-- <h1>this is the canvas</h1>
-<canvas id="canvas1" width="600" height="315" style="background-color:pink;"></canvas> -->
-<script>
-// var canvas = document.getElementById("canvas1");
-// var ctx = canvas.getContext("2d");
-
-// var data = "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>" +
-//     "<foreignObject width='100%' height='100%'>" +
-//     "<div xmlns='http://www.w3.org/1999/xhtml'>" +
-    
-//     document.getElementById('rateTableFrame').innerHTML +
-    
-//     "</div>" +
-//     "</foreignObject>" +
-//     "</svg>";
-
-// var DOMURL = self.URL || self.webkitURL || self;
-// var img = new Image();
-// var svg = new Blob([data], {
-//     type: "image/svg+xml;charset=utf-8"
-// });
-
-// var url = DOMURL.createObjectURL(svg);
-// img.onload = function () {
-//     ctx.drawImage(img, 0, 0, 600, 315);
-//     DOMURL.revokeObjectURL(url);
-// };
-// img.src = url;
-</script>
-
+<canvas></canvas>
 
       <footer class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -701,9 +411,6 @@ What about (A) 2 item vs search (B) multiple items -->
       </footer>
 <!-- close container -->
     </div>
-
-
-
 <!-- javascript -->
 <script src="js/app.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>

@@ -1,6 +1,12 @@
 #headerCenterColumnWithAd {
 	padding: 40px 0px 0px 0px;
 }
+canvas {
+/*	background: #ffffff;
+	width: 1000px;
+	height: 500px;*/
+/*	border: 2px solid black;*/
+}
 #logo3 {
 font-family: 'Chivo', sans-serif;
 	font-size: 2.0em;
@@ -38,11 +44,11 @@ font-family: 'Chivo', sans-serif;
 }
 #logo3-falling-f {
 	display: inline-block;
-	font-size: 1.0em;
-	font-weight: 900;
-	margin: 2px 0px 0px 1px;
+/*	border: 2px solid red;*/
 	transition-property: position, z-index, font-size, margin, -webkit-transform;
-	transition-duration: 7s;
+	transition-duration: 0.8s;
+	-webkit-transition-timing-function: linear;  
+    transition-timing-function: linear;
 }
 #userImage2 {
 	border-radius: 50px;
