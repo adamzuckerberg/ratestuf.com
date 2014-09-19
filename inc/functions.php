@@ -67,7 +67,7 @@ function save_search_term_to_separate_table($search_term) {
         $query = "SELECT * FROM `search_terms` ORDER BY `searchDateTime` DESC LIMIT 10"; 
         $resultA = mysqli_query($connection, $query);
         if (!$resultA) {
-          die("database query error");
+          echo "database query error";
         } else {
         //stop duplicating records. if the search term is the same as the last term entered in db, then don't insert
         while($row = mysqli_fetch_assoc($resultA)) {
