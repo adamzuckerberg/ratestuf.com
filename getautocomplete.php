@@ -20,8 +20,10 @@ $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
          $json[]=array(
                     // 'value'=> $row["subcategoryName"],
                     // 'label'=> $row["itemName"]." < ".$row["subcategoryName"]
-                    'value'=> $row["itemName"],
-                    'label'=> $row["itemName"]                 
+                    // 'value'=> $row["subcategoryName"],
+                    // 'label'=> $row["itemName"]." < ".$row["subcategoryName"]
+                    // 'value'=> $row["itemName"],
+                    // 'label'=> $row["itemName"]                 
                         );
 }
  

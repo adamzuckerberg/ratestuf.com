@@ -10,12 +10,8 @@ $json=json_decode($json,true);
 $facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb1a887ce18660b430d3c7c'));
 $user=$facebook->getUser();
 
-
-$ratings_to_be_joined = [];
-
-
 if ($user) {
-$result = array(); 
+$result = array();
 foreach ( $json['items'] as $ratingObject ) {
 
 	$alreadyRated = mysqli_query($connection, "SELECT `ratingId` FROM `ratings_table` WHERE `userId` = '$user' AND `itemId` = '".(int)$ratingObject['itemId']."'");  
@@ -27,29 +23,51 @@ foreach ( $json['items'] as $ratingObject ) {
 	$query = "UPDATE `ratings_table` SET `xRating` = '".$ratingObject['xRating']."', `yRating` = '".$ratingObject['yRating']."' WHERE `ratingId` = '".$alreadyRatedArray['ratingId']."'";
 	mysqli_query($connection,$query);
 // error_log(mysqli_error($connection));
-  if (sizeof($result)==0) {
-  		$result['alreadyRated']=true;
-  }
-
+		  if (sizeof($result)==0) {
+		  		$result['alreadyRated']=true;
+		  }
 	}  else {
-//otherwise add the first rating for this item
-
-	$query = "INSERT INTO `ratings_table` (`userId`, `itemId`, `searchTerm`, `xAxis`, `xRating`, `yAxis`, `yRating`) "; 
-    $query .= "VALUES('$user', '".$ratingObject['itemId']."', '".$ratingObject['searchTerm']."', '".$ratingObject['xAxis']."', '".$ratingObject['xRating']."', '".$ratingObject['yAxis']."', '".$ratingObject['yRating']."' );";
+//otherwise add the first rating for this item to the MYSQL db
+	$query = "INSERT INTO `ratings_table` (`userId`, `itemId`, `xAxis`, `xRating`, `yAxis`, `yRating`) "; 
+    $query .= "VALUES('$user', '".$ratingObject['itemId']."', '".$ratingObject['xAxis']."', '".$ratingObject['xRating']."', '".$ratingObject['yAxis']."', '".$ratingObject['yRating']."' );";
 	mysqli_query($connection,$query);
-
     // $query = "SELECT ratingId FROM `ratings_table` ORDER BY ratingId DESC LIMIT 1";	
-		
     // $rating = $connection->query($query);
     // array_push($ratings_to_be_joined, $rating)
-		
-		}
+	}
+//and whether or not this item has been already rated or not, create an image for sharing to facebook
+		// *************************************************************************************************
+		// Create an HMTL5 Canvas Image to Share on Facebook
+		// *************************************************************************************************
+		// A string representing the filepath 
+		// where the image will be stored.
+		$upload_dir = "upload/";
 
+		// 'hidden_data' is the dataURL
+		$img = $_POST['hidden_data'];
+
+		// remove 'data:image/png:base64' from the dataURL string
+		$img = str_replace('data:image/png;base64,', '', $img);
+
+		// do some more string replace it.
+		$img = str_replace(' ', '+', $img);
+
+		// get a binary file from the dataURL string
+		$data = base64_decode($img);
+
+		// construct a string that will be a filename
+		$file = $upload_dir . mktime() . ".png";
+
+		// put the file on the server 
+		// $file = filename
+		// $data = binary of the .png
+
+		$success = file_put_contents($file, $data);
+		// print $success ? $file : 'Unable to save the file.';
+		// *************************************************************************************************
+		// Create an HMTL5 Canvas Image to Share on Facebook
+		// *************************************************************************************************
 	}	
-
-	// $query = "INSERT INTO `comparisons` (`ratingIdA`, `ratingIdB`) VALUES ('".$ratings_to_be_joined[1]."', '".$ratings_to_be_joined[2]."');";
-	// mysqli_query($connection,$query);
-
 	// echo json_encode($result);
 }
 

@@ -59,18 +59,21 @@ function is_a_subcategory($search_term)  {
 
 function save_search_term_to_separate_table($search_term) {
 
+          $user="";
           global $user;
           global $connection;
 
         //record all users' search terms whether logged in or out (for data analysis)
-        $query = "SELECT * FROM `search_terms` ORDER BY `searchDateTime` DESC LIMIT 1"; 
-        $result = $connection->query($query);
-        if (!$result) {
-          die("database query failed");
-        }
-
+        $query = "SELECT * FROM `search_terms` ORDER BY `searchDateTime` DESC LIMIT 10"; 
+        $resultA = mysqli_query($connection, $query);
+        if (!$resultA) {
+          die("database query error");
+        } else {
         //stop duplicating records. if the search term is the same as the last term entered in db, then don't insert
-        while($row = mysqli_fetch_assoc($result)) {
+        while($row = mysqli_fetch_assoc($resultA)) {
+          // echo '<h1>'.$row["searchTerm"].'</h1>';
+          // var_dump($row);
+          // echo "<hr/>";
           $last_search_term = $row["searchTerm"];
 
           if ($search_term == $row["searchTerm"])  {
@@ -78,7 +81,8 @@ function save_search_term_to_separate_table($search_term) {
           } else {
 
         $query = "INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user')";      
-        $result = $connection->query($query);         
+        $resultB = $connection->query($query);         
+      }
     }
   }
 }

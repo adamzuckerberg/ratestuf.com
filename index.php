@@ -95,7 +95,7 @@ userloggedin =<?php
               <div id="logo3-container" class="logo pull-left" alt="RateStuf logo">
                 <p id="logo3">Ratestuf</p>
                 <p id="logo3trademark" >&trade;</p>
-                <p id="logo3tagline">rate anything and compare stuf<span style="margin-left:1px;margin-top:-2px" id="logo3-falling-f">f.</span></p>
+                <p id="logo3tagline">rate anything and compare stuf<span style="margin-left:1px;margin-top:0px" id="logo3-falling-f">f.</span></p>
               </div>
 <!-- <pre>
   <h1>
@@ -218,8 +218,6 @@ userloggedin =<?php
                             $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
                             get_draggable_balls($firstSearchTerm); 
                             get_draggable_balls($secondSearchTerm);   
-                        // if  ($_SESSION['refresh']==1) {    
-                            // save_search_term_to_separate_table($firstSearchTerm.' vs. '.$secondSearchTerm);
 // this is the actual searchterm just trimmed vs the above which is cleaned and recreated
                           save_search_term_to_separate_table($search_term);
                         //   }
@@ -402,7 +400,7 @@ userloggedin =<?php
           </div>
       </div>
 
-<canvas></canvas>
+<canvas id="myCanvas"></canvas>
 
       <footer class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

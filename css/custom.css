@@ -47,8 +47,8 @@ font-family: 'Chivo', sans-serif;
 /*	border: 2px solid red;*/
 	transition-property: position, z-index, font-size, margin, -webkit-transform;
 	transition-duration: 0.8s;
-	-webkit-transition-timing-function: linear;  
-    transition-timing-function: linear;
+/*	-webkit-transition-timing-function: linear;  
+    transition-timing-function: linear;*/
 }
 #userImage2 {
 	border-radius: 50px;
