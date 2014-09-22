@@ -145,12 +145,10 @@ $("#rateNowButton").click(function(){
   if ($(this).hasClass('disabled')) {
     return;
   } 
-  
   if ($('.draggable').length == 0) { 
    alert("Please search for an item first.");
     return;
   }
-
 // prevent multiple clicks due to user ADHD. Part 1 of 2. Re-enabled later on in code
   $(this).addClass('disabled');
 
@@ -352,9 +350,13 @@ $("#rateNowButton").click(function(){
           } drawItemNameBelowFirstBall();
 
           function drawSecondBall() {
+
+                    if (!canvasBalls[1]) {
+                      return;
+                    }
                     //Draw the first ball
                     ctx.beginPath();
-                    ctx.fillStyle = "black";
+                    ctx.fillStyle = "#33ccff";
                     ctx.arc((canvas.width * (1-(60/1000))) * canvasBalls[1].xRating,
                               (canvas.height * (1-(53/533))) * (1-canvasBalls[1].yRating),
                               radius, 0, 2 * Math.PI, false);
@@ -377,6 +379,9 @@ $("#rateNowButton").click(function(){
           } drawSecondBall();
 
            function drawItemNameBelowSecondBall() {
+                    if (!canvasBalls[1]) {
+                      return;
+                    }
                     ctx.fillStyle = "black";
                     ctx.textAlign = 'center';
                     ctx.font = "normal 800 29px Arial";
@@ -396,7 +401,7 @@ $("#rateNowButton").click(function(){
           // Dynamically Create HTHML5 Mirror of Rating Table Section
           // ********************************************************
 // re-enable to button which was disabled to keep duplicate pushes of data into the array
-  // $(this).addClass('enabled');
+  $(this).addClass('enabled');
 });  //end each draggable ball function
 
       //Send the data.items array with draggable ball info to the db via the saveratings.php script
