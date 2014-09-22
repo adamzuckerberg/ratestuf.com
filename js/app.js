@@ -20,28 +20,28 @@ function capitaliseFirstLetter(text)
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function saveratings(data) {
-          $.ajax({ 
-              type: "POST",
-              url: "ajax/saveratings.php",
-              data: JSON.stringify(data),
-              contentType: "application/json",
+// function saveratings(data) {
+//           $.ajax({ 
+//               type: "POST",
+//               url: "ajax/saveratings.php",
+//               data: JSON.stringify(data),
+//               contentType: "application/json",
 
-              success: function(res) {
-                console.log(res);
-                if (res.hasOwnProperty('alreadyRated')) {
-                  alert("You've already rated this stuf.");
-                } else {
-                alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
-                location.reload();
-                }
-                // Location.reload(true);
-              },
-              error: function(res) {
-                console.log(res);
-              }
-              ,dataType:'json'});
-}
+//               success: function(res) {
+//                 console.log(res);
+//                 if (res.hasOwnProperty('alreadyRated')) {
+//                   alert("You've already rated this stuf.");
+//                 } else {
+//                 alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
+//                 location.reload();
+//                 }
+//                 // Location.reload(true);
+//               },
+//               error: function(res) {
+//                 console.log(res);
+//               }
+//               ,dataType:'json'});
+// }
 
 
 
@@ -168,216 +168,271 @@ $("#rateNowButton").click(function(){
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
 
   // testing code
-  // alert('container height: '+ containerHeight);
-  // alert('position from top: '+ positionFromTop);
-  // alert('container width: '+ containerWidth);
-  // alert('position from left: '+ positionFromLeft);
-  // alert('xRating'+ xRating);
-  // alert('yRating' + yRating);
+  console.log('container height: '+ containerHeight);
+  console.log('position from top: '+ positionFromTop);
+  console.log('container width: '+ containerWidth);
+  console.log('position from left: '+ positionFromLeft);
+  console.log('xRating'+ xRating);
+  console.log('yRating' + yRating);
 
   data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating});
 
-// ********************************************************
-// Dynamically Create HTHML5 Mirror of Rating Table Section
-// ********************************************************
+          // ********************************************************
+          // Dynamically Create HTHML5 Mirror of Rating Table Section
+          // ********************************************************
 
-  actualContainerHeight = $(this).parent().height();
-  actualContainerWidth = $(this).parent().width();
-  xRatingCanvas = (Math.round((positionFromLeft / actualContainerWidth) * 100 )/ 100);
-  yRatingCanvas = (Math.round((1-(positionFromTop / actualContainerHeight))* 100 )/ 100);
+            actualContainerHeight = $(this).parent().height();
+            actualContainerWidth = $(this).parent().width();
+            xRatingCanvas = (Math.round((positionFromLeft / actualContainerWidth) * 100 )/ 100);
+            yRatingCanvas = (Math.round((1-(positionFromTop / actualContainerHeight))* 100 )/ 100);
 
-// IMPORTANT - Data source and HTML Canvas measure from top left. Data sent to db is for humans which measure Cartesian from bottom left
-  canvasBalls.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating": xRatingCanvas, "yAxis":yAxis, "yRating": yRatingCanvas});
+          // IMPORTANT - Data source and HTML Canvas measure from top left. Data sent to db is for humans which measure Cartesian from bottom left
+            canvasBalls.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating": xRatingCanvas, "yAxis":yAxis, "yRating": yRatingCanvas});
 
-          var canvas = $("canvas")[0];
-          canvas.width = 1000;
-          canvas.height = 533;
+                    var canvas = $("canvas")[0];
+                    canvas.width = 1000;
+                    canvas.height = 533;
 
-          var ctx = canvas.getContext("2d");
-          var centerX = $("canvas").width() / 2;
-          var centerY = $("canvas").height() / 2;
-          var radius = 25;
-          var canvas = $("canvas")[0];
+                    var ctx = canvas.getContext("2d");
+                    var centerX = $("canvas").width() / 2;
+                    var centerY = $("canvas").height() / 2;
+                    var radius = 25;
+                    var canvas = $("canvas")[0];
 
-          // Draw Background
-          ctx.beginPath();
-          ctx.rect(70, 4, canvas.width-70-4, canvas.height-63);
-          // ctx.fillStyle = "#CFBE6E";
-          ctx.fillStyle = "rgba(207, 190, 110, 0.3)";
-          ctx.fill();
-          ctx.lineWidth = 4;
-          ctx.strokeStyle = '#000';
-          ctx.stroke();
+          var x = 70;
+          var y = 4;
+          var width = canvas.width-x-y;
+          var height = canvas.height-63;
 
-          // // Arrow up/down
-          ctx.beginPath();
-          ctx.fillStyle = "#999";
-          ctx.fillRect(25, 50, 20,
-            canvas.height  - 110);
-          ctx.lineWidth = 2;
-          ctx.strokeStyle = '#000';
-          ctx.stroke();
+          function drawRatingTable() {
 
-          ctx.fillStyle = "#999";
-
-          ctx.moveTo(35, 0);
-          ctx.lineTo(10, 50);
-          ctx.lineTo(60, 50);
-          ctx.fill();
-
-
-          // // Arrow left/right
-          ctx.fillStyle = "#999";
-          ctx.fillRect(
-            70, // x
-            canvas.height - 40, // y
-            canvas.width - 130,
-            20
-          );
-          ctx.fillStyle = "#999";
-          ctx.beginPath();
-          ctx.moveTo(1000, 505); //point
-          ctx.lineTo(940, 480);
-          ctx.lineTo(940, 525);
-          ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+                    ctx.fillStyle = "rgba(207, 190, 110, 0.3)";
+                    ctx.fill();
+                    ctx.lineWidth = 4;
+                    ctx.strokeStyle = '#000';
+                    ctx.stroke();
+          } drawRatingTable();
 
 
-          // // Input x-axis
-          ctx.beginPath();
-          ctx.rect(  380, // x
-            canvas.height - 50, // y
-            300,
-            45
-          );
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.lineWidth = 2;
-          ctx.strokeStyle = 'grey';
-          ctx.stroke();
+          function drawUpDownArrow() {
+                    ctx.beginPath();
+                    ctx.fillStyle = "#999";
+                    ctx.fillRect(25, 50, 20,
+                      canvas.height  - 110);
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = '#000';
+                    ctx.stroke();
 
-          // // Input y-axis
-          ctx.beginPath();
-          ctx.rect(
-            0, // x
-            220, // y
-            300,
-            45
-          );
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.lineWidth = 2;
-          ctx.strokeStyle = 'grey';
-          ctx.stroke();
+                    ctx.fillStyle = "#999";
 
-                    // // X legend
-          ctx.fillStyle = "black";
-          ctx.textAlign = 'center';
-          ctx.font = "36px Arial";
-          ctx.fillText(
-            // the xaxis name will be the same for ball 2 if it exists
-            canvasBalls[0].xAxis,
-            canvas.width / 2 + 27,
-            canvas.height - 17
-          );
+                    ctx.moveTo(35, 0);
+                    ctx.lineTo(10, 50);
+                    ctx.lineTo(60, 50);
+                    ctx.fill();
+          } drawUpDownArrow();
+
+          function drawLeftRightArrow() {
+                    ctx.fillStyle = "#999";
+                    ctx.fillRect(
+                      70, // x
+                      canvas.height - 40, // y
+                      canvas.width - 130,
+                      20
+                    );
+                    ctx.fillStyle = "#999";
+                    ctx.beginPath();
+                    ctx.moveTo(1000, 505); //point
+                    ctx.lineTo(940, 480);
+                    ctx.lineTo(940, 525);
+                    ctx.fill();
+          } drawLeftRightArrow();
+
+          function drawInputOnXAxisInputField() {
+                    ctx.beginPath();
+                    ctx.rect(  380, // x
+                      canvas.height - 50, // y
+                      300,
+                      45
+                    );
+                    ctx.fillStyle = "white";
+                    ctx.fill();
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'grey';
+                    ctx.stroke();
+                    ctx.shadowColor = '#999';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetX = 7;
+                    ctx.shadowOffsetY = 7;
+                    ctx.fill();
+          } drawInputOnXAxisInputField();
+
+          function drawInputOnYAxisInputField() {
+                    ctx.beginPath();
+                    ctx.rect(
+                      10, // x
+                      210, // y
+                      320,
+                      50
+                    );
+                    ctx.fillStyle = "white";
+                    ctx.fill();
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'grey';
+                    ctx.stroke();
+                    ctx.shadowColor = '#999';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetX = 7;
+                    ctx.shadowOffsetY = 7;
+                    ctx.fill();
+          } drawInputOnYAxisInputField();
+
+          function drawTextIntoXAxisInputField() {
+                              // // X legend
+                    ctx.fillStyle = "black";
+                    ctx.textAlign = 'center';
+                    ctx.font = "36px Arial";
+                    ctx.fillText(
+                      // the xaxis name will be the same for ball 2 if it exists
+                      canvasBalls[0].xAxis,
+                      canvas.width / 2 + 27,
+                      canvas.height - 17
+                    );
+          } drawTextIntoXAxisInputField();
+
+          function drawTextIntoYAxisInputField() {
+                    // // Y legend
+                    ctx.fillStyle = "black";
+                    ctx.textAlign = 'center';
+                    ctx.font = "36px Arial";
+                    ctx.fillText(
+                      // the yaxis name will be the same for ball 2 if it exists
+                      canvasBalls[0].yAxis,
+                      152,
+                      247
+                    );
+          } drawTextIntoYAxisInputField();
+
+          function drawFirstBall() {
+                    //Draw the first ball
+                    ctx.beginPath();
+                    ctx.fillStyle = "#00ff00";
+                    ctx.arc((canvas.width * (1-(60/1000))) * canvasBalls[0].xRating,
+                              (canvas.height * (1-(53/533))) * (1-canvasBalls[0].yRating),
+                              radius, 0, 2 * Math.PI, false);
+                    ctx.fill();
+                    ctx.shadowColor = '#999';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetX = 7;
+                    ctx.shadowOffsetY = 7;
+                    ctx.fill();
+                    ctx.closePath();
+           } drawFirstBall();
+           
+           function drawItemNameBelowFirstBall() {
+                    ctx.fillStyle = "black";
+                    ctx.textAlign = 'center';
+                    ctx.font = "normal 800 29px Arial";
+                    ctx.fillText(
+                      canvasBalls[0].name,
+                      (canvas.width * (1-(70/1000))) * canvasBalls[0].xRating + 37,
+                      (canvas.height * (1-(63/533))) * (1-canvasBalls[0].yRating) + 63
+                    );
+                    ctx.closePath();
+          } drawItemNameBelowFirstBall();
+
+          function drawSecondBall() {
+                    //Draw the first ball
+                    ctx.beginPath();
+                    ctx.fillStyle = "black";
+                    ctx.arc((canvas.width * (1-(60/1000))) * canvasBalls[1].xRating,
+                              (canvas.height * (1-(53/533))) * (1-canvasBalls[1].yRating),
+                              radius, 0, 2 * Math.PI, false);
+                    ctx.fill();
+                    ctx.shadowColor = '#999';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetX = 7;
+                    ctx.shadowOffsetY = 7;
+                    ctx.fill();
+                    ctx.closePath();
+                    ctx.fillStyle = "black";
+                    ctx.textAlign = 'center';
+                    ctx.font = "normal 800 29px Arial";
+                    ctx.fillText(
+                      canvasBalls[1].name,
+                      (canvas.width * (1-(70/1000))) * canvasBalls[1].xRating + 40,
+                      (canvas.height * (1-(63/533))) * (1-canvasBalls[1].yRating) + 70
+                    );
+                    ctx.closePath();
+          } drawSecondBall();
+
+           function drawItemNameBelowSecondBall() {
+                    ctx.fillStyle = "black";
+                    ctx.textAlign = 'center';
+                    ctx.font = "normal 800 29px Arial";
+                    ctx.fillText(
+                      canvasBalls[1].name,
+                      (canvas.width * (1-(70/1000))) * canvasBalls[1].xRating + 40,
+                      (canvas.height * (1-(63/533))) * (1-canvasBalls[1].yRating) + 70
+                    );
+                    ctx.closePath();
+          } drawItemNameBelowSecondBall();
+
+            var png_image_source = $('#myCanvas')[0].toDataURL( 'image/png' );
+            console.log( png_image_source );
 
 
-          // // Y legend
-          ctx.fillStyle = "black";
-          ctx.textAlign = 'center';
-          ctx.font = "36px Arial";
-          ctx.fillText(
-            // the yaxis name will be the same for ball 2 if it exists
-            canvasBalls[0].yAxis,
-            152,
-            254
-          );
-
-          //Draw the first ball
-          ctx.beginPath();
-          ctx.fillStyle = "green";
-          ctx.arc((canvas.width * (1-(60/1000))) * canvasBalls[0].xRating,
-                    (canvas.height * (1-(53/533))) * (1-canvasBalls[0].yRating),
-                    radius, 0, 2 * Math.PI, false);
-          ctx.fill();
-          ctx.lineWidth = 4;
-          ctx.strokeStyle = '#003300';
-          ctx.stroke();
-          ctx.fill();
-
-          ctx.fillStyle = "black";
-          ctx.textAlign = 'center';
-          ctx.font = "normal 800 32px Arial";
-          ctx.fillText(
-            canvasBalls[0].name,
-            (canvas.width * (1-(70/1000))) * canvasBalls[0].xRating + 20,
-            (canvas.height * (1-(63/533))) * (1-canvasBalls[0].yRating) + 55
-          );
-
-  var png_image_source = $('#myCanvas')[0].toDataURL( 'image/png' );
-  console.log( png_image_source );
-
-  $.post( "ajax/upload_canvas_image.php", {
-            image_source: png_image_source 
-          }).done(function( data ) {
-            alert( "Response from server " + data );
-          });
-
-
-// ********************************************************
-// Dynamically Create HTHML5 Mirror of Rating Table Section
-// ********************************************************
+          // ********************************************************
+          // Dynamically Create HTHML5 Mirror of Rating Table Section
+          // ********************************************************
 // re-enable to button which was disabled to keep duplicate pushes of data into the array
-  $(this).addClass('enabled');
-});
+  // $(this).addClass('enabled');
+});  //end each draggable ball function
 
+      //Send the data.items array with draggable ball info to the db via the saveratings.php script
        $.ajax({ 
 
         data: JSON.stringify(data),
         type: "POST",
         url: "ajax/saveratings.php",
         contentType: "application/json",
-
-        success: function(res) {
-          console.log(res);
-          if (res.hasOwnProperty('alreadyRated')) {
+        success: function(response) {
+          if (response.hasOwnProperty('alreadyRated')) {
             alert("You've already rated this stuf.");
           } else {
-
-                $.ajax({ 
-
-              type: "GET",
-              url: "ajax/upload_canvas_image.php",
-              // url: "screenshot.php?s="+encodeURI($("#searchTags").val()),
-              contentType: "application/json",
-
-              success: function(res) {
-                // console.log(res);
-
-              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org/&",'_parent');
-
-// ratestuf.org?i="+res.imageName+"&redirect_uri=https://www.facebook.com",ratestuf.org&redirect_uri=https://www.facebook.com",'_parent');
-              },
-              error: function(res) {
-                // console.log(res);
-              }
-              ,dataType:'json'});
-
-
-          alert("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends on the facebook.");
-          // alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
-
-      // HERE IS THE RELOAD
-          location.reload();
+          // alert("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends!");          
+          console.log("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends!");
           }
-          // Location.reload(true);
-
         },
-        error: function(res) {
-          // console.log(res);
-        }
-        ,dataType:'json'});
+        dataType:'json'});
+
+      //post the html5 canvas image and push it into your facebook.
+        $.ajax({ 
+          data: {imgBase64: png_image_source},
+          type: "POST",
+          url: "ajax/upload_canvas_image.php",
+          contentType: "application/json",
+          success: function(response) {
+          //Open the facebook window
+          window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org/&png_image_source",'_parent');
+          location.reload();
+          },
+          error: function(response) {
+          }
+          ,dataType:'json'});
 
  });  // end ratenowbutton click event
+
 
 
 
