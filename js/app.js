@@ -20,30 +20,6 @@ function capitaliseFirstLetter(text)
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-// function saveratings(data) {
-//           $.ajax({ 
-//               type: "POST",
-//               url: "ajax/saveratings.php",
-//               data: JSON.stringify(data),
-//               contentType: "application/json",
-
-//               success: function(res) {
-//                 console.log(res);
-//                 if (res.hasOwnProperty('alreadyRated')) {
-//                   alert("You've already rated this stuf.");
-//                 } else {
-//                 alert("Got it! Thanks for adding your ratings to our database. You are awesome!");
-//                 location.reload();
-//                 }
-//                 // Location.reload(true);
-//               },
-//               error: function(res) {
-//                 console.log(res);
-//               }
-//               ,dataType:'json'});
-// }
-
-
 
 //user is able to select a draggable ball and delete it from the screen using BACKSPSACE or DELETE
 $(".draggable").dblclick(function(){
@@ -67,7 +43,6 @@ $(this).addClass('bestValue');
 
 $( ".draggable" ).parent().css( "background-color", "20px red" );
 
-
             $(".draggable").click(function() {
                 $(this).find(".itemName").fadeIn(1000);
                 return;
@@ -82,55 +57,52 @@ $( ".draggable" ).parent().css( "background-color", "20px red" );
             });
 
 
-                       //make green arrow appear
-                  $(function() {
+     //make green arrow appear
+$(function() {
 
-                      if (!$("#rateNowButton").hasClass('disabled')) {
-    return;
-  }  
-                      $(".draggable").click(function() {
-                          $("#arrowUp").fadeIn(2000);
-                      });
-                      $(".draggable").hover(function() {
-                          $("#arrowUp").fadeIn(2000);
-                      });
+    if (!$("#rateNowButton").hasClass('disabled')) {
+return;
+}  
+    $(".draggable").click(function() {
+        $("#arrowUp").fadeIn(2000);
+    });
+    $(".draggable").hover(function() {
+        $("#arrowUp").fadeIn(2000);
+    });
 
-                      $("#rateNowButton").click(function() {
-                          $("#arrowUp").fadeIn(2000);
-                      });
-                      $("#rateNowButton").click(function() {
-                          $("#arrowUp").fadeOut(600);
-                      });
-                      $("loginFacebook").click(function() {
-                          $("#arrowUp").fadeOut(100);
-                      });
-                      $("#rateNowButton").hover(function() {
-                          $("#arrowUp").fadeOut(200);
-                      });
+    $("#rateNowButton").click(function() {
+        $("#arrowUp").fadeIn(2000);
+    });
+    $("#rateNowButton").click(function() {
+        $("#arrowUp").fadeOut(600);
+    });
+    $("loginFacebook").click(function() {
+        $("#arrowUp").fadeOut(100);
+    });
+    $("#rateNowButton").hover(function() {
+        $("#arrowUp").fadeOut(200);
+    });
 
-                      $("#rateNowButton").hover(function() {
-                          $("#loginFacebook").fadeIn(50).css('border', '10px solid #1cff2c');
-                          $("#loginFacebook").css('borderRadius','10px');
-                          $("#loginFacebook").css('margin-top','22px');
-                      });
-                      // $("#rateNowButton").click(function() {
-                      //     $("#loginFacebook").css('border', 'none');
-                      // });
-                      $("#rateNowButton").mouseout(function() {
-                          $("#loginFacebook").css('border', 'none');
-                          $("#loginFacebook").css('margin-top','40px');
-                      });
-
-                    });
-
-
-                      
-             // draggable within a box and others
-            $(function() {
-              // if (userloggedin) {
-              $(".draggable").draggable({ containment: "#containmentWrapper" });
-            // } 
-              });
+    $("#rateNowButton").hover(function() {
+        $("#loginFacebook").fadeIn(50).css('border', '10px solid #1cff2c');
+        $("#loginFacebook").css('borderRadius','10px');
+        $("#loginFacebook").css('margin-top','22px');
+    });
+    // $("#rateNowButton").click(function() {
+    //     $("#loginFacebook").css('border', 'none');
+    // });
+    $("#rateNowButton").mouseout(function() {
+        $("#loginFacebook").css('border', 'none');
+        $("#loginFacebook").css('margin-top','40px');
+    });
+  });
+              
+ // draggable within a box and others
+$(function() {
+  // if (userloggedin) {
+  $(".draggable").draggable({ containment: "#containmentWrapper" });
+// } 
+  });
 
 // ********************************************************************
 // INSERT RATINGS INTO DATABASE AND CREATE HTML CANVAS DYNAMICALLY
@@ -256,7 +228,7 @@ $("#rateNowButton").click(function(){
                     ctx.fill();
           } drawLeftRightArrow();
 
-          function drawInputOnXAxisInputField() {
+          function drawInputOnXAxis() {
                     ctx.beginPath();
                     ctx.rect(  380, // x
                       canvas.height - 50, // y
@@ -273,9 +245,13 @@ $("#rateNowButton").click(function(){
                     ctx.shadowOffsetX = 7;
                     ctx.shadowOffsetY = 7;
                     ctx.fill();
-          } drawInputOnXAxisInputField();
+          } drawInputOnXAxis();
 
-          function drawInputOnYAxisInputField() {
+          function drawInputOnYAxis() {
+          // // translate context to center of canvas
+          //    ctx.translate(10, 210);
+          // // rotate 45 degrees clockwise
+          //     ctx.rotate((2*Math.PI) / -4);
                     ctx.beginPath();
                     ctx.rect(
                       10, // x
@@ -293,7 +269,8 @@ $("#rateNowButton").click(function(){
                     ctx.shadowOffsetX = 7;
                     ctx.shadowOffsetY = 7;
                     ctx.fill();
-          } drawInputOnYAxisInputField();
+          } drawInputOnYAxis();
+
 
           function drawTextIntoXAxisInputField() {
                               // // X legend
@@ -393,10 +370,6 @@ $("#rateNowButton").click(function(){
                     ctx.closePath();
           } drawItemNameBelowSecondBall();
 
-            var png_image_source = $('#myCanvas')[0].toDataURL( 'image/png' );
-            console.log( png_image_source );
-
-
           // ********************************************************
           // Dynamically Create HTHML5 Mirror of Rating Table Section
           // ********************************************************
@@ -421,20 +394,24 @@ $("#rateNowButton").click(function(){
         },
         dataType:'json'});
 
-      //post the html5 canvas image and push it into your facebook.
-        $.ajax({ 
-          data: {imgBase64: png_image_source},
-          type: "POST",
-          url: "ajax/upload_canvas_image.php",
-          contentType: "application/json",
-          success: function(response) {
-          //Open the facebook window
-          window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org/&png_image_source",'_parent');
-          location.reload();
-          },
-          error: function(response) {
-          }
-          ,dataType:'json'});
+
+        var png_image_source = $('#myCanvas')[0].toDataURL( 'image/png' );
+        console.log( png_image_source );
+
+          //post the html5 canvas image and push it into your facebook.
+            $.ajax({ 
+              data: {imgBase64: png_image_source},
+              type: "POST",
+              url: "ajax/upload_canvas_image.php",
+              contentType: "application/json",
+              success: function(response) {
+              //Open the facebook window
+              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org/&png_image_source",'_parent');
+              location.reload();
+              },
+              error: function(response) {
+              }
+              ,dataType:'json'});
 
  });  // end ratenowbutton click event
 

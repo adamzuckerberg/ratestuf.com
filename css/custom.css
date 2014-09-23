@@ -471,6 +471,8 @@ select option {
     height: auto;
 	position: relative;
 	z-index: 0;
+	border-radius: 10px;
+	border: 2px solid black;
 /*	border: 5px solid pink;*/
 }
 #arrow-on-the-y-axis-container {
@@ -510,6 +512,12 @@ select option {
 	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	opacity: 0.6;
+/*    -webkit-transform: rotate(-90deg); 
+    -moz-transform: rotate(-90deg); */
+}
+#input-value-on-the-y-axis:hover {
+/*    -webkit-transform: rotate(0deg); 
+    -moz-transform: rotate(0deg); */
 }
 #input-value-on-the-x-axis {
 	position: absolute;
@@ -1039,6 +1047,7 @@ p.itemName {
  	z-index: 1;
 	overflow-y: hidden;
 	overflow-x: hidden;
+	border-radius: 10px;
  }
  #footer {
 	margin: 70px auto;
@@ -1190,10 +1199,13 @@ body {
 	margin: 22% 0px 20% -20%;
 	opacity: 1.0;
 }
+#input-value-on-the-y-axis:hover {
+
+}
 #input-value-on-the-x-axis {
 /*	border: 2px solid blue;*/
 	margin-left: -20%;
-	margin-top: 5%;
+	margin-top: 3.3%;
 	opacity: 1.0;
 }
 h3.paragraphs {
