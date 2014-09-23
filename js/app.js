@@ -108,9 +108,11 @@ $(function() {
 // INSERT RATINGS INTO DATABASE AND CREATE HTML CANVAS DYNAMICALLY
 // ********************************************************************
 
+//create a global variable and an empty javascript object {}
   var data ={};
+//craete a javascript numerical array
   data.items = [];
-
+//craete a javascript numerical array
   canvasBalls = [];
 $("#rateNowButton").click(function(){
 
@@ -370,6 +372,11 @@ $("#rateNowButton").click(function(){
                     ctx.closePath();
           } drawItemNameBelowSecondBall();
 
+
+          // var data_url = $('#myCanvas')[0].toDataURL();
+          // document.getElementById('result').src = data_url;
+          // console.log(data_url);
+
           // ********************************************************
           // Dynamically Create HTHML5 Mirror of Rating Table Section
           // ********************************************************
@@ -396,17 +403,16 @@ $("#rateNowButton").click(function(){
 
 
         var png_image_source = $('#myCanvas')[0].toDataURL( 'image/png' );
-        console.log( png_image_source );
+        // console.log( png_image_source );
 
           //post the html5 canvas image and push it into your facebook.
             $.ajax({ 
-              data: {imgBase64: png_image_source},
+              data: { png_image_source : png_image_source},
               type: "POST",
               url: "ajax/upload_canvas_image.php",
-              contentType: "application/json",
               success: function(response) {
               //Open the facebook window
-              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org/&png_image_source",'_parent');
+              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org/XXXXXXXXX",'_parent');
               location.reload();
               },
               error: function(response) {

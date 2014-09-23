@@ -7,6 +7,8 @@ header('Content-Type:application/json');
 $json=file_get_contents('php://input');
 $json=json_decode($json,true);
 
+print_r($json);
+
 $facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb1a887ce18660b430d3c7c'));
 $user=$facebook->getUser();
 
