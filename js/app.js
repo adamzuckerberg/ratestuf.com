@@ -3,6 +3,12 @@
 // $('.draggable').parent().css('border', '1px solid red');
 // });
 
+$(document).ready(function() {
+  if (getUrlParameter('rs') != null) {
+  window.location.href="http://www.ratestuf.org?s="+getUrlParameter('rs');
+  }
+});
+
 $("#logo3-container").hover(function(){
     $("#logo3-falling-f").css("position", "absolute" );
     $("#logo3-falling-f").css("z-index", "-9999" );
@@ -36,6 +42,17 @@ $(document.body).keyup(function(event){
         $(".active").remove();
     }
 });
+
+// $('#searchGlyphicon').click(function(){
+//   $('#searchTags').submit();
+// });
+// $('#searchGlyphicon').mouseover(function(){
+//   $('#searchGlyphicon').css("border","2px solid red");
+// });
+
+
+
+
 
 $(".draggable").each(function(){
 $(this).addClass('bestValue');
@@ -372,10 +389,9 @@ $("#rateNowButton").click(function(){
                     ctx.closePath();
           } drawItemNameBelowSecondBall();
 
-
-          // var data_url = $('#myCanvas')[0].toDataURL();
+          var data_url = $('#myCanvas')[0].toDataURL();
           // document.getElementById('result').src = data_url;
-          // console.log(data_url);
+          console.log(data_url);
 
           // ********************************************************
           // Dynamically Create HTHML5 Mirror of Rating Table Section
@@ -401,28 +417,60 @@ $("#rateNowButton").click(function(){
         },
         dataType:'json'});
 
+/*       var get_variable = new RegExp('[\?&amp;]s=([^&amp;#]*)').exec(window.location.href);
+          //post the html5 canvas image and push it into your facebook.
+            $.ajax({ 
+              data: { s : get_variable[1] },
+              type: "GET",
+              url: "screenshots/screenshot.php",
+              success: function(response) {
+
+            window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://ratestuf.org/screenshots/5420f480c44d4.png",'_blank');
+
+              },
+              error: function(response) {
+              console.log(response);
+              }
+              ,dataType:'json'});*/
+
+
 
         var png_image_source = $('#myCanvas')[0].toDataURL( 'image/png' );
         // console.log( png_image_source );
-
           //post the html5 canvas image and push it into your facebook.
             $.ajax({ 
               data: { png_image_source : png_image_source},
               type: "POST",
               url: "ajax/upload_canvas_image.php",
               success: function(response) {
-              //Open the facebook window
-              window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://www.ratestuf.org/XXXXXXXXX",'_parent');
-              location.reload();
+    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s'))+'&redirect_uri='+encodeURI('http://www.ratestuf.org')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
               },
               error: function(response) {
+                console.log(response);
               }
-              ,dataType:'json'});
+              ,dataType:'json',
+              async:false
+            });
+
+
 
  });  // end ratenowbutton click event
 
 
-
+function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}
+  
 
 
 

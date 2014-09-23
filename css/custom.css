@@ -210,10 +210,14 @@ input[id="searchTags"] {
 /*	border: 10px solid green;*/
 }
 .glyphicon-search {
+	display: inline-block;
+	z-index: 1;
+	position: relative;
 	font-size: 1.4em;
 /*    border: 2px solid blue;*/
-    margin-right: -3%;
-    margin-top: 57px;
+    margin-right: -1%;
+    margin-top: 54px;
+    color: #404040 !important;
 }
 .right-inner-addon {
     position: relative;

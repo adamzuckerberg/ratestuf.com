@@ -1,4 +1,5 @@
 <?php
+// ini_set("session.cookie_lifetime",360000);
 session_start();
 require("inc/config.php");
 require("facebook.php");
@@ -108,7 +109,7 @@ userloggedin =<?php
                   <div class="right-inner-addon">
 
                     <input type="text" id="searchTags" class="items form-control" placeholder="obama vs. batman" name="s" value="">
-                        <i class="glyphicon glyphicon-search"></i>
+                        <i id="searchGlyphicon" class="glyphicon glyphicon-search"></i>
                 </div>
                 </form>
 
