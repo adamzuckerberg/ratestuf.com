@@ -9,6 +9,11 @@ $(document).ready(function() {
   }
 });
 
+$('#view_the_widget_button').click(function(){
+  $('#hidden_widget_sharing_area').toggle();
+});
+
+
 $("#logo3-container").hover(function(){
     $("#logo3-falling-f").css("position", "absolute" );
     $("#logo3-falling-f").css("z-index", "-9999" );

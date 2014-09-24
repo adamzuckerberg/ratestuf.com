@@ -291,11 +291,20 @@ userloggedin =<?php
   </p>
 <div id="DynamicRatingsSection">          
 </div>
+<button id="view_the_widget_button"><h3 class='paragraphs' style="color:#fff;">Get The RateStuf&trade; Widget</h3></button> 
+  <div id="hidden_widget_sharing_area">
+      <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
+      <textarea id="widget_text_area"></textarea>
+      <button id="copy_to_clipboard_button" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button>
+  </div>
 <h3 class='paragraphs'> Compare & Share Stuf </h3>
 <p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuff and share your opinions with your friends.</p><p class='paragraphs'>You can <strong> compare anything</strong> versus anything else on any factors that YOU choose. Anything? Yes, anything you want (within socially acceptable norms of course).  Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends. Have fun and don't forget to share your ratings on the facebook&trade; and all over the interweb.</p>
 <p class='paragraphs'>  - Adam Zuckerberg (Founder), 2014</p>
+</div>
 
-        </div>
+
+
+
         <div class="col-lg-5 col-md-5 hidden-xs hidden-sm">
 
 <!-- ///Trending Categories -->
