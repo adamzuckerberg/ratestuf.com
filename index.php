@@ -44,6 +44,8 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
   <script src="js/jquery.ui.touch-punch.min.js"></script>
   <script src="js/respond.js"></script>
 <script src="js/app.js" type="text/javascript"></script>
+<!-- <script src="js/ZeroClipboard.min.js" type="text/javascript"></script>
+<script src="js/ZeroClipboard.Core.min.js" type="text/javascript"></script> -->
 <script> 
 userloggedin =<?php 
   if ($user) {
@@ -52,7 +54,12 @@ userloggedin =<?php
     echo "false";
   }
 ?>;
+
+$(document).ready(function() {
+var client = new ZeroClipboard($('#copy_to_clipboard_button'));
+});
 </script>
+
 
 <!-- facebook og sharing -->
 <meta property="fb:app_id" content="228744763916305" />
@@ -294,8 +301,10 @@ userloggedin =<?php
 <button id="view_the_widget_button"><h3 class='paragraphs' style="color:#fff;">Get The RateStuf&trade; Widget</h3></button> 
   <div id="hidden_widget_sharing_area">
       <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
-      <textarea id="widget_text_area"></textarea>
-      <button id="copy_to_clipboard_button" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button>
+      <textarea id="widget_text_area">
+          <iframe src="http://www.ratestuf.org/widget.php" height="310px" width="380px">
+      </textarea>
+<!--       <button id="copy_to_clipboard_button" data-clipboard-target="widget_text_area" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button> -->
   </div>
 <h3 class='paragraphs'> Compare & Share Stuf </h3>
 <p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuff and share your opinions with your friends.</p><p class='paragraphs'>You can <strong> compare anything</strong> versus anything else on any factors that YOU choose. Anything? Yes, anything you want (within socially acceptable norms of course).  Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends. Have fun and don't forget to share your ratings on the facebook&trade; and all over the interweb.</p>
@@ -414,7 +423,7 @@ userloggedin =<?php
 
       <footer class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-               <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><div id="footerLinks" class="hidden-sm hidden-xs"></p><div>
+               <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><div id="footerLinks" class="hidden-sm hidden-xs"></p></div>
           </div>
       </footer>
 <!-- close container -->

@@ -1,5 +1,5 @@
 // $(document).ready(function() {
-// // $("#rateTableFrame").css('border', '2px solid blue');
+// $("#rateTableFrame").css('border', '2px solid blue');
 // $('.draggable').parent().css('border', '1px solid red');
 // });
 
@@ -48,35 +48,26 @@ $(document.body).keyup(function(event){
     }
 });
 
-// $('#searchGlyphicon').click(function(){
-//   $('#searchTags').submit();
-// });
-// $('#searchGlyphicon').mouseover(function(){
-//   $('#searchGlyphicon').css("border","2px solid red");
-// });
-
-
-
-
-
 $(".draggable").each(function(){
 $(this).addClass('bestValue');
 });
 
-$( ".draggable" ).parent().css( "background-color", "20px red" );
 
-            $(".draggable").click(function() {
-                $(this).find(".itemName").fadeIn(1000);
-                return;
-            });
-            $(".draggable").mouseover(function() {
-                $(this).find(".itemName").fadeIn(1000);
-                return;
-            });
-            $(".draggable").mouseout(function() {
-                $(this).find(".itemName").fadeOut(4000);
-                return;
-            });
+$(".draggable").click(function() {
+  $(this).find(".itemName").fadeIn(1000);
+  return;
+});
+
+$(".draggable").mouseover(function() {
+  $(this).find(".itemName").fadeIn(1000);
+  console.log('ITS WORKING!');
+  return;
+});
+
+$(".draggable").mouseout(function() {
+  $(this).find(".itemName").fadeOut(4000);
+  return;
+});
 
 
      //make green arrow appear

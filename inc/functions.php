@@ -59,7 +59,6 @@ function is_a_subcategory($search_term)  {
 
 function save_search_term_to_separate_table($search_term) {
 
-          $user="";
           global $user;
           global $connection;
 
@@ -68,6 +67,7 @@ function save_search_term_to_separate_table($search_term) {
         $resultA = mysqli_query($connection, $query);
         if (!$resultA) {
           echo "database query error";
+          echo $connection->error;
         } else {
         //stop duplicating records. if the search term is the same as the last term entered in db, then don't insert
         while($row = mysqli_fetch_assoc($resultA)) {
@@ -108,7 +108,7 @@ function get_draggable_balls($search_term) {
       $counter ++;
 
 // left and bottom are adjusted by a factor that is added to the rating going in and out of the database to adjust for the width and height of the arrows in the box area.      
-      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...\''.'style=\'position: absolute;'.' '.'left:'.((0.9344)*($row["xRating"])).'%'.';'.' '.'bottom: '.((0.895)*($row["yRating"])).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($row["itemName"]).'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
+      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...\''.'style=\'position: absolute;'.' '.'left:'.((0.9344)*($row["xRating"])).'%'.';'.' '.'bottom: '.((0.895)*($row["yRating"])).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=\'itemName\''.'>'.stripslashes($row["itemName"]).'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
       if ($row["votes"] == 1) {
         echo 'rating'; 
       } else {
@@ -122,7 +122,7 @@ function get_draggable_balls($search_term) {
 //ADDED THIS NEW SECTION TO ALLOW PEOPLE TO RATESTUF WITHOUT LOGGING IN 
 
       if (!$user) {
-      echo '<div'.' class='.'\'draggable'.'1'.' '.'draggable'.' name=\''.$search_term.'\''.' '.'title=\'This is a ball. Move it to rate to rate this item.\''.'style=\'position: absolute;'.' '.'left:50%'.';'.' '.'top:50%'.'\''.'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($search_term).'</p>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.'0'.'<br>ratings</p>'.'</div>';
+      echo '<div'.' class='.'\'draggable'.'1'.' '.'draggable\''.' name=\''.$search_term.'\''.' '.'title=\'This is a ball. Move it to rate to rate this item.\''.'style=\'position: absolute;'.' '.'left:50%'.';'.' '.'top:50%'.'\''.'>'.'<p'.' '.'class=itemName'.'>'.stripslashes($search_term).'</p>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.'0'.'<br>ratings</p>'.'</div>';
 
 }
       // IF THE ITEM DOESN'T EXIST (AND THE USER IS LOGGED IN) ADD THE ITEM TO THE DATABASE
