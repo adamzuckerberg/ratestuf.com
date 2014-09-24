@@ -1105,42 +1105,11 @@ a:active {
 .boxshadow {
 	box-shadow: 3px 3px 1px 0px steelblue;
 }
-.go_button {
-color: #fff!important;
-border-color: #a2db3e;
-text-shadow: 1px 1px 0 #35b030;
-font-size: 1.7em;
-background-color: #62d108!important;
-background-image: -moz-linear-gradient(#68cc2d,#3db72c);
-background-image: -webkit-gradient(linear,0 0,0 100%,from(#68cc2d),to(#3db72c));
-}
-#copy_to_clipboard_button {
-	display: inline; 
-	width: 400px;
-	height: 60px; 
-	margin: 10px auto; 
-	text-align: center;
-}
 #hidden_widget_sharing_area {
-/*	display: none;*/
-	border: 2px solid grey;
-	border-radius: 10px;
-	padding: 10px 20px;
-	margin-top: 20px;
-}
-#widget_text_area {
-	width: 100%;
-	min-height: 150px;
+	display: none;
 }
 #view_the_widget_button {
-padding: 7px 20px;
-color: #fff!important;
-border-color: #a2db3e;
-text-shadow: 1px 1px 0 #35b030;
-background-color: #62d108!important;
-background-image: -moz-linear-gradient(#68cc2d,#3db72c);
-background-image: -webkit-gradient(linear,0 0,0 100%,from(#68cc2d),to(#3db72c));
-border-radius: 7px;
+	display: none;	
 }
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
@@ -1198,6 +1167,51 @@ body {
 	margin-right: 5%;
 	margin-left: 5%;
 }
+/*****************
+THE RATESTUF WIDGET
+*****************/
+.go_button {
+color: #fff!important;
+border-color: #a2db3e;
+text-shadow: 1px 1px 0 #35b030;
+font-size: 1.7em;
+background-color: #62d108!important;
+background-image: -moz-linear-gradient(#68cc2d,#3db72c);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#68cc2d),to(#3db72c));
+}
+#copy_to_clipboard_button {
+	display: inline; 
+	width: 400px;
+	height: 60px; 
+	margin: 10px auto; 
+	text-align: center;
+}
+#hidden_widget_sharing_area {
+/*	display: none;*/
+	border: 2px solid grey;
+	border-radius: 10px;
+	padding: 10px 20px;
+	margin-top: 20px;
+	display: block;
+}
+#widget_text_area {
+	width: 100%;
+	min-height: 150px;
+}
+#view_the_widget_button {
+padding: 7px 20px;
+color: #fff!important;
+border-color: #a2db3e;
+text-shadow: 1px 1px 0 #35b030;
+background-color: #62d108!important;
+background-image: -moz-linear-gradient(#68cc2d,#3db72c);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#68cc2d),to(#3db72c));
+border-radius: 7px;
+display: block;
+}
+/*****************
+THE RATESTUF WIDGET
+*****************/
 .itemName {
 	margin: 45px 0px 0px -80px;
 }
