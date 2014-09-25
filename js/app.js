@@ -9,8 +9,18 @@ $(document).ready(function() {
   }
 });
 
+$(document).ready(function() {
+  $('#hidden_widget_sharing_area').hide();
+  $('#copy_to_clipboard_button').hide();
+});
+
 $('#view_the_widget_button').click(function(){
   $('#hidden_widget_sharing_area').toggle();
+});
+
+$('#create_widget_code').click(function(){
+  $('#create_widget_code').toggle();
+  $('#copy_to_clipboard_button').show();
 });
 
 

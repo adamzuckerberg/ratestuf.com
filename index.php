@@ -177,7 +177,7 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
               <div id="container-for-ratetable-and-arrows">
               <div id="arrow-on-the-y-axis-container">
 
-                    <input list="suggested-list-y-axis" type="text" id="input-value-on-the-y-axis" class="items form-control" placeholder="enter stuf here" name="yaxis" value=""></input>                
+                    <input list="suggested-list-y-axis" type="text" id="" class="items form-control input-value-on-the-y-axis" placeholder="enter stuf here" name="yaxis" value="">             
                       <datalist id="suggested-list-y-axis">
                         <option value="strength">
                         <option value="electability">
@@ -245,7 +245,7 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
 </div>
 
               <div id="box-around-xaxis-input">
-                    <input list="suggested-list-x-axis" type="text" id="input-value-on-the-x-axis" class="items form-control" placeholder="enter stuf here" name="xaxis" value="">
+                    <input list="suggested-list-x-axis" type="text" id="" class="items form-control input-value-on-the-x-axis" placeholder="enter stuf here" name="xaxis" value="">
                 
                       <datalist id="suggested-list-x-axis">
                         <option value="strength">
@@ -265,8 +265,8 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
 <!-- end container for table and arrows -->
               </div>
 <div id="box-around-ratenowbutton">
-<!--                   <input type="image" src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings."></input> -->
-                  <img src="images/shareonfb.png" id="rateNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings.">
+
+                  <img src="images/shareonfb.png" id="shareNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings.">
 </div>
               <div id="WhiteSpaceFill"></div>
               </div>
@@ -302,9 +302,14 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
   <div id="hidden_widget_sharing_area">
       <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
       <textarea id="widget_text_area">
-          <iframe src="http://www.ratestuf.org/widget.php" height="310px" width="380px">
+          <iframe src="http://www.ratestuf.org/widget.php" height="380px" width="420px">
       </textarea>
-<!--       <button id="copy_to_clipboard_button" data-clipboard-target="widget_text_area" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button> -->
+<input type="text" id="" class="" placeholder="x-axis" name="poop" value=""><br>
+<input type="text" id="" class="" placeholder="y-axis" name="poop" value=""><br>
+<input type="text" id="" class="" placeholder="item 1" name="poop" value=""><br>
+<input type="text" id="" class="" placeholder="item 2" name="poop" value=""><br>
+<button id="create_widget_code" class="go_button">Create Widget Code</button>           
+      <button id="copy_to_clipboard_button" data-clipboard-target="widget_text_area" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button>
   </div>
 <h3 class='paragraphs'> Compare & Share Stuf </h3>
 <p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuff and share your opinions with your friends.</p><p class='paragraphs'>You can <strong> compare anything</strong> versus anything else on any factors that YOU choose. Anything? Yes, anything you want (within socially acceptable norms of course).  Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends. Have fun and don't forget to share your ratings on the facebook&trade; and all over the interweb.</p>
