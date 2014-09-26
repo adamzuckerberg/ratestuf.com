@@ -9,19 +9,35 @@ $(document).ready(function() {
   }
 });
 
-$(document).ready(function() {
-  $('#hidden_widget_sharing_area').hide();
-  $('#copy_to_clipboard_button').hide();
+
+$('#update_widget_code_button').click(function(event) {
+  event.preventDefault();
+  $('#update_widget_code_button').toggle();
+  $('#clear_widget_code_button').show();
+  //update iframe code
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget.php?s='+encodeURIComponent($('#inputsTerm').val())+'&xAxis='+encodeURIComponent($('#inputxAxis').val())+'&yAxis='+encodeURIComponent($('#inputyAxis').val())+'"'+' height="420px" width="420px">');
 });
 
+$('#clear_widget_code_button').click(function() {
+  event.preventDefault();
+  $('#update_widget_code_button').show();
+  $('#clear_widget_code_button').toggle(); 
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget.php" height="420px" width="420px">');
+});
+
+$(document).ready(function() {
+  $('#hidden_widget_sharing_area').hide();
+  $('#clear_widget_code_button').hide();
+});
 $('#view_the_widget_button').click(function(){
   $('#hidden_widget_sharing_area').toggle();
 });
 
-$('#create_widget_code').click(function(){
-  $('#create_widget_code').toggle();
-  $('#copy_to_clipboard_button').show();
-});
+// $('#copy_to_clipboard_button').click(function(){
+//   $('#copy_to_clipboard_button').toggle(); 
+//   $('#widget_text_area').html('stuf copied - now get out there and get some ratings!');
+//   $('#update_widget_code_button').toggle();
+// });
 
 
 $("#logo3-container").hover(function(){
@@ -70,7 +86,6 @@ $(".draggable").click(function() {
 
 $(".draggable").mouseover(function() {
   $(this).find(".itemName").fadeIn(1000);
-  console.log('ITS WORKING!');
   return;
 });
 
@@ -83,7 +98,7 @@ $(".draggable").mouseout(function() {
      //make green arrow appear
 $(function() {
 
-    if (!$("#rateNowButton").hasClass('disabled')) {
+    if (!$("#shareNowButton").hasClass('disabled')) {
 return;
 }  
     $(".draggable").click(function() {
@@ -93,28 +108,28 @@ return;
         $("#arrowUp").fadeIn(2000);
     });
 
-    $("#rateNowButton").click(function() {
+    $("#shareNowButton").click(function() {
         $("#arrowUp").fadeIn(2000);
     });
-    $("#rateNowButton").click(function() {
+    $("#shareNowButton").click(function() {
         $("#arrowUp").fadeOut(600);
     });
     $("loginFacebook").click(function() {
         $("#arrowUp").fadeOut(100);
     });
-    $("#rateNowButton").hover(function() {
+    $("#shareNowButton").hover(function() {
         $("#arrowUp").fadeOut(200);
     });
 
-    $("#rateNowButton").hover(function() {
+    $("#shareNowButton").hover(function() {
         $("#loginFacebook").fadeIn(50).css('border', '10px solid #1cff2c');
         $("#loginFacebook").css('borderRadius','10px');
         $("#loginFacebook").css('margin-top','22px');
     });
-    // $("#rateNowButton").click(function() {
+    // $("#shareNowButton").click(function() {
     //     $("#loginFacebook").css('border', 'none');
     // });
-    $("#rateNowButton").mouseout(function() {
+    $("#shareNowButton").mouseout(function() {
         $("#loginFacebook").css('border', 'none');
         $("#loginFacebook").css('margin-top','40px');
     });
@@ -137,7 +152,7 @@ $(function() {
   data.items = [];
 //craete a javascript numerical array
   canvasBalls = [];
-$("#rateNowButton").click(function(){
+$("#shareNowButton").click(function(){
 
   if ($(this).hasClass('disabled')) {
     return;
@@ -155,8 +170,8 @@ $("#rateNowButton").click(function(){
   itemId = $(this).attr('id');
   containerHeight = ($(this).parent().height() * 0.895 );
   containerWidth = ($(this).parent().width() * 0.9344);
-  xAxis = $('#input-value-on-the-x-axis').val().trim();
-  yAxis = $('#input-value-on-the-y-axis').val().trim();
+  xAxis = $('.input-value-on-the-x-axis').val().trim();
+  yAxis = $('.input-value-on-the-y-axis').val().trim();
   positionFromLeft = ($(this).position().left);
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
@@ -449,7 +464,7 @@ $("#rateNowButton").click(function(){
               type: "POST",
               url: "ajax/upload_canvas_image.php",
               success: function(response) {
-    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s'))+'&redirect_uri='+encodeURI('http://www.ratestuf.org')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
+    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s'))+'&redirect_uri='+encodeURI('http://www.facebook.com')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
               },
               error: function(response) {
                 console.log(response);
@@ -460,7 +475,7 @@ $("#rateNowButton").click(function(){
 
 
 
- });  // end ratenowbutton click event
+ });  // end shareNowButton click event
 
 
 function getUrlParameter(sParam)
@@ -478,7 +493,68 @@ function getUrlParameter(sParam)
 }
   
 
+// ******************************************
+// WIDGET RATE NOW BUTTON - LOTS OF DUPLICATION - NOT DRY - NEEDS REFACTORING
+// *******************************************
+// These variables have same names as shareNowButton onclick event function
+//create a global variable and an empty javascript object {}
+  var data ={};
+//craete a javascript numerical array
+  data.items = [];
 
+$("#rateNowButton").click(function(){
 
+  if ($('.draggable').length == 0) { 
+   alert("Please search for an item first.");
+    return;
+  }
+// prevent multiple clicks due to user ADHD. Part 1 of 2. Re-enabled later on in code
+  $(this).addClass('disabled');
 
+  $('.draggable').each(function() {
+
+  itemName = $(this).attr('name');
+  itemId = $(this).attr('id');
+  containerHeight = ($(this).parent().height() * 0.895 );
+  containerWidth = ($(this).parent().width() * 0.9344);
+  xAxis = $('#widget-x-axis-name').val().trim();
+  yAxis = $('#widget-y-axis-name').val().trim();
+  positionFromLeft = ($(this).position().left);
+  positionFromTop = ($(this).position().top);
+  xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
+  yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
+
+  // testing code
+  console.log('container height: '+ containerHeight);
+  console.log('position from top: '+ positionFromTop);
+  console.log('container width: '+ containerWidth);
+  console.log('position from left: '+ positionFromLeft);
+  console.log('xRating'+ xRating);
+  console.log('yRating' + yRating);
+
+  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating});
+
+          
+// re-enable to button which was disabled to keep duplicate pushes of data into the array
+  $(this).addClass('enabled');
+});  //end each draggable ball function
+
+      //Send the data.items array with draggable ball info to the db via the saveratings.php script
+       $.ajax({ 
+
+        data: JSON.stringify(data),
+        type: "POST",
+        url: "ajax/saveratings.php",
+        contentType: "application/json",
+        success: function(response) {
+          if (response.hasOwnProperty('alreadyRated')) {
+            alert("You've already rated this stuf.");
+          } else {
+          alert("Got it! Thanks for adding your rating. You are awesome!");          
+          console.log("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends!");
+          }
+        },
+        dataType:'json'});
+
+ });  // end shareNowButton click event
 

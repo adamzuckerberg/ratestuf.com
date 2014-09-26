@@ -301,15 +301,22 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
 <button id="view_the_widget_button"><h3 class='paragraphs' style="color:#fff;">Get The RateStuf&trade; Widget</h3></button> 
   <div id="hidden_widget_sharing_area">
       <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
-      <textarea id="widget_text_area">
-          <iframe src="http://www.ratestuf.org/widget.php" height="380px" width="420px">
+      <textarea id="widget_text_area" class="widget_text_area">
+
+             <iframe id="iframe_widget_url" src="http://www.ratestuf.org/widget.php" height="420px" width="420px">
+
       </textarea>
-<input type="text" id="" class="" placeholder="x-axis" name="poop" value=""><br>
-<input type="text" id="" class="" placeholder="y-axis" name="poop" value=""><br>
-<input type="text" id="" class="" placeholder="item 1" name="poop" value=""><br>
-<input type="text" id="" class="" placeholder="item 2" name="poop" value=""><br>
-<button id="create_widget_code" class="go_button">Create Widget Code</button>           
-      <button id="copy_to_clipboard_button" data-clipboard-target="widget_text_area" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button>
+<h3>Customize Your Widget:</h3>
+<form id="form1" name="input" action="http://www.ratestuf.org/widget.php?s=" method="get">
+  <input type="text" id="inputsTerm" class="" placeholder="customsearch" name="s" value=""> define the search (e.g. 'apples' or 'us vs. them')<br>
+  <input type="text" id="inputxAxis" class="" placeholder="x-axis" name="xAxis" value=""> define the x-axis (or leave it blank - it's up to you)<br>
+  <input type="text" id="inputyAxis" class="" placeholder="y-axis" name="yAxis" value=""> define the y-axis (or leave it blank - it's up to you) <br>
+<!--   <input type="checkbox" id="checkbox1" name="hidesearchbar" value="true">hide the search bar<br> -->
+  <input type="submit" id="update_widget_code_button" class="go_button" value="Update Widget Code">
+  <input type="submit" id="clear_widget_code_button" class="go_button" value="Clear Custom Code">
+</form> 
+      
+<!--       <button id="copy_to_clipboard_button" data-clipboard-target="widget_text_area" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button> -->
   </div>
 <h3 class='paragraphs'> Compare & Share Stuf </h3>
 <p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuff and share your opinions with your friends.</p><p class='paragraphs'>You can <strong> compare anything</strong> versus anything else on any factors that YOU choose. Anything? Yes, anything you want (within socially acceptable norms of course).  Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.  Then, easily share your ratings with friends. Have fun and don't forget to share your ratings on the facebook&trade; and all over the interweb.</p>
