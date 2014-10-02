@@ -297,6 +297,9 @@ $("#shareNowButton").click(function(){
 
           function drawTextIntoXAxisInputField() {
                               // // X legend
+                    ctx.shadowBlur = 0;
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
                     ctx.fillStyle = "black";
                     ctx.textAlign = 'center';
                     ctx.font = "36px Arial";
@@ -398,6 +401,9 @@ $("#shareNowButton").click(function(){
 
           function drawTextIntoYAxisInputField() {
                     // // Y legend
+                    ctx.shadowBlur = 0;
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
                     ctx.fillStyle = "black";
                     ctx.textAlign = 'center';
                     ctx.font = "36px Arial";
@@ -407,6 +413,7 @@ $("#shareNowButton").click(function(){
                       -35,
                       35
                     );
+
           } drawTextIntoYAxisInputField();
 
           var data_url = $('#myCanvas')[0].toDataURL();
