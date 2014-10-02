@@ -63,7 +63,7 @@ function save_search_term_to_separate_table($search_term) {
           global $connection;
 
         //record all users' search terms whether logged in or out (for data analysis)
-        $query = "SELECT * FROM `search_terms` ORDER BY `searchDateTime` DESC LIMIT 10"; 
+        $query = "SELECT * FROM `search_terms` ORDER BY `searchDateTime` DESC LIMIT 1"; 
         $resultA = mysqli_query($connection, $query);
         if (!$resultA) {
           echo "database query error";
@@ -80,8 +80,8 @@ function save_search_term_to_separate_table($search_term) {
             return;
           } else {
 
-        $query = "INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user') LIMIT 1";      
-        $resultB = $connection->query($query);         
+        $query = "INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user')";      
+        $resultB = mysqli_query($connection, $query);       
       }
     }
   }
@@ -156,14 +156,15 @@ function get_draggable_balls($search_term) {
 
 function create_search_input_for_ratetable() {
 
+  global $connection;
   $search_term="obama vs. batman";
   if (isset($_GET["s"])) {
-    $search_term = trim($_GET["s"]);
+    $search_term = stripslashes(strtolower($_GET["s"]));
   }
 
   echo "<form id='mainForm' method='get' action='' >";
   echo "<div class='right-inner-addon'>";
-  echo "<input type='text' id='searchTags' class='items form-control' placeholder='".$search_term."' name='s' value=''>";
+  echo "<input type='text' id='searchTags' class='items form-control' placeholder='".stripslashes(strtolower($search_term))."' name='s' value=''>";
   echo "<i id='searchGlyphicon' class='glyphicon glyphicon-search'></i>";
   echo "</div>";
   echo "</form>";

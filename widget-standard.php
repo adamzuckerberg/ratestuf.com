@@ -27,8 +27,6 @@ require("inc/functions.php");
   <script src="js/jquery.ui.touch-punch.min.js"></script>
   <script src="js/respond.js"></script>
 <script src="js/app.js" type="text/javascript"></script>
-<!-- <script src="js/ZeroClipboard.min.js" type="text/javascript"></script>
-<script src="js/ZeroClipboard.Core.min.js" type="text/javascript"></script> -->
 <script> 
 userloggedin =<?php 
   if ($user) {
@@ -38,9 +36,6 @@ userloggedin =<?php
   }
 ?>;
 
-$(document).ready(function() {
-var client = new ZeroClipboard($('#copy_to_clipboard_button'));
-});
 </script>
 
 

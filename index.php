@@ -238,14 +238,14 @@ create_search_input_for_ratetable();
                 ?> -->
           <h3 class="trending" id="trendingVsHeadline"> Trending - Stuf vs Stuf</h3>
                 <ul>
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=mitt+romney+vs+hillary+clinton">mitt romney vs. hillary clinton<a></li></br>   
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=batman+vs+superman">batman vs. superman<a></li></br>  
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=chuck+norris+vs+vladimir+putin">chuck norris vs. vladimir putin<a></li></br>  
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=uber+vs.+lyft">uber vs. lyft<a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=geico+vs.+progressive">geico vs. progressive<a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=elizabeth+warren+vs.+hillary+clinton">elizabeth warren vs. hillary clinton<a></li></br>
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=discover+home+loans+vs.+quicken+loans">discover home loans vs. quicken loans<a></li></br>
                     <li class="trendingVS"><a href="http://ratestuf.org/?s=geico+vs.+state+farm">geico vs. state farm<a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=southwest+vs.+delta">southwest vs. delta<a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=betty+ford+vs+hazelden">betty ford vs. hazelden<a></li></br>          
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=southwest+vs.+delta">southwest vs. delta<a></li></br>       
                 </ul>
 
                   <?php

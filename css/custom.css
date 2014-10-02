@@ -531,6 +531,7 @@ select option {
     -webkit-transform: rotate(-90deg); 
     -moz-transform: rotate(-90deg); 
 -ms-transform: rotate(-90deg);
+text-align: center;
 }
 .input-value-on-the-y-axis:focus {
  margin: 20% 0px 20% -0% !important;
@@ -559,6 +560,7 @@ select option {
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	opacity: 0.85;
 	margin: auto !important;
+text-align: center;
 }
 #container-for-ratetable-and-arrows {
 /*	border: 10px solid green;*/
@@ -1152,7 +1154,7 @@ a:active {
 	font-size: 1.6em;
 	font-weight: 800;
 	margin-top: 20%;
-	margin-left: -20px;
+	margin-left: -36px;
 /*	margin: 96px 0px 0px -50px;*/
 	background-color:rgba(255,255,255,0.6);
 	border-radius: 10px;
@@ -1318,7 +1320,7 @@ THE RATESTUF WIDGET
 #widget-y-axis-name {
 	font-size: 2.0em;
 	font-weight: 800;
-	margin-left: -30px;
+	margin-left: -40px;
 /*	margin: 96px 0px 0px -50px;*/
 	background-color:rgba(255,255,255,0.6);
 	border-radius: 10px;

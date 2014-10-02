@@ -526,8 +526,8 @@ $("#rateNowButton").click(function(){
   itemId = $(this).attr('id');
   containerHeight = ($(this).parent().height() * 0.895 );
   containerWidth = ($(this).parent().width() * 0.9344);
-  xAxis = $('#widget-x-axis-name').val().trim();
-  yAxis = $('#widget-y-axis-name').val().trim();
+  xAxis = $('.input-value-on-the-x-axis').val().trim();
+  yAxis = $('.input-value-on-the-y-axis').val().trim();
   positionFromLeft = ($(this).position().left);
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);

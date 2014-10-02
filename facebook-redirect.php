@@ -1,5 +1,4 @@
 <?php
-// ini_set("session.cookie_lifetime",360000);
 session_start();
 require("inc/config.php");
 require("facebook.php");

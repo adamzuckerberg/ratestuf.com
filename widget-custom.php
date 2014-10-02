@@ -37,6 +37,7 @@ userloggedin =<?php
     echo "false";
   }
 ?>;
+</script>
 
 
 <!-- facebook og sharing -->
