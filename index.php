@@ -72,6 +72,7 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
 
 </head>
   <body>
+
     <div class="container-fluid">
           <header class="row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
@@ -303,7 +304,7 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
       <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
       <textarea id="widget_text_area" class="widget_text_area">
 
-             <iframe id="iframe_widget_url" src="http://www.ratestuf.org/widget.php" height="420px" width="420px">
+             <iframe id="iframe_widget_url" src="http://www.ratestuf.org/widget-standard.php" height="420px" width="420px">
 
       </textarea>
 <h3>Customize Your Widget:</h3>

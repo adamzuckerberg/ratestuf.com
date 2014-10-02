@@ -15,7 +15,7 @@ $('#update_widget_code_button').click(function(event) {
   $('#update_widget_code_button').toggle();
   $('#clear_widget_code_button').show();
   //update iframe code
-  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget.php?s='+encodeURIComponent($('#inputsTerm').val())+'&xAxis='+encodeURIComponent($('#inputxAxis').val())+'&yAxis='+encodeURIComponent($('#inputyAxis').val())+'"'+' height="420px" width="420px">');
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-custom.php?s='+encodeURIComponent($('#inputsTerm').val())+'&xAxis='+encodeURIComponent($('#inputxAxis').val())+'&yAxis='+encodeURIComponent($('#inputyAxis').val())+'"'+' height="420px" width="420px">');
 });
 
 $('#clear_widget_code_button').click(function() {
@@ -141,6 +141,9 @@ $(function() {
   $(".draggable").draggable({ containment: "#containmentWrapper" });
 // } 
   });
+
+
+
 
 // ********************************************************************
 // INSERT RATINGS INTO DATABASE AND CREATE HTML CANVAS DYNAMICALLY
