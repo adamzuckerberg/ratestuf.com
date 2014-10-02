@@ -599,8 +599,10 @@ textarea {
 	font-family: "Arial Bold", sans-serif; 
 	font-size: 1.6em !important;
 	padding: 20px;
+/*	border: 2px solid red;*/
+    min-height: 70px;
+    display: block;
 }
-
 .ui-dialog-buttonset button:hover {
 	color: grey;
 	font-weight: 800px;
@@ -1139,6 +1141,9 @@ a:active {
 #checkbox1 {
 	margin: 15px 15px 10px 15px;
 	font-size: 1.5em;
+}
+#widget_text_area {
+	text-align: left;
 }
 #widget-y-axis-name {
 	position: absolute;
