@@ -508,7 +508,7 @@ select option {
 }
 .input-value-on-the-y-axis {
 	position: absolute;
-	margin: 20% 0px 20% 0% !important;
+	margin: 20% 0px 20% -16% !important;
 /*	margin: 22% 0px 20% -20%;*/
 	z-index:100;
 	display: block;
@@ -528,12 +528,15 @@ select option {
 	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	opacity: 0.6;
-/*    -webkit-transform: rotate(-90deg); 
-    -moz-transform: rotate(-90deg); */
+    -webkit-transform: rotate(-90deg); 
+    -moz-transform: rotate(-90deg); 
+-ms-transform: rotate(-90deg);
 }
-.input-value-on-the-y-axis:hover {
-/*    -webkit-transform: rotate(0deg); 
-    -moz-transform: rotate(0deg); */
+.input-value-on-the-y-axis:focus {
+ margin: 20% 0px 20% -0% !important;
+-webkit-transform: rotate(0deg);
+-moz-transform: rotate(0deg);
+-ms-transform: rotate(0deg);
 }
 .input-value-on-the-x-axis {
 	position: relative !important;
@@ -1335,12 +1338,17 @@ THE RATESTUF WIDGET
 -ms-transform: rotate(-90deg);
 }*/
 .input-value-on-the-y-axis {
-/*	margin: 22% 0px 20% -20% !important;*/
+	margin: 24% 0px 20% -12.5% !important;
 	opacity: 1.0;
 	margin: auto;
+-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg);
+-ms-transform: rotate(-90deg);
 }
-.input-value-on-the-y-axis:hover {
-
+.input-value-on-the-y-axis:focus {
+-webkit-transform: rotate(0deg);
+-moz-transform: rotate(0deg);
+-ms-transform: rotate(0deg);
 }
 .input-value-on-the-x-axis {
 /*	border: 2px solid blue;*/
