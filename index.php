@@ -44,8 +44,6 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
   <script src="js/jquery.ui.touch-punch.min.js"></script>
   <script src="js/respond.js"></script>
 <script src="js/app.js" type="text/javascript"></script>
-<!-- <script src="js/ZeroClipboard.min.js" type="text/javascript"></script>
-<script src="js/ZeroClipboard.Core.min.js" type="text/javascript"></script> -->
 <script> 
 userloggedin =<?php 
   if ($user) {
@@ -54,10 +52,6 @@ userloggedin =<?php
     echo "false";
   }
 ?>;
-
-$(document).ready(function() {
-var client = new ZeroClipboard($('#copy_to_clipboard_button'));
-});
 </script>
 
 
@@ -106,178 +100,60 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
                 <p id="logo3trademark" >&trade;</p>
                 <p id="logo3tagline">rate anything and compare stuf<span style="margin-left:1px;margin-top:0px" id="logo3-falling-f">f.</span></p>
               </div>
-<!-- <pre>
-  <h1>
-  <?php
-  // print_r($_GET['s']);
-  ?>
-</h1>
-</pre> -->
-                <form id="mainForm" method="get" action="./" >
-                  <div class="right-inner-addon">
 
-                    <input type="text" id="searchTags" class="items form-control" placeholder="obama vs. batman" name="s" value="">
-                        <i id="searchGlyphicon" class="glyphicon glyphicon-search"></i>
-                </div>
-                </form>
+<?php 
+create_search_input_for_ratetable();
+?>
 
-                  <script type="text/javascript">
-                      $(document).ready(function() {
-                      $("#searchTags").autocomplete({source:'getautocomplete.php', minLength:1});
-                  });
-                  </script>
             </div>
             <div class="col-lg-3 col-md-2 hidden-sm hidden-xs"></div>
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-2 hidden-sm hidden-xs"></div>
             <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
-                <h1 id="headline" title="the best (and the worst)">
-
-                <?php
-
-                if (isset($_GET['s'])) {
-                if (is_a_subcategory($_GET['s'])) {
-                  echo 'Top 10 '.ucwords(strtolower(stripslashes($_GET['s']))).':';
-                } else {
-                if (position_of_vs_term_in_the_search($_GET['s']) > 0 ) {  
-                echo 'User Ratings for '. substr_replace(ucwords(strtolower(stripslashes($_GET['s']))),'v',position_of_vs_term_in_the_search($_GET['s'])+1,1).':';
-                } else {
-                echo 'User Ratings for '.ucwords(strtolower(stripslashes($_GET['s']))).':';
-                }
-                  }
-                }  else {
-                echo "Welcome to Ratestuf".'&trade;'; 
-                }
-
-                ?>
-
-                </h1>
             </div>  
             <div class="col-lg-2 col-md-2 hidden-sm hidden-xs"></div>
           </div>
 
-      <div class="row">
-          <div class="col-lg-4 col-md-2 hidden-sm hidden-xs trendingBox">
-
-<!-- Google Adsense Code -->
-<div id="responsiveAd1">
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <ins class="adsbygoogle"
-       style="display:inline-block;width:300px;height:600px"
-       data-ad-client="ca-pub-1429880673944819"
-       data-ad-slot="5824155682"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
- <!-- Google Adsense Code -->                 
-
-          </div>
-            <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
-              <div id="container-for-ratetable-and-arrows">
+      <div class="row">  <!-- start of row containing ratetable and adsense ad-->
+            <div class="col-lg-4 col-md-2 hidden-sm hidden-xs trendingBox">
+              <div id="responsiveAd1"> <!-- Google Adsense Code -->
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px"
+                     data-ad-client="ca-pub-1429880673944819"
+                     data-ad-slot="5824155682"></ins>
+                  <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+              </div> <!-- END Google Adsense Code -->         
+            </div>
+      <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+          <div id="container-for-ratetable-and-arrows">
               <div id="arrow-on-the-y-axis-container">
-
-                    <input list="suggested-list-y-axis" type="text" id="" class="items form-control input-value-on-the-y-axis" placeholder="enter stuf here" name="yaxis" value="">             
-                      <datalist id="suggested-list-y-axis">
-                        <option value="strength">
-                        <option value="electability">
-                        <option value="intelligence">
-                        <option value="evilness">
-                        <option value="sexiness">
-                        <option value="beauty">
-                        <option value="wealth">
-                        <option value="price">
-                        <option value="value">
-                        <option value="naughtiness">
-                      </datalist>
-
-                  <img id="arrow-on-the-y-axis" src="images/arrow_y.png">
+                <?php create_suggested_list_y_axis(); ?>
+                 <img id="arrow-on-the-y-axis" src="images/arrow_y.png">
               </div>
-
               <div id="rateTableFrame">
-
-<div id="dialog-message" title="" data-itemId="" data-itemName="" data-xRating="" data-yRating="">
-    <span class="dialogBall" style="float:left; margin:0 7px 50px 0;"></span> 
-    <span id="dialogItemName"></span>
-
-                <textarea class="dialogTextArea"></textarea> 
-
-</div>
-
-<div id="rateTableScreenCapture">
+                <div id="rateTableScreenCapture">
                 <div id="containmentWrapper"></div>
-
-                <img id="rateTable" src="images/rateTableWhite.png">
-
-    
-                    <?php
-                    $search_term="";
-                    if (isset($_GET["s"])) {
-                      $search_term = trim($_GET["s"]);
-                      // if (!isset($_SESSION['refresh'])) { 
-                      // $_SESSION['refresh']=1;
-                      //  }  
-                      if ($search_term != "") {
-                      $position_of_vs_term = position_of_vs_term_in_the_search($search_term);
-                        if ($position_of_vs_term !== 0) {
-                            $firstSearchTerm = trim(substr($search_term, 0, ($position_of_vs_term) ));
-                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
-                            $secondSearchTerm = trim(substr($search_term, ($position_of_vs_term + $length_of_vs_term),100));
-                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
-                            get_draggable_balls($firstSearchTerm); 
-                            get_draggable_balls($secondSearchTerm);   
-// this is the actual searchterm just trimmed vs the above which is cleaned and recreated
-                          save_search_term_to_separate_table($search_term);
-                        //   }
-                        } else {
-                            get_draggable_balls($search_term);
-                            // print_textratings_to_screen($search_term);
-                        // if  ($_SESSION['refresh']==1) {    
-                            save_search_term_to_separate_table($search_term);
-                        //   }
-                        } 
-                      } 
-                    }
-                    ?>
-<!-- important divs that keep the draggable, stars, dollars in the same parent element for accurate ratings -->
-              </div>
-<!-- end screen capture -->
-</div>
-
+                  <?php meta_function_to_process_the_users_search_and_create_balls(); ?>
+                  <img id="rateTable" src="images/rateTableWhite.png">
+                </div><!-- important divs that keep the draggables in the same parent element -->
+              </div> <!-- end screen capture -->
               <div id="box-around-xaxis-input">
-                    <input list="suggested-list-x-axis" type="text" id="" class="items form-control input-value-on-the-x-axis" placeholder="enter stuf here" name="xaxis" value="">
-                
-                      <datalist id="suggested-list-x-axis">
-                        <option value="strength">
-                        <option value="electability">
-                        <option value="intelligence">
-                        <option value="evilness">
-                        <option value="sexiness">
-                        <option value="beauty">
-                        <option value="wealth">
-                        <option value="price">
-                        <option value="value">
-                        <option value="naughtiness">
-                      </datalist>
-            </div>
-
-                <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
-<!-- end container for table and arrows -->
+                <?php create_suggested_list_x_axis(); ?>
               </div>
-<div id="box-around-ratenowbutton">
+              <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
+          </div><!-- end container for table and arrows -->
+        <div id="box-around-ratenowbutton">
+            <img src="images/shareonfb.png" id="shareNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings.">
+        </div>
+            <div id="WhiteSpaceFill"></div>
+      </div>
 
-                  <img src="images/shareonfb.png" id="shareNowButton" class="<?php if (!$user) {echo 'disabled '; } ?>" title="Log in above to share your ratings.">
-</div>
-              <div id="WhiteSpaceFill"></div>
-              </div>
-
-            <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12">
-<div id="adBoxBelowRatenowButton">
-
-</div>
-            </div>
-         </div>           
+              <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12"></div>
+    </div>  <!-- end of row containing ratetable         --> 
      </div>
 <div class="row">
             <div class="col-lg-12 col-md-12 hidden-sm hidden-xs">
@@ -304,12 +180,12 @@ var client = new ZeroClipboard($('#copy_to_clipboard_button'));
       <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
       <textarea id="widget_text_area" class="widget_text_area">
 
-             <iframe id="iframe_widget_url" src="http://www.ratestuf.org/widget-standard.php" height="420px" width="420px">
+             <iframe src="http://www.ratestuf.org/widget-standard.php" height="420px" width="420px">
 
       </textarea>
 <h3>Customize Your Widget:</h3>
 <form id="form1" name="input" action="http://www.ratestuf.org/widget.php?s=" method="get">
-  <input type="text" id="inputsTerm" class="" placeholder="customsearch" name="s" value=""> define the search (e.g. 'apples' or 'us vs. them')<br>
+  <input type="text" id="inputsTerm" class="" placeholder="custom search" name="s" value=""> define the search (e.g. 'apples' or 'us vs. them')<br>
   <input type="text" id="inputxAxis" class="" placeholder="x-axis" name="xAxis" value=""> define the x-axis (or leave it blank - it's up to you)<br>
   <input type="text" id="inputyAxis" class="" placeholder="y-axis" name="yAxis" value=""> define the y-axis (or leave it blank - it's up to you) <br>
 <!--   <input type="checkbox" id="checkbox1" name="hidesearchbar" value="true">hide the search bar<br> -->

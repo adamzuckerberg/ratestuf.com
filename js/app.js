@@ -142,7 +142,11 @@ $(function() {
 // } 
   });
 
-
+$(function() {
+  // if (userloggedin) {
+  $(".yinput_draggable").draggable();
+// } 
+  });
 
 
 // ********************************************************************
@@ -214,7 +218,7 @@ $("#shareNowButton").click(function(){
 
           var x = 70;
           var y = 4;
-          var width = canvas.width-x-y;
+          var width = canvas.width-x;
           var height = canvas.height-63;
 
           function drawRatingTable() {
@@ -290,30 +294,6 @@ $("#shareNowButton").click(function(){
                     ctx.fill();
           } drawInputOnXAxis();
 
-          function drawInputOnYAxis() {
-          // // translate context to center of canvas
-          //    ctx.translate(10, 210);
-          // // rotate 45 degrees clockwise
-          //     ctx.rotate((2*Math.PI) / -4);
-                    ctx.beginPath();
-                    ctx.rect(
-                      10, // x
-                      210, // y
-                      320,
-                      50
-                    );
-                    ctx.fillStyle = "white";
-                    ctx.fill();
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = 'grey';
-                    ctx.stroke();
-                    ctx.shadowColor = '#999';
-                    ctx.shadowBlur = 10;
-                    ctx.shadowOffsetX = 7;
-                    ctx.shadowOffsetY = 7;
-                    ctx.fill();
-          } drawInputOnYAxis();
-
 
           function drawTextIntoXAxisInputField() {
                               // // X legend
@@ -328,25 +308,12 @@ $("#shareNowButton").click(function(){
                     );
           } drawTextIntoXAxisInputField();
 
-          function drawTextIntoYAxisInputField() {
-                    // // Y legend
-                    ctx.fillStyle = "black";
-                    ctx.textAlign = 'center';
-                    ctx.font = "36px Arial";
-                    ctx.fillText(
-                      // the yaxis name will be the same for ball 2 if it exists
-                      canvasBalls[0].yAxis,
-                      152,
-                      247
-                    );
-          } drawTextIntoYAxisInputField();
-
           function drawFirstBall() {
                     //Draw the first ball
                     ctx.beginPath();
                     ctx.fillStyle = "#00ff00";
-                    ctx.arc((canvas.width * (1-(60/1000))) * canvasBalls[0].xRating,
-                              (canvas.height * (1-(53/533))) * (1-canvasBalls[0].yRating),
+                    ctx.arc(((canvas.width * (1-(60/1000))) * canvasBalls[0].xRating)+x+radius,
+                              ((canvas.height * (1-(53/533))) * (1-canvasBalls[0].yRating))+y+15,
                               radius, 0, 2 * Math.PI, false);
                     ctx.fill();
                     ctx.shadowColor = '#999';
@@ -363,8 +330,8 @@ $("#shareNowButton").click(function(){
                     ctx.font = "normal 800 29px Arial";
                     ctx.fillText(
                       canvasBalls[0].name,
-                      (canvas.width * (1-(70/1000))) * canvasBalls[0].xRating + 37,
-                      (canvas.height * (1-(63/533))) * (1-canvasBalls[0].yRating) + 63
+                      (((canvas.width * (1-(60/1000))) * canvasBalls[0].xRating)+x+radius) + 37,
+                      (((canvas.height * (1-(53/533))) * (1-canvasBalls[0].yRating))+y) + 63
                     );
                     ctx.closePath();
           } drawItemNameBelowFirstBall();
@@ -374,11 +341,11 @@ $("#shareNowButton").click(function(){
                     if (!canvasBalls[1]) {
                       return;
                     }
-                    //Draw the first ball
+                    //Draw the second ball
                     ctx.beginPath();
                     ctx.fillStyle = "#33ccff";
-                    ctx.arc((canvas.width * (1-(60/1000))) * canvasBalls[1].xRating,
-                              (canvas.height * (1-(53/533))) * (1-canvasBalls[1].yRating),
+                    ctx.arc(((canvas.width * (1-(60/1000))) * canvasBalls[1].xRating)+x+radius,
+                              ((canvas.height * (1-(53/533))) * (1-canvasBalls[1].yRating))+y+15,
                               radius, 0, 2 * Math.PI, false);
                     ctx.fill();
                     ctx.shadowColor = '#999';
@@ -387,16 +354,7 @@ $("#shareNowButton").click(function(){
                     ctx.shadowOffsetY = 7;
                     ctx.fill();
                     ctx.closePath();
-                    ctx.fillStyle = "black";
-                    ctx.textAlign = 'center';
-                    ctx.font = "normal 800 29px Arial";
-                    ctx.fillText(
-                      canvasBalls[1].name,
-                      (canvas.width * (1-(70/1000))) * canvasBalls[1].xRating + 40,
-                      (canvas.height * (1-(63/533))) * (1-canvasBalls[1].yRating) + 70
-                    );
-                    ctx.closePath();
-          } drawSecondBall();
+           } drawSecondBall();
 
            function drawItemNameBelowSecondBall() {
                     if (!canvasBalls[1]) {
@@ -407,11 +365,49 @@ $("#shareNowButton").click(function(){
                     ctx.font = "normal 800 29px Arial";
                     ctx.fillText(
                       canvasBalls[1].name,
-                      (canvas.width * (1-(70/1000))) * canvasBalls[1].xRating + 40,
-                      (canvas.height * (1-(63/533))) * (1-canvasBalls[1].yRating) + 70
+                      (((canvas.width * (1-(60/1000))) * canvasBalls[1].xRating)+x+radius) + 37,
+                      (((canvas.height * (1-(53/533))) * (1-canvasBalls[1].yRating))+y) + 63
                     );
                     ctx.closePath();
           } drawItemNameBelowSecondBall();
+
+
+          function drawInputOnYAxis() {
+          // translate context to center of canvas
+             ctx.translate(10, 210);
+          // rotate 45 degrees clockwise
+              ctx.rotate(-90 * Math.PI/180);
+                    ctx.beginPath();
+                    ctx.rect(
+                      -190, // x
+                      0, // y
+                      300,
+                      50
+                    );
+                    ctx.fillStyle = "white";
+                    ctx.fill();
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'grey';
+                    ctx.stroke();
+                    ctx.shadowColor = '#999';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetX = 7;
+                    ctx.shadowOffsetY = 7;
+                    ctx.fill();
+          } drawInputOnYAxis();
+
+          function drawTextIntoYAxisInputField() {
+                    // // Y legend
+                    ctx.fillStyle = "black";
+                    ctx.textAlign = 'center';
+                    ctx.font = "36px Arial";
+                    ctx.fillText(
+                      // the yaxis name will be the same for ball 2 if it exists
+                      canvasBalls[0].yAxis,
+                      -35,
+                      35
+                    );
+          } drawTextIntoYAxisInputField();
 
           var data_url = $('#myCanvas')[0].toDataURL();
           // document.getElementById('result').src = data_url;
@@ -460,14 +456,14 @@ $("#shareNowButton").click(function(){
 
 
         var png_image_source = $('#myCanvas')[0].toDataURL( 'image/png' );
-        // console.log( png_image_source );
+        console.log( png_image_source );
           //post the html5 canvas image and push it into your facebook.
             $.ajax({ 
               data: { png_image_source : png_image_source},
               type: "POST",
               url: "ajax/upload_canvas_image.php",
               success: function(response) {
-    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s'))+'&redirect_uri='+encodeURI('http://www.facebook.com')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
+    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s'))+'&redirect_uri='+encodeURI('http://www.ratestuf.org/facebook-redirect.php')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
               },
               error: function(response) {
                 console.log(response);
@@ -505,6 +501,9 @@ function getUrlParameter(sParam)
 //craete a javascript numerical array
   data.items = [];
 
+  xAxis = "";
+  yAxis = "";
+
 $("#rateNowButton").click(function(){
 
   if ($('.draggable').length == 0) { 
@@ -526,6 +525,7 @@ $("#rateNowButton").click(function(){
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
+  domain = $('<a>').prop('href', url).prop('domain');
 
   // testing code
   console.log('container height: '+ containerHeight);
@@ -535,7 +535,7 @@ $("#rateNowButton").click(function(){
   console.log('xRating'+ xRating);
   console.log('yRating' + yRating);
 
-  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating});
+  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating, "domain":domain});
 
           
 // re-enable to button which was disabled to keep duplicate pushes of data into the array
@@ -554,10 +554,15 @@ $("#rateNowButton").click(function(){
             alert("You've already rated this stuf.");
           } else {
           alert("Got it! Thanks for adding your rating. You are awesome!");          
-          console.log("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends!");
+          console.log("Got it! Thanks for adding your rating. You are awesome!");
           }
         },
         dataType:'json'});
 
  });  // end shareNowButton click event
 
+
+
+// $(document).ready(function() {
+//       $("#searchTags").autocomplete({source:'getautocomplete.php', minLength:1});
+//   });

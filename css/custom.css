@@ -468,8 +468,7 @@ select option {
 	width: 400px;
 	height: 60px;
 }
-#headline {
-/*	font-size: 2.4em;*/
+/*#headline {
 	font-size: 1.5em;
 	font-weight: bold;
 	background: transparent;
@@ -477,7 +476,7 @@ select option {
 	padding: 4px 0px 1px 0px;
 	margin: 2px 0px 2px 0px;
 	display: none;
-}
+}*/
 #rateTable {
 	width: 100%;
 /*	OMFG this auto maintains aspect ratio with above width don't mess with*/
@@ -504,7 +503,7 @@ select option {
 	width: 90%;
 /*	height: 100%;*/
 	margin-left: 10%;
-	margin-top: -10px;
+	margin-top: -20px;
 /*   	border: 4px solid blue;*/
 }
 .input-value-on-the-y-axis {
@@ -784,6 +783,13 @@ background: repeating-linear-gradient(
 	position: absolute;
 	z-index: 3;
 	border: 2px solid #1cff2c;
+}
+#ratings-powered-by-tagline {
+	position: relative;
+	z-index: 3;
+	text-align: right;
+	margin-top: -30px;
+	float:right;
 }
 #box-around-ratenowbutton {
 	width:100%;
@@ -1133,11 +1139,12 @@ a:active {
 }
 #widget-y-axis-name {
 	position: absolute;
+	display: block;
 	z-index: 1;
-	font-size: 2.0em;
+	font-size: 1.6em;
 	font-weight: 800;
 	margin-top: 20%;
-	margin-left: -7%;
+	margin-left: -20px;
 /*	margin: 96px 0px 0px -50px;*/
 	background-color:rgba(255,255,255,0.6);
 	border-radius: 10px;
@@ -1149,7 +1156,7 @@ a:active {
 -ms-transform: rotate(-90deg);
 }
 #widget-x-axis-name {
-	font-size: 2.0em;
+	font-size: 1.6em;
 	font-weight: 800;	
 	margin: 4px 0px 0px -30px;
 	background-color:rgba(255,255,255,0.6);
@@ -1250,6 +1257,7 @@ display: block;
 	display: block;
 	padding: 10px;
 	text-align: left;
+	text-indent: 0px;
 }
 #view_the_widget_button {
 padding: 7px 20px;
@@ -1301,7 +1309,8 @@ THE RATESTUF WIDGET
 }
 #widget-y-axis-name {
 	font-size: 2.0em;
-	font-weight: 800;	
+	font-weight: 800;
+	margin-left: -30px;
 /*	margin: 96px 0px 0px -50px;*/
 	background-color:rgba(255,255,255,0.6);
 	border-radius: 10px;
@@ -1499,9 +1508,8 @@ font-size: 1.2em;
 .glyphicon-search {
     margin-top: 105px;
     margin-right: 0%;
+}
 
-}
-}
 /*Special media query for adsense to prevent overlap of ad*/
 @media(max-width:1299px){
 #responsiveAd1 {

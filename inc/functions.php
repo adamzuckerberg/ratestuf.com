@@ -80,7 +80,7 @@ function save_search_term_to_separate_table($search_term) {
             return;
           } else {
 
-        $query = "INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user')";      
+        $query = "INSERT INTO `search_terms` (`searchTerm`, `userId`) VALUES ('$search_term', '$user') LIMIT 1";      
         $resultB = $connection->query($query);         
       }
     }
@@ -151,6 +151,105 @@ function get_draggable_balls($search_term) {
         }
       }     
     } 
+
+
+
+function create_search_input_for_ratetable() {
+
+  $search_term="obama vs. batman";
+  if (isset($_GET["s"])) {
+    $search_term = trim($_GET["s"]);
+  }
+
+  echo "<form id='mainForm' method='get' action='' >";
+  echo "<div class='right-inner-addon'>";
+  echo "<input type='text' id='searchTags' class='items form-control' placeholder='".$search_term."' name='s' value=''>";
+  echo "<i id='searchGlyphicon' class='glyphicon glyphicon-search'></i>";
+  echo "</div>";
+  echo "</form>";
+
+}
+
+
+
+function meta_function_to_process_the_users_search_and_create_balls() {
+
+                    $search_term="";
+                    if (isset($_GET["s"])) {
+                      $search_term = trim($_GET["s"]);
+                      // if (!isset($_SESSION['refresh'])) { 
+                      // $_SESSION['refresh']=1;
+                      //  }  
+                      if ($search_term != "") {
+                      $position_of_vs_term = position_of_vs_term_in_the_search($search_term);
+                        if ($position_of_vs_term !== 0) {
+                            $firstSearchTerm = trim(substr($search_term, 0, ($position_of_vs_term) ));
+                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
+                            $secondSearchTerm = trim(substr($search_term, ($position_of_vs_term + $length_of_vs_term),100));
+                            $length_of_vs_term = length_of_vs_term_in_the_search($search_term);
+                            get_draggable_balls($firstSearchTerm); 
+                            get_draggable_balls($secondSearchTerm);   
+// this is the actual searchterm just trimmed vs the above which is cleaned and recreated
+                          save_search_term_to_separate_table($search_term);
+                        //   }
+                        } else {
+                            get_draggable_balls($search_term);
+                            // print_textratings_to_screen($search_term);
+                        // if  ($_SESSION['refresh']==1) {    
+                            save_search_term_to_separate_table($search_term);
+                        //   }
+                        } 
+                      } 
+                    }
+                  
+
+}
+
+
+function create_suggested_list_y_axis() {
+
+  echo "<input list='suggested-list-y-axis' type='text' id='' class='items form-control input-value-on-the-y-axis' placeholder='enter stuf here' name='yaxis' value=''>";
+  echo "<datalist id='suggested-list-y-axis'>";
+create_dropdown_datalist();
+
+}
+
+
+function create_dropdown_datalist() {
+
+    echo "<option value='strength'>";
+  echo "<option value='electability'>";
+  echo "<option value='intelligence'>";
+  echo "<option value='evilness'>";
+  echo "<option value='sexiness'>";
+  echo "<option value='beauty'>";
+  echo "<option value='wealth'>";
+  echo "<option value='price'>";
+  echo "<option value='value'>";
+  echo "<option value='naughtiness'>";
+  echo "</datalist>";
+}
+
+function create_suggested_list_x_axis() {
+
+  echo "<input list='suggested-list-x-axis' type='text' id='' class='items form-control input-value-on-the-x-axis' placeholder='enter stuf here' name='xaxis' value=''>";
+  echo "<datalist id='suggested-list-x-axis'>";
+create_dropdown_datalist();
+
+}
+
+                                
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
 
