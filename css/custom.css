@@ -2,6 +2,7 @@
 	padding: 40px 0px 0px 0px;
 }
 canvas {
+/*	display: none;*/
 /*	background: #ffffff;
 	width: 1000px;
 	height: 500px;*/
@@ -776,7 +777,7 @@ background: repeating-linear-gradient(
 		width: 70%;
 	opacity: 0.9;
 }
-#rateNowButton {
+#rateNowButtonForCustomWidget, #rateNowButtonForStandardWidget {
 	border-radius: 9px;
 	color: #726e6f; 
 	font-size: 2.3em;
@@ -811,11 +812,11 @@ background: repeating-linear-gradient(
     justify-content: space-around;
     align-items: center;
 }
-#rateNowButton:not(.disabled):hover  {
+#rateNowButtonForCustomWidget:not(.disabled):hover, #rateNowButtonForStandardWidget:not(.disabled):hover  {
 	background: #1cff2c;
 		color: #2d3333;
 }
-#rateNowButton:hover  {
+#rateNowButtonForCustomWidget:hover, #rateNowButtonForStandardWidget:hover {
 	background: #1cff2c;
 		color: #2d3333;
 		opacity: 1.0;

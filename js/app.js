@@ -22,7 +22,7 @@ $('#clear_widget_code_button').click(function() {
   event.preventDefault();
   $('#update_widget_code_button').show();
   $('#clear_widget_code_button').toggle(); 
-  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget.php" height="420px" width="420px">');
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-standard.php" height="420px" width="420px">');
 });
 
 $(document).ready(function() {
@@ -508,15 +508,14 @@ function getUrlParameter(sParam)
 //craete a javascript numerical array
   data.items = [];
 
-  xAxis = "";
-  yAxis = "";
-
-$("#rateNowButton").click(function(){
+$("#rateNowButtonForStandardWidget").click(function(){
 
   if ($('.draggable').length == 0) { 
    alert("Please search for an item first.");
     return;
   }
+
+  console.log('its working so far');
 // prevent multiple clicks due to user ADHD. Part 1 of 2. Re-enabled later on in code
   $(this).addClass('disabled');
 
@@ -526,15 +525,22 @@ $("#rateNowButton").click(function(){
   itemId = $(this).attr('id');
   containerHeight = ($(this).parent().height() * 0.895 );
   containerWidth = ($(this).parent().width() * 0.9344);
-  xAxis = $('.input-value-on-the-x-axis').val().trim();
-  yAxis = $('.input-value-on-the-y-axis').val().trim();
+  xAxis = $('#input-value-on-the-x-axis').val().trim();
+  yAxis = $('#input-value-on-the-y-axis').val().trim();
   positionFromLeft = ($(this).position().left);
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
-  domain = $('<a>').prop('href', url).prop('domain');
+  // domain = $(location).attr('href');
+  domain = location.hostname;
 
   // testing code
+
+  console.log(itemName);
+  console.log(itemId);
+  console.log(xAxis);
+  console.log(yAxis);
+  console.log(domain);
   console.log('container height: '+ containerHeight);
   console.log('position from top: '+ positionFromTop);
   console.log('container width: '+ containerWidth);
@@ -566,9 +572,70 @@ $("#rateNowButton").click(function(){
         },
         dataType:'json'});
 
- });  // end shareNowButton click event
+ });  // end rateNowButtonForStandardWidget click event
 
+$("#rateNowButtonForCustomWidget").click(function(){
 
+  if ($('.draggable').length == 0) { 
+   alert("Please search for an item first.");
+    return;
+  }
+    console.log('its working so far - custom widget');
+// prevent multiple clicks due to user ADHD. Part 1 of 2. Re-enabled later on in code
+  $(this).addClass('disabled');
+
+  $('.draggable').each(function() {
+
+  itemName = $(this).attr('name');
+  itemId = $(this).attr('id');
+  containerHeight = ($(this).parent().height() * 0.895 );
+  containerWidth = ($(this).parent().width() * 0.9344);
+  xAxis = $('#widget-x-axis-name').text().trim();
+  yAxis = $('#widget-y-axis-name').text().trim();
+  positionFromLeft = ($(this).position().left);
+  positionFromTop = ($(this).position().top);
+  xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
+  yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
+  domain = location.hostname;
+
+  // testing code
+  console.log(itemName);
+  console.log(itemId);
+  console.log(xAxis);
+  console.log(yAxis);
+  console.log(domain);
+  console.log('container height: '+ containerHeight);
+  console.log('position from top: '+ positionFromTop);
+  console.log('container width: '+ containerWidth);
+  console.log('position from left: '+ positionFromLeft);
+  console.log('xRating'+ xRating);
+  console.log('yRating' + yRating);
+
+  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating, "domain":domain});
+
+          
+// re-enable to button which was disabled to keep duplicate pushes of data into the array
+  $(this).addClass('enabled');
+});  //end each draggable ball function
+
+      //Send the data.items array with draggable ball info to the db via the saveratings.php script
+       $.ajax({ 
+
+        data: JSON.stringify(data),
+        type: "POST",
+        url: "ajax/saveratings.php",
+        contentType: "application/json",
+        success: function(response) {
+          if (response.hasOwnProperty('alreadyRated')) {
+            alert("You've already rated this stuf.");
+          } else {
+          alert("Got it! Thanks for adding your rating. You are awesome!");          
+          console.log("Got it! Thanks for adding your rating. You are awesome!");
+          }
+        },
+        dataType:'json'});
+
+ });  // end rateNowButtonForStandardWidget click event
 
 // $(document).ready(function() {
 //       $("#searchTags").autocomplete({source:'getautocomplete.php', minLength:1});

@@ -92,6 +92,12 @@ function save_search_term_to_separate_table($search_term) {
 function get_draggable_balls($search_term) {
 
           global $user;
+          // to allow for widget without a fb loggin requirement:
+          if (!$user) {
+            $user = 9999999;
+          }
+
+
           global $connection;
           $search_term = stripslashes(mysqli_real_escape_string($connection, strtolower($search_term)));
 
@@ -108,7 +114,7 @@ function get_draggable_balls($search_term) {
       $counter ++;
 
 // left and bottom are adjusted by a factor that is added to the rating going in and out of the database to adjust for the width and height of the arrows in the box area.      
-      echo '<div'.' '.'id='.'\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...\''.'style=\'position: absolute;'.' '.'left:'.((0.9344)*($row["xRating"])).'%'.';'.' '.'bottom: '.((0.895)*($row["yRating"])).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=\'itemName\''.'>'.stripslashes($row["itemName"]).'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
+      echo '<div'.' '.'id=\''.$row["itemId"].'\''. 'class='.'\'draggable'.$counter.' '.'draggable'.' '.((!$user)? 'greyedOut' : '').'\''.'name=\''.$row["itemName"].'\''.' '.'title=\'Log in. Then move this ball to rate an item...\''.'style=\'position: absolute;'.' '.'left:'.((0.9344)*($row["xRating"])).'%'.';'.' '.'bottom: '.((0.895)*($row["yRating"])).'%'.'\''.'>'.'<a href=\''.($row["itemUrl"]).'\''.' '.'target=\'_blank\'>'.'<p'.' '.'class=\'itemName\''.'>'.stripslashes($row["itemName"]).'</p></a>'.' '.'<img class="speechBubble" src="images/speechbubble.png"><p class=\'ratings\'>'.$row["votes"].'<br>'?><?php
       if ($row["votes"] == 1) {
         echo 'rating'; 
       } else {
@@ -209,7 +215,7 @@ function meta_function_to_process_the_users_search_and_create_balls() {
 
 function create_suggested_list_y_axis() {
 
-  echo "<input list='suggested-list-y-axis' type='text' id='' class='items form-control input-value-on-the-y-axis' placeholder='enter stuf here' name='yaxis' value=''>";
+  echo "<input list='suggested-list-y-axis' type='text' id='input-value-on-the-y-axis' class='items form-control input-value-on-the-y-axis' placeholder='enter stuf here' name='yaxis' value=''>";
   echo "<datalist id='suggested-list-y-axis'>";
 create_dropdown_datalist();
 
@@ -233,7 +239,7 @@ function create_dropdown_datalist() {
 
 function create_suggested_list_x_axis() {
 
-  echo "<input list='suggested-list-x-axis' type='text' id='' class='items form-control input-value-on-the-x-axis' placeholder='enter stuf here' name='xaxis' value=''>";
+  echo "<input list='suggested-list-x-axis' type='text' id='input-value-on-the-x-axis' class='items form-control input-value-on-the-x-axis' placeholder='enter stuf here' name='xaxis' value=''>";
   echo "<datalist id='suggested-list-x-axis'>";
 create_dropdown_datalist();
 

@@ -109,7 +109,7 @@ create_search_input_for_ratetable();
               <img id="arrow-on-the-x-axis" src="images/arrow_x.png">
           </div><!-- end container for table and arrows -->
 <div id="box-around-ratenowbutton"> 
-                 <button id="rateNowButton">Rate It!</button>
+                 <button id="rateNowButtonForStandardWidget">Rate It!</button>
 
 </div>
 
