@@ -1,8 +1,8 @@
 <?php
-session_start();
+// session_start();
 require("inc/config.php");
-require("facebook.php");
-require("inc/functions.php");
+// require("facebook.php");
+// require("inc/functions.php");
 ?>
 
 <?php
@@ -10,23 +10,6 @@ header( "refresh:3;url=http://www.facebook.com" );
 ?> 
 
 
-<?php 
-
-$facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb1a887ce18660b430d3c7c'));
-  if (isset($_GET['fblogout'])) {
-    $facebook->clearAllPersistentData();
-  }
-  $user=$facebook->getUser();
-    if ($user) {
-      $user_profile = $facebook->api('/me');
-    if(mysqli_query($connection, "SELECT `id` FROM `fblogin` WHERE `fb_id`='$user'")->num_rows==0){
-mysqli_query($connection, "INSERT INTO `fblogin` (`fb_id`,`firstname`,`lastname`,`email`,`image`,`gender`) VALUES('$user','".$user_profile["first_name"]."','".$user_profile["last_name"]."','".$user_profile["email"]."','https://graph.facebook.com/$user/picture?type=large','".$user_profile["gender"]."')");
-
-header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
-    }
-  }
-
-?>
 
 <!doctype html>
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">

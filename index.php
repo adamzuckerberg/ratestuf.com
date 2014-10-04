@@ -309,7 +309,7 @@ create_search_input_for_ratetable();
 
       <footer class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-               <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><div id="footerLinks" class="hidden-sm hidden-xs"></p></div>
+               <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><a href="privacy.php">Privacy Policy</a><div id="footerLinks" class="hidden-sm hidden-xs"></p></div>
           </div>
       </footer>
 <!-- close container -->
