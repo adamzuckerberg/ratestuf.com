@@ -99,7 +99,7 @@ function get_draggable_balls($search_term) {
 
 
           global $connection;
-          $search_term = stripslashes(mysqli_real_escape_string($connection, strtolower($search_term)));
+          $search_term = mysqli_real_escape_string($connection, strtolower($search_term));
 
           $query = "SELECT items_table.itemName, items_table.itemId, subcategories_table.subcategoryName FROM `items_table` JOIN item_subcategory_map ON items_table.itemId = item_subcategory_map.itemId JOIN `subcategories_table` ON subcategories_table.subcategoryId = item_subcategory_map.subcategoryId JOIN `ratings_table` ON ratings_table.itemId = items_table.itemId WHERE subcategories_table.subcategoryName = '$search_term' OR items_table.itemName = '$search_term' GROUP BY items_table.itemName LIMIT 10"; 
 
@@ -165,12 +165,12 @@ function create_search_input_for_ratetable() {
   global $connection;
   $search_term="obama vs. batman";
   if (isset($_GET["s"])) {
-    $search_term = stripslashes(strtolower($_GET["s"]));
+    $search_term = strtolower($_GET["s"]);
   }
 
   echo "<form id='mainForm' method='get' action='' >";
   echo "<div class='right-inner-addon'>";
-  echo "<input type='text' id='searchTags' class='items form-control' placeholder='".stripslashes(strtolower($search_term))."' name='s' value=''>";
+  echo "<input type='text' id='searchTags' class='items form-control' placeholder=".$search_term." name='s' value=''>";
   echo "<i id='searchGlyphicon' class='glyphicon glyphicon-search'></i>";
   echo "</div>";
   echo "</form>";

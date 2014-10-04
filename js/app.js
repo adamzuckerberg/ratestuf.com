@@ -15,14 +15,14 @@ $('#update_widget_code_button').click(function(event) {
   $('#update_widget_code_button').toggle();
   $('#clear_widget_code_button').show();
   //update iframe code
-  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-custom.php?s='+encodeURIComponent($('#inputsTerm').val())+'&xAxis='+encodeURIComponent($('#inputxAxis').val())+'&yAxis='+encodeURIComponent($('#inputyAxis').val())+'"'+' height="420px" width="420px">');
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-custom.php?s='+encodeURIComponent($('#inputsTerm').val())+'&xAxis='+encodeURIComponent($('#inputxAxis').val())+'&yAxis='+encodeURIComponent($('#inputyAxis').val())+'"'+' height="440px" width="500px" style="border:0px;">');
 });
 
 $('#clear_widget_code_button').click(function() {
   event.preventDefault();
   $('#update_widget_code_button').show();
   $('#clear_widget_code_button').toggle(); 
-  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-standard.php" height="420px" width="420px">');
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-standard.php" height="660px" width="680px" style="border:0px;">');
 });
 
 $(document).ready(function() {

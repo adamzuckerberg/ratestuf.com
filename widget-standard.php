@@ -113,7 +113,7 @@ create_search_input_for_ratetable();
 
 </div>
 
-                  <h6 id="ratings-powered-by-tagline">Ratings powered by <a href="http://www.ratestuf.org">Ratestuf&trade;<a></h6>
+                  <h6 id="ratings-powered-by-tagline">Ratings powered by <a href="http://www.ratestuf.org" target="_blank">Ratestuf&trade;<a></h6>
       </div>
 
               <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12"></div>
