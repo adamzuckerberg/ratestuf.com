@@ -170,7 +170,7 @@ function create_search_input_for_ratetable() {
 
   echo "<form id='mainForm' method='get' action='' >";
   echo "<div class='right-inner-addon'>";
-  echo "<input type='text' id='searchTags' class='items form-control' placeholder=".$search_term." name='s' value=''>";
+  echo "<input type='text' id='searchTags' class='items form-control' placeholder=".'"'.$search_term.'"'." name='s' value=''>";
   echo "<i id='searchGlyphicon' class='glyphicon glyphicon-search'></i>";
   echo "</div>";
   echo "</form>";
