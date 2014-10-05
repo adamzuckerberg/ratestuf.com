@@ -183,7 +183,7 @@ $("#shareNowButton").click(function(){
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
-
+  domain = location.hostname;
   // testing code
   console.log('container height: '+ containerHeight);
   console.log('position from top: '+ positionFromTop);
@@ -192,7 +192,7 @@ $("#shareNowButton").click(function(){
   console.log('xRating'+ xRating);
   console.log('yRating' + yRating);
 
-  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating});
+  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating, "domain":domain});
 
           // ********************************************************
           // Dynamically Create HTHML5 Mirror of Rating Table Section
@@ -442,6 +442,10 @@ $("#shareNowButton").click(function(){
           console.log("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends!");
           }
         },
+        error: function(response) {
+        // alert("Sorry, something is not working. It must be our fault. Please check back");
+        console.log(response);
+              },
         dataType:'json'});
 
 /*       var get_variable = new RegExp('[\?&amp;]s=([^&amp;#]*)').exec(window.location.href);
@@ -532,7 +536,8 @@ $("#rateNowButtonForStandardWidget").click(function(){
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
   // domain = $(location).attr('href');
-  domain = location.hostname;
+  // domain = location.hostname;
+  domain = document.referrer;
 
   // testing code
 
@@ -558,20 +563,24 @@ $("#rateNowButtonForStandardWidget").click(function(){
       //Send the data.items array with draggable ball info to the db via the saveratings.php script
        $.ajax({ 
 
+        url: "ajax/saveratings.php",
         data: JSON.stringify(data),
         type: "POST",
-        url: "ajax/saveratings.php",
         contentType: "application/json",
         success: function(response) {
           if (response.hasOwnProperty('alreadyRated')) {
             alert("You've already rated this stuf.");
           } else {
-          alert("Got it! Thanks for adding your rating. You are awesome!");          
+          // alert("Got it! Thanks for adding your rating. You are awesome!");          
           console.log("Got it! Thanks for adding your rating. You are awesome!");
           }
         },
+        error: function(response) {
+        // alert("Sorry, something is not working. It must be our fault. Please check back");
+        console.log(response);
+              },
         dataType:'json'});
-
+          alert("Got it! Thanks for adding your rating. You are awesome!"); 
  });  // end rateNowButtonForStandardWidget click event
 
 $("#rateNowButtonForCustomWidget").click(function(){
@@ -596,7 +605,7 @@ $("#rateNowButtonForCustomWidget").click(function(){
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
-  domain = location.hostname;
+  domain = document.referrer;
 
   // testing code
   console.log(itemName);
@@ -629,12 +638,17 @@ $("#rateNowButtonForCustomWidget").click(function(){
           if (response.hasOwnProperty('alreadyRated')) {
             alert("You've already rated this stuf.");
           } else {
-          alert("Got it! Thanks for adding your rating. You are awesome!");          
+          // alert("Got it! Thanks for adding your rating. You are awesome!");          
           console.log("Got it! Thanks for adding your rating. You are awesome!");
           }
         },
+        error: function(response) {
+        // alert("Sorry, something is not working. It must be our fault. Please check back");
+        console.log(response);
+              },
         dataType:'json'});
 
+        alert("Got it! Thanks for adding your rating. You are awesome!");   
  });  // end rateNowButtonForStandardWidget click event
 
 // $(document).ready(function() {
