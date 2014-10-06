@@ -67,14 +67,14 @@ userloggedin =<?php
           <div class="row">
             <div class="col-lg-4 col-md-2 hidden-sm hidden-xs"></div>
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
-              <div id="logo3-container" class="logo pull-left" alt="RateStuf logo">
+<!--               <div id="logo3-container" class="logo pull-left" alt="RateStuf logo">
                 <p id="logo3">Ratestuf</p>
                 <p id="logo3trademark" >&trade;</p>
                 <p id="logo3tagline">rate anything and compare stuf<span style="margin-left:1px;margin-top:0px" id="logo3-falling-f">f.</span></p>
-              </div>
+              </div> -->
 
 <?php 
-create_search_input_for_ratetable();
+create_search_input_for_ratetable_with_special_glyphicon_that_works_with_no_logo_above_it();
 ?>
 
             </div>

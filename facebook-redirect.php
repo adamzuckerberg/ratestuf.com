@@ -1,13 +1,9 @@
 <?php
-// session_start();
+header( "refresh:3;url=http://www.facebook.com" );
 require("inc/config.php");
-// require("facebook.php");
-// require("inc/functions.php");
 ?>
 
-<?php
-header( "refresh:3;url=http://www.facebook.com" );
-?> 
+
 
 
 

@@ -177,7 +177,22 @@ function create_search_input_for_ratetable() {
 
 }
 
+function create_search_input_for_ratetable_with_special_glyphicon_that_works_with_no_logo_above_it() {
 
+  global $connection;
+  $search_term="obama vs. batman";
+  if (isset($_GET["s"])) {
+    $search_term = strtolower($_GET["s"]);
+  }
+
+  echo "<form id='mainForm' method='get' action='' >";
+  echo "<div class='right-inner-addon'>";
+  echo "<input type='text' id='searchTags' class='items form-control' placeholder=".'"'.$search_term.'"'." name='s' value=''>";
+  echo "<i id='searchGlyphiconForStandardWidget' class='glyphicon glyphicon-search'></i>";
+  echo "</div>";
+  echo "</form>";
+
+}
 
 function meta_function_to_process_the_users_search_and_create_balls() {
 

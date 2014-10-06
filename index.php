@@ -179,7 +179,7 @@ create_search_input_for_ratetable();
   <div id="hidden_widget_sharing_area">
       <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
       <textarea id="widget_text_area" class="widget_text_area">
-<iframe src="http://www.ratestuf.org/widget-standard.php" height="420px" width="420px"></textarea>
+<iframe src="http://www.ratestuf.org/widget-standard.php" height="420px" width="420px" style="border:0px;"></iframe></textarea>
 <h3>Customize Your Widget:</h3>
 <form id="form1" name="input" action="http://www.ratestuf.org/widget.php?s=" method="get">
   <input type="text" id="inputsTerm" class="" placeholder="custom search" name="s" value=""> define the search (e.g. 'apples' or 'us vs. them')<br>

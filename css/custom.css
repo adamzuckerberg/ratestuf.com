@@ -229,6 +229,9 @@ input[id="searchTags"] {
     margin-top: 54px;
     color: #404040 !important;
 }
+#searchGlyphiconForStandardWidget {
+	margin-top: -10px;
+}
 .right-inner-addon {
     position: relative;
 }
@@ -1524,6 +1527,9 @@ font-size: 1.2em;
 .glyphicon-search {
     margin-top: 105px;
     margin-right: 0%;
+}
+#searchGlyphiconForStandardWidget {
+	margin-top: 6px;
 }
 
 /*Special media query for adsense to prevent overlap of ad*/
