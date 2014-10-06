@@ -213,30 +213,32 @@ $("#shareNowButton").click(function(){
                     var ctx = canvas.getContext("2d");
                     var centerX = $("canvas").width() / 2;
                     var centerY = $("canvas").height() / 2;
-                    var radius = 25;
+
                     var canvas = $("canvas")[0];
 
-          var x = 70;
-          var y = 4;
+          var radius = 25;
+          var x = 75;
+          var y = 13;
+          var rightMargin = 10;
           var width = canvas.width-x;
           var height = canvas.height-63;
 
           function drawRatingTable() {
 
             ctx.beginPath();
-            ctx.moveTo(x + radius, y);
-            ctx.lineTo(x + width - radius, y);
-            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-            ctx.lineTo(x + width, y + height - radius);
-            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-            ctx.lineTo(x + radius, y + height);
-            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-            ctx.lineTo(x, y + radius);
-            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.moveTo(x, y);
+            ctx.lineTo((canvas.width - rightMargin), y);
+            // ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo((canvas.width - rightMargin), y + height - 10);
+            // ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x, y + height - 10);
+            // ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y);
+            // ctx.quadraticCurveTo(x, y, x + radius, y);
             ctx.closePath();
                     ctx.fillStyle = "rgba(207, 190, 110, 0.3)";
                     ctx.fill();
-                    ctx.lineWidth = 4;
+                    ctx.lineWidth = 2;
                     ctx.strokeStyle = '#000';
                     ctx.stroke();
           } drawRatingTable();
@@ -253,9 +255,9 @@ $("#shareNowButton").click(function(){
 
                     ctx.fillStyle = "#999";
 
-                    ctx.moveTo(35, 0);
-                    ctx.lineTo(10, 50);
-                    ctx.lineTo(60, 50);
+                    ctx.moveTo(35, 0 + 10);
+                    ctx.lineTo(10, 50 + 10);
+                    ctx.lineTo(60, 50 + 10);
                     ctx.fill();
           } drawUpDownArrow();
 
@@ -269,15 +271,15 @@ $("#shareNowButton").click(function(){
                     );
                     ctx.fillStyle = "#999";
                     ctx.beginPath();
-                    ctx.moveTo(1000, 505); //point
-                    ctx.lineTo(940, 480);
-                    ctx.lineTo(940, 525);
+                    ctx.moveTo(1000 - rightMargin, 505); //point
+                    ctx.lineTo(940 - rightMargin, 480);
+                    ctx.lineTo(940 - rightMargin, 525);
                     ctx.fill();
           } drawLeftRightArrow();
 
           function drawInputOnXAxis() {
                     ctx.beginPath();
-                    ctx.rect(  380, // x
+                    ctx.rect(  350, // x
                       canvas.height - 50, // y
                       300,
                       45
@@ -514,6 +516,7 @@ function getUrlParameter(sParam)
 
 $("#rateNowButtonForStandardWidget").click(function(){
 
+
   if ($('.draggable').length == 0) { 
    alert("Please search for an item first.");
     return;
@@ -522,6 +525,8 @@ $("#rateNowButtonForStandardWidget").click(function(){
   console.log('its working so far');
 // prevent multiple clicks due to user ADHD. Part 1 of 2. Re-enabled later on in code
   $(this).addClass('disabled');
+
+
 
   $('.draggable').each(function() {
 
@@ -535,23 +540,20 @@ $("#rateNowButtonForStandardWidget").click(function(){
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
-  // domain = $(location).attr('href');
-  // domain = location.hostname;
-  domain = document.referrer;
+  domain = parentdomain;
 
   // testing code
-
-  console.log(itemName);
-  console.log(itemId);
-  console.log(xAxis);
-  console.log(yAxis);
-  console.log(domain);
-  console.log('container height: '+ containerHeight);
-  console.log('position from top: '+ positionFromTop);
-  console.log('container width: '+ containerWidth);
-  console.log('position from left: '+ positionFromLeft);
-  console.log('xRating'+ xRating);
-  console.log('yRating' + yRating);
+  console.log("domain: "+domain);
+  // console.log(itemName);
+  // console.log(itemId);
+  // console.log(xAxis);
+  // console.log(yAxis);
+  // console.log('container height: '+ containerHeight);
+  // console.log('position from top: '+ positionFromTop);
+  // console.log('container width: '+ containerWidth);
+  // console.log('position from left: '+ positionFromLeft);
+  // console.log('xRating'+ xRating);
+  // console.log('yRating' + yRating);
 
   data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating, "domain":domain});
 
@@ -608,17 +610,17 @@ $("#rateNowButtonForCustomWidget").click(function(){
   domain = document.referrer;
 
   // testing code
-  console.log(itemName);
-  console.log(itemId);
-  console.log(xAxis);
-  console.log(yAxis);
-  console.log(domain);
-  console.log('container height: '+ containerHeight);
-  console.log('position from top: '+ positionFromTop);
-  console.log('container width: '+ containerWidth);
-  console.log('position from left: '+ positionFromLeft);
-  console.log('xRating'+ xRating);
-  console.log('yRating' + yRating);
+  // console.log(itemName);
+  // console.log(itemId);
+  // console.log(xAxis);
+  // console.log(yAxis);
+  // console.log(domain);
+  // console.log('container height: '+ containerHeight);
+  // console.log('position from top: '+ positionFromTop);
+  // console.log('container width: '+ containerWidth);
+  // console.log('position from left: '+ positionFromLeft);
+  // console.log('xRating'+ xRating);
+  // console.log('yRating' + yRating);
 
   data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating, "domain":domain});
 

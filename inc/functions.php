@@ -222,8 +222,7 @@ function meta_function_to_process_the_users_search_and_create_balls() {
                         //   }
                         } 
                       } 
-                    }
-                  
+                    }      
 
 }
 

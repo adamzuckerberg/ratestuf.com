@@ -151,5 +151,17 @@ create_search_input_for_ratetable_with_special_glyphicon_that_works_with_no_logo
 <!-- javascript -->
 <script src="js/app.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  var str = document.referrer;
+  var n = str.indexOf("ratestuf.org");
+  if (n == -1) {
+    parentdomain = str;
+} 
+console.log("parent domain: "+parentdomain);
+});
+</script>
     </body>
 </html>
+
