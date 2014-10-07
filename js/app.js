@@ -4,7 +4,7 @@
 // });
 $(document).ready(function() {
   if (getUrlParameter('rs') != null) {
-  window.location.href="http://www.ratestuf.org?s="+getUrlParameter('rs');
+  window.location.href="http://www.ratestuf.org?s="+getUrlParameter('rs')+"&xAxis="+getUrlParameter('xAxis')+"&yAxis="+getUrlParameter('yAxis');
   }
 });
 
@@ -212,8 +212,6 @@ $("#shareNowButton").click(function(){
                     var ctx = canvas.getContext("2d");
                     var centerX = $("canvas").width() / 2;
                     var centerY = $("canvas").height() / 2;
-
-                    var canvas = $("canvas")[0];
 
           var radius = 25;
           var x = 70;
@@ -437,7 +435,7 @@ $("#shareNowButton").click(function(){
         contentType: "application/json",
         success: function(response) {
           if (response.hasOwnProperty('alreadyRated')) {
-            alert("You've already rated this stuf.");
+          console.log("You've already rated this stuf.");
           } else {
           // alert("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends!");          
           console.log("Got it! Thanks for adding your rating. You are awesome! Now share it with your friends!");
@@ -445,7 +443,8 @@ $("#shareNowButton").click(function(){
         },
         error: function(response) {
         // alert("Sorry, something is not working. It must be our fault. Please check back");
-        console.log(response);
+        // console.log(response);
+        // console.log("error");
               },
         dataType:'json'});
 
@@ -475,7 +474,7 @@ $("#shareNowButton").click(function(){
               type: "POST",
               url: "ajax/upload_canvas_image.php",
               success: function(response) {
-    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s'))+'&redirect_uri='+encodeURI('http://www.ratestuf.org/facebook-redirect.php')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
+    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s')+"&yAxis="+$('#input-value-on-the-y-axis').val()+"&xAxis="+$('#input-value-on-the-x-axis').val())+'&redirect_uri='+encodeURI('http://www.ratestuf.org/facebook-redirect.php')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
               },
               error: function(response) {
                 console.log(response);
@@ -568,17 +567,17 @@ $("#rateNowButtonForCustomWidget").click(function(){
           if (response.hasOwnProperty('alreadyRated')) {
             alert("You've already rated this stuf.");
           } else {
-          // alert("Got it! Thanks for adding your rating. You are awesome!");          
+          alert("Got it! Thanks for adding your rating. You are awesome!");          
           console.log("Got it! Thanks for adding your rating. You are awesome!");
           }
         },
         error: function(response) {
         // alert("Sorry, something is not working. It must be our fault. Please check back");
         console.log(response);
+        console.log(error);
               },
         dataType:'json'});
 
-        alert("Got it! Thanks for adding your rating. You are awesome!");   
  });  // end rateNowButtonForStandardWidget click event
 
 // $(document).ready(function() {

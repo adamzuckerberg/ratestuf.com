@@ -3,14 +3,16 @@ session_start();
 require (__dir__."/../inc/config.php");
 require(__dir__. "/../facebook.php");
 
-header('Content-Type:application/json');
+header('Content-Type: application/json');
 $json=file_get_contents('php://input');
 $json=json_decode($json,true);
 
-print_r($json);
-
 $facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb1a887ce18660b430d3c7c'));
 $user=$facebook->getUser();
+
+if (!$user && $_SESSION['limit_inserts'] >= 5) {
+ exit();
+}
 
 // WORKAROUND FOR WIDGETS SO THAT THERE IS ALWAYS A USER
 // if ($user) {
@@ -31,14 +33,6 @@ error_log(mysqli_error($connection));
 		  if (sizeof($result)==0) {
 		  		$result['alreadyRated']=true;
 		  }
-	// 	}  elseif {
-	// //limit the ability of any user to rate more than X number of times to prevent robots from filling db
-	// 	if ((mysqli_num_rows($heavyUser)>100) && (!$user == 503854370)) {
-
-	// //message...you are a heavy user
-	// 	$message = "Please contact an administrator to continue rating items on RateStuf";
-	// 	echo "<script type='text/javascript'>alert('$message');</script>";
-
 	}  
 	else {
 //otherwise add the first rating for this item to the MYSQL db
@@ -46,8 +40,10 @@ error_log(mysqli_error($connection));
     $query .= "VALUES('$user', '".$ratingObject['itemId']."', '".$ratingObject['xAxis']."', '".$ratingObject['xRating']."', '".$ratingObject['yAxis']."', '".$ratingObject['yRating']."', '".$ratingObject['domain']."' );";
 	mysqli_query($connection,$query);
 error_log(mysqli_error($connection));
+$_SESSION['limit_inserts'] += 1;
+
 		}
 	}	
 
-// }  end if $user statement
+echo json_encode($result);
 

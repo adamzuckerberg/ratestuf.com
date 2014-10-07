@@ -94,7 +94,7 @@ function get_draggable_balls($search_term) {
           global $user;
           // to allow for widget without a fb loggin requirement:
           if (!$user) {
-            $user = 9999999;
+            $user = 0;
           }
 
 
@@ -212,7 +212,7 @@ function meta_function_to_process_the_users_search_and_create_balls() {
 
 function create_suggested_list_y_axis() {
 
-  echo "<input list='suggested-list-y-axis' type='text' id='input-value-on-the-y-axis' class='items form-control input-value-on-the-y-axis' placeholder='enter stuf here' name='yaxis' value=''>";
+  echo "<input list='suggested-list-y-axis' type='text' id='input-value-on-the-y-axis' class='items form-control input-value-on-the-y-axis' placeholder='enter stuf here' name='yaxis' value='".(isset($_GET['yAxis']) ? $_GET['yAxis'] : "")."'>";
   echo "<datalist id='suggested-list-y-axis'>";
 create_dropdown_datalist();
 
@@ -236,7 +236,7 @@ function create_dropdown_datalist() {
 
 function create_suggested_list_x_axis() {
 
-  echo "<input list='suggested-list-x-axis' type='text' id='input-value-on-the-x-axis' class='items form-control input-value-on-the-x-axis' placeholder='enter stuf here' name='xaxis' value=''>";
+  echo "<input list='suggested-list-x-axis' type='text' id='input-value-on-the-x-axis' class='items form-control input-value-on-the-x-axis' placeholder='enter stuf here' name='xaxis' value='".(isset($_GET['xAxis']) ? $_GET['xAxis'] : "")."'>";
   echo "<datalist id='suggested-list-x-axis'>";
 create_dropdown_datalist();
 
