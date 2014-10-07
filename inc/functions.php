@@ -177,37 +177,6 @@ function create_search_input_for_ratetable() {
 
 }
 
-function create_search_input_for_ratetable_with_special_glyphicon_that_works_with_no_logo_above_it() {
-
-  global $connection;
-  $search_term="obama vs. batman";
-  if (isset($_GET["s"])) {
-    $search_term = strtolower($_GET["s"]);
-  }
-
-  if (empty($_GET["token"])
-    && (!empty($_SERVER['HTTP_REFERER'])
-      && 'http://www.ratestuf.org/widget-standard.php' != $_SERVER['HTTP_REFERER'] )) {
-      $widget_referrer_domain = $_SERVER['HTTP_REFERER'];
-    // if there is no token and the referrring url is not ratestuf.org/widget-standard, then create a token
-    $widget_referrer_domain_token = hash('md5', $widget_referrer_domain);
-    $_SESSION[$widget_referrer_domain_token] = $widget_referrer_domain;
-  } 
-
-  echo "<form id='mainForm' method='get' action='' >";
-  echo "<div class='right-inner-addon'>";
-  echo "<input type='text' id='searchTags' class='items form-control' placeholder=".'"'.$search_term.'"'." name='s' value=''>";
-  if (!empty($widget_referrer_domain_token)) {
-    echo "<input type='hidden' id='domainToken' name='token' value='$widget_referrer_domain_token'>";
-  } elseif (!empty($_GET["token"])) {
-    echo "<input type='hidden' id='domainToken' name='token' value='".$_GET['token']."'>";
-  }
-  echo "<i id='searchGlyphiconForStandardWidget' class='glyphicon glyphicon-search'></i>";
-  echo "</div>";
-  echo "</form>";
-
-}
-
 function meta_function_to_process_the_users_search_and_create_balls() {
 
                     $search_term="";

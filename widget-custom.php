@@ -133,9 +133,6 @@ userloggedin =<?php
 
 </div>
 
-
-
-
         <div class="col-lg-5 col-md-5 hidden-xs hidden-sm">
 
 

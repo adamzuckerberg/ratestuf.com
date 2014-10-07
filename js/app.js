@@ -2,7 +2,6 @@
 // $("#rateTableFrame").css('border', '2px solid blue');
 // $('.draggable').parent().css('border', '1px solid red');
 // });
-
 $(document).ready(function() {
   if (getUrlParameter('rs') != null) {
   window.location.href="http://www.ratestuf.org?s="+getUrlParameter('rs');
@@ -22,7 +21,7 @@ $('#clear_widget_code_button').click(function() {
   event.preventDefault();
   $('#update_widget_code_button').show();
   $('#clear_widget_code_button').toggle(); 
-  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-standard.php" height="660px" width="680px" style="border:0px;"></ifrmae>');
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-custom.php?s=example1+vs+example2&xAxis=example+x-axis&yAxis=example+y-axis" height="420px" width="420px" style="border:0px;"></iframe>');
 });
 
 $(document).ready(function() {
@@ -513,81 +512,6 @@ function getUrlParameter(sParam)
   var data ={};
 //craete a javascript numerical array
   data.items = [];
-
-$("#rateNowButtonForStandardWidget").click(function(){
-
-
-  if ($('.draggable').length == 0) { 
-   alert("Please search for an item first.");
-    return;
-  }
-
-  console.log('its working so far');
-// prevent multiple clicks due to user ADHD. Part 1 of 2. Re-enabled later on in code
-  $(this).addClass('disabled');
-
-
-
-  $('.draggable').each(function() {
-
-  itemName = $(this).attr('name');
-  itemId = $(this).attr('id');
-  containerHeight = ($(this).parent().height() * 0.895 );
-  containerWidth = ($(this).parent().width() * 0.9344);
-  xAxis = $('#input-value-on-the-x-axis').val().trim();
-  yAxis = $('#input-value-on-the-y-axis').val().trim();
-  positionFromLeft = ($(this).position().left);
-  positionFromTop = ($(this).position().top);
-  xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
-  yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
-  // domainToken
-  domainToken = $('#domainToken').val();
-  if (domainToken) {
-    domain = domainToken;
-  }
-
-  // testing code
-  console.log("domain: "+domain);
-  // console.log(itemName);
-  // console.log(itemId);
-  // console.log(xAxis);
-  // console.log(yAxis);
-  // console.log('container height: '+ containerHeight);
-  // console.log('position from top: '+ positionFromTop);
-  // console.log('container width: '+ containerWidth);
-  // console.log('position from left: '+ positionFromLeft);
-  // console.log('xRating'+ xRating);
-  // console.log('yRating' + yRating);
-
-  data.items.push({"name": itemName, "itemId": itemId, "xAxis": xAxis, "xRating":xRating, "yAxis":yAxis, "yRating":yRating, "domain":domain});
-
-          
-// re-enable to button which was disabled to keep duplicate pushes of data into the array
-  $(this).addClass('enabled');
-});  //end each draggable ball function
-
-      //Send the data.items array with draggable ball info to the db via the saveratings.php script
-       $.ajax({ 
-
-        url: "ajax/saveratings.php",
-        data: JSON.stringify(data),
-        type: "POST",
-        contentType: "application/json",
-        success: function(response) {
-          if (response.hasOwnProperty('alreadyRated')) {
-            alert("You've already rated this stuf.");
-          } else {
-          // alert("Got it! Thanks for adding your rating. You are awesome!");          
-          console.log("Got it! Thanks for adding your rating. You are awesome!");
-          }
-        },
-        error: function(response) {
-        // alert("Sorry, something is not working. It must be our fault. Please check back");
-        console.log(response);
-              },
-        dataType:'json'});
-          alert("Got it! Thanks for adding your rating. You are awesome!"); 
- });  // end rateNowButtonForStandardWidget click event
 
 $("#rateNowButtonForCustomWidget").click(function(){
 
