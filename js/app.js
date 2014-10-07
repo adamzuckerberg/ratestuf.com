@@ -216,11 +216,11 @@ $("#shareNowButton").click(function(){
                     var canvas = $("canvas")[0];
 
           var radius = 25;
-          var x = 75;
+          var x = 70;
           var y = 13;
           var rightMargin = 10;
           var width = canvas.width-x-rightMargin;
-          var height = canvas.height-63-y;
+          var height = canvas.height-60-y;
 
           function drawRatingTable() {
 
@@ -264,22 +264,22 @@ $("#shareNowButton").click(function(){
                     ctx.fillStyle = "#999";
                     ctx.fillRect(
                       70, // x
-                      canvas.height - 40, // y
+                      canvas.height - 45, // y
                       canvas.width - 130,
                       20
                     );
                     ctx.fillStyle = "#999";
                     ctx.beginPath();
-                    ctx.moveTo(1000 - rightMargin, 505); //point
-                    ctx.lineTo(940 - rightMargin, 480);
-                    ctx.lineTo(940 - rightMargin, 525);
+                    ctx.moveTo(1000 - rightMargin, canvas.height - 35); //point
+                    ctx.lineTo(940 - rightMargin, canvas.height - 55);
+                    ctx.lineTo(940 - rightMargin, canvas.height - 15);
                     ctx.fill();
           } drawLeftRightArrow();
 
           function drawInputOnXAxis() {
                     ctx.beginPath();
-                    ctx.rect(  350, // x
-                      canvas.height - 50, // y
+                    ctx.rect(  380, // x
+                      canvas.height - 55, // y
                       300,
                       45
                     );

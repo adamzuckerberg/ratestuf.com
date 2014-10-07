@@ -15,8 +15,6 @@ canvas {
  {
 /*	border: 5px solid red;*/
 }
-
-
 #logo3 {
 font-family: 'Chivo', sans-serif;
 	font-size: 2.0em;
@@ -1158,7 +1156,7 @@ a:active {
 	font-size: 1.6em;
 	font-weight: 800;
 	margin-top: 20%;
-	margin-left: -15%;
+	margin-left: -70px;
 /*	margin: 96px 0px 0px -50px;*/
 	background-color:rgba(255,255,255,0.6);
 	border-radius: 10px;
@@ -1168,6 +1166,7 @@ a:active {
 -webkit-transform: rotate(-90deg);
 -moz-transform: rotate(-90deg);
 -ms-transform: rotate(-90deg);
+/*	border: 2px solid blue;*/
 }
 #widget-x-axis-name {
 	font-size: 1.6em;
@@ -1190,9 +1189,10 @@ a:active {
 .input-value-on-the-y-axis {
 	font-size: 1.4em;
 }
-/*.logo:hover {
-    -webkit-transform: scale(2.4) rotate(1turn) translate(2px,38%);
-}*/
+#widget-y-axis-name {
+	margin-left: -60px;
+/*	border: 2px solid red;*/
+}
 #arrowUp {
   width: 160px;
   height: 420px;
@@ -1322,21 +1322,12 @@ THE RATESTUF WIDGET
 	margin: 1px 0px 0px 0px;
 }
 #widget-y-axis-name {
-	font-size: 2.0em;
-	font-weight: 800;
-	margin-left: -10%;
-/*	margin: 96px 0px 0px -50px;*/
-	background-color:rgba(255,255,255,0.6);
-	border-radius: 10px;
-	padding: 1px 16px;
-/*	position: absolute;
-*/	z-index: 1001;
--webkit-transform: rotate(-90deg);
--moz-transform: rotate(-90deg);
--ms-transform: rotate(-90deg);
+	margin-left: -65px;
+	font-size: 1.8em;
+/*	border: 2px solid green;*/
 }
 #widget-x-axis-name {
-	font-size: 2.0em;
+	font-size: 1.8em;
 	font-weight: 800;	
 	margin: 4px 0px 0px -30px;
 	background-color:rgba(255,255,255,0.6);
