@@ -183,8 +183,8 @@ create_search_input_for_ratetable();
 <h3>Customize Your Widget:</h3>
 <form id="form1" name="input" action="http://www.ratestuf.org/widget.php?s=" method="get">
   <input type="text" id="inputsTerm" class="" placeholder="custom search" name="s" value=""> define the search (e.g. 'apples' or 'us vs. them')<br>
-  <input type="text" id="inputxAxis" class="" placeholder="x-axis" name="xAxis" value=""> define the x-axis (or leave it blank - it's up to you)<br>
-  <input type="text" id="inputyAxis" class="" placeholder="y-axis" name="yAxis" value=""> define the y-axis (or leave it blank - it's up to you) <br>
+  <input type="text" id="inputxAxis" class="" placeholder="x-axis" name="xAxis" value=""> define the x-axis <br>
+  <input type="text" id="inputyAxis" class="" placeholder="y-axis" name="yAxis" value=""> define the y-axis <br>
 <!--   <input type="checkbox" id="checkbox1" name="hidesearchbar" value="true">hide the search bar<br> -->
   <input type="submit" id="update_widget_code_button" class="go_button" value="Update Widget Code">
   <input type="submit" id="clear_widget_code_button" class="go_button" value="Clear Custom Code">

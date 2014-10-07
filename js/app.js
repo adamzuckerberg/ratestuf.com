@@ -219,21 +219,21 @@ $("#shareNowButton").click(function(){
           var x = 75;
           var y = 13;
           var rightMargin = 10;
-          var width = canvas.width-x;
-          var height = canvas.height-63;
+          var width = canvas.width-x-rightMargin;
+          var height = canvas.height-63-y;
 
           function drawRatingTable() {
 
             ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo((canvas.width - rightMargin), y);
-            // ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-            ctx.lineTo((canvas.width - rightMargin), y + height - 10);
-            // ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-            ctx.lineTo(x, y + height - 10);
-            // ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-            ctx.lineTo(x, y);
-            // ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
             ctx.closePath();
                     ctx.fillStyle = "rgba(207, 190, 110, 0.3)";
                     ctx.fill();
