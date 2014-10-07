@@ -1,5 +1,4 @@
 <?php
-// ini_set("session.cookie_lifetime",360000);
 session_start();
 require("inc/config.php");
 require("facebook.php");
@@ -77,6 +76,7 @@ userloggedin =<?php
 create_search_input_for_ratetable_with_special_glyphicon_that_works_with_no_logo_above_it();
 ?>
 
+
             </div>
             <div class="col-lg-3 col-md-2 hidden-sm hidden-xs"></div>
           </div>
@@ -145,7 +145,6 @@ create_search_input_for_ratetable_with_special_glyphicon_that_works_with_no_logo
           </div>
       </div>
 
-
 <!-- close container -->
     </div>
 <!-- javascript -->
@@ -153,14 +152,17 @@ create_search_input_for_ratetable_with_special_glyphicon_that_works_with_no_logo
 <script src="js/bootstrap.min.js"></script>
 
 <script>
-$(document).ready(function() {
-  var str = document.referrer;
-  var n = str.indexOf("ratestuf.org");
-  if (n == -1) {
-    parentdomain = str;
-} 
-console.log("parent domain: "+parentdomain);
-});
+// $(document).ready(function() {
+//   var str = document.referrer;
+//   var n = str.indexOf("ratestuf.org");
+//   if (n == -1) {
+//     parentdomain = str;
+// } 
+// console.log("parent domain: "+parentdomain);
+
+// });
+
+
 </script>
     </body>
 </html>

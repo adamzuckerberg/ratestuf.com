@@ -540,7 +540,11 @@ $("#rateNowButtonForStandardWidget").click(function(){
   positionFromTop = ($(this).position().top);
   xRating = (Math.round((positionFromLeft / containerWidth) * 100 )/ 100);
   yRating = (Math.round((1-(positionFromTop / containerHeight))* 100 )/ 100);
-  domain = parentdomain;
+  // domainToken
+  domainToken = $('#domainToken').val();
+  if (domainToken) {
+    domain = domainToken;
+  }
 
   // testing code
   console.log("domain: "+domain);
