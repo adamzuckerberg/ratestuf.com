@@ -163,7 +163,7 @@ function get_draggable_balls($search_term) {
 function create_search_input_for_ratetable() {
 
   global $connection;
-  $search_term="obama vs. batman";
+  $search_term="npr vs. fox news";
   if (isset($_GET["s"])) {
     $search_term = strtolower($_GET["s"]);
   }

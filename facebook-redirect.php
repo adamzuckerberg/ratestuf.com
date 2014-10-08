@@ -55,11 +55,18 @@ userloggedin =<?php
     echo "false";
   }
 ?>;
-
-$(document).ready(function() {
-var client = new ZeroClipboard($('#copy_to_clipboard_button'));
-});
 </script>
+
+<?php
+$to      = 'adam@ratestuf.org';
+$subject = 'Congratulations - Someone is about to share to FB';
+$message = 'Hey Adam, This is an email you set up to let you know that someone is sharing something from RateStuf to FB. You are awesome!';
+$headers = 'From: ratestuf@example.com' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
+?>
 
 
 <!-- facebook og sharing -->

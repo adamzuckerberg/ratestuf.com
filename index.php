@@ -31,7 +31,7 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RateStuf | Share Your Ratings</title>
-  <meta name="description" content="Ratestuf&trade; is the easiest way to rate and share stuf.">
+  <meta name="description" content="Ratestuf&trade; is the easiest way to rate and share stuf. Create your own infographics to share your rating online.">
   <link href='http://fonts.googleapis.com/css?family=Lilita+One|Passion+One:700,400,900|Chivo:400,900,900italic' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico" />
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -61,7 +61,7 @@ userloggedin =<?php
 <!-- "fb:explicitly_shared=true" -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="My rating of <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?><?php; ?>"/>
-<meta property="og:description" content="Rate anything and share your stuf." />
+<meta property="og:description" content="Rate anything and share your stuf. Create your own rating infographic and share it with friends." />
 <meta property="og:image" content="https://www.ratestuf.org/screenshots/<?php echo $_GET['i']; ?>">
 
 </head>
@@ -313,6 +313,9 @@ create_search_input_for_ratetable();
                <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><a href="http://www.ratestuf.org/privacy.php">Privacy Policy</a><div id="footerLinks" class="hidden-sm hidden-xs"></p></div>
           </div>
       </footer>
+      <?php 
+      // print_r($_GET);  
+      ?>
 <!-- close container -->
     </div>
 <!-- javascript -->

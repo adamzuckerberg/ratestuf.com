@@ -776,7 +776,11 @@ background: repeating-linear-gradient(
 }
 #shareNowButton {
 		width: 70%;
-	opacity: 0.9;
+	opacity: 0.85;
+}
+#shareNowButton:hover {
+		width: 73%;
+	opacity: 1.00;
 }
 #rateNowButtonForCustomWidget, #rateNowButtonForStandardWidget {
 	border-radius: 9px;
