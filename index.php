@@ -1,5 +1,4 @@
 <?php
-// ini_set("session.cookie_lifetime",360000);
 session_start();
 require("inc/config.php");
 require("facebook.php");
@@ -192,7 +191,7 @@ create_search_input_for_ratetable();
       
 <!--       <button id="copy_to_clipboard_button" data-clipboard-target="widget_text_area" class="go_button" title="Copy Embedded Code to Clipboard">Copy to Clipboard</button> -->
   </div>
-<h3 class='paragraphs'> Compare & Share Stuf </h3>
+<h3 class='paragraphs'> Compare & Share Stuff </h3>
 <p class='paragraphs'> RateStuf&trade; is the fastest, easiest way to rate stuff and share your opinions with your friends.</p><p class='paragraphs'>You can <strong> compare anything</strong> versus anything else on any factors that YOU choose. Anything? Yes, anything you want (within socially acceptable norms of course). Do you think Superman is hotter than Batman - rate them on 'hotness' <strong>vs</strong> 'strength'. Do you think Michelle Pfeiffer is smarter than Bill Clinton - rate them on 'smartness' vs 'acting ability'.  You decide. It's all up to you.</p>
 <p class='paragraphs'>Then, easily share your ratings with friends. Have fun and don't forget to share your ratings on the facebook&trade;.</p>
 <p class='paragraphs'>  - Adam Zuckerberg (Founder), 2014</p>
@@ -237,16 +236,17 @@ create_search_input_for_ratetable();
                 <?php 
                   mysqli_free_result($trending);
                 ?> -->
-          <h3 class="trending" id="trendingVsHeadline"> Trending - Stuf vs Stuf</h3>
+          <h3 class="trending" id="trendingVsHeadline"> Trending Versus Searches</h3>
                 <ul>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=mitt+romney+vs+hillary+clinton">mitt romney vs. hillary clinton<a></li></br>   
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=batman+vs+superman">batman vs. superman<a></li></br>  
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=chuck+norris+vs+vladimir+putin">chuck norris vs. vladimir putin<a></li></br>  
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=uber+vs.+lyft">uber vs. lyft<a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=elizabeth+warren+vs.+hillary+clinton">elizabeth warren vs. hillary clinton<a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=discover+home+loans+vs.+quicken+loans">discover home loans vs. quicken loans<a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=geico+vs.+state+farm">geico vs. state farm<a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=southwest+vs.+delta">southwest vs. delta<a></li></br>       
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=ruby+on+rails+developers+vs+php+developers&xAxis=salary&yAxis=intelligence">ruby on rails developers vs. php developers</a></li></br>   
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=mitt+romney+vs+hillary+clinton&xAxis=electability&yAxis=likeability">mitt romney vs. hillary clinton</a></li></br>   
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=batman+vs+superman&xAxis=strength&yAxis=speed">batman vs. superman</a></li></br>  
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=chuck+norris+vs+vladimir+putin&xAxis=evilness&yAxis=craftiness">chuck norris vs. vladimir putin</a></li></br>  
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=uber+vs.+lyft&xAxis=price&yAxis=value">uber vs. lyft</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=elizabeth+warren+vs.+hillary+clinton&xAxis=electability&yAxis=trustworthiness">elizabeth warren vs. hillary clinton</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=discover+home+loans+vs.+quicken+loans&xAxis=price&yAxis=value">discover home loans vs. quicken loans</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=geico+vs.+state+farm&xAxis=price&yAxis=value">geico vs. state farm</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.org/?s=southwest+vs.+delta&xAxis=customer+service&yAxis=price">southwest vs. delta</a></li></br>       
                 </ul>
 
                   <?php
@@ -254,7 +254,7 @@ create_search_input_for_ratetable();
                     $query .= "FROM ratings_table JOIN items_table ON ratings_table.itemId=items_table.itemId "; 
                     $query .= "GROUP BY itemName ";
                     $query .= "ORDER BY count DESC ";
-                    $query .= "LIMIT 12;"; 
+                    $query .= "LIMIT 20;"; 
                     $popular = mysqli_query($connection, $query);
                   //test is there was a query error
                     if (!$popular) {
@@ -262,7 +262,7 @@ create_search_input_for_ratetable();
                       echo "not able to get popular";
                     }
                   ?>
-                  <h3 class="popular">  Popular Stuf: </h3>
+                  <h3 class="popular">  Popular Stuff: </h3>
                   <?php
                   $itemNames = array();
                   $maximum = 0;
@@ -286,13 +286,13 @@ create_search_input_for_ratetable();
                          $percent = floor(($itemName['count'] / $maximum) * 100);
                          // echo $percent.'%';
                          // determine the class for this term based on the percentage
-                         if ($percent < 20): 
+                         if ($percent < 10): 
                            $class = 'smallest'; 
-                         elseif ($percent >= 20 and $percent < 40):
+                         elseif ($percent >= 10 and $percent < 20):
                            $class = 'small'; 
-                         elseif ($percent >= 40 and $percent < 60):
+                         elseif ($percent >= 20 and $percent < 35):
                            $class = 'medium';
-                         elseif ($percent >= 60 and $percent < 90):
+                         elseif ($percent >= 35 and $percent < 65):
                            $class = 'large';
                          else:
                          $class = 'largest';
