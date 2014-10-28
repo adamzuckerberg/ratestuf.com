@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $json=file_get_contents('php://input');
 $json=json_decode($json,true);
 
-$facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb1a887ce18660b430d3c7c'));
+$facebook = new Facebook(array('appId'=>'300112593522000','secret'=>'4e096c69ce38356a77e5ad505943bce9'));
 $user=$facebook->getUser();
 
 if (!$user && $_SESSION['limit_inserts'] >= 5) {

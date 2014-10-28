@@ -7,7 +7,7 @@ require("inc/functions.php");
 
 <?php 
 
-$facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb1a887ce18660b430d3c7c'));
+$facebook = new Facebook(array('appId'=>'300112593522000','secret'=>'4e096c69ce38356a77e5ad505943bce9'));
   if (isset($_GET['fblogout'])) {
     $facebook->clearAllPersistentData();
   }
@@ -17,7 +17,7 @@ $facebook = new Facebook(array('appId'=>'228744763916305','secret'=>'013c80431eb
     if(mysqli_query($connection, "SELECT `id` FROM `fblogin` WHERE `fb_id`='$user'")->num_rows==0){
 mysqli_query($connection, "INSERT INTO `fblogin` (`fb_id`,`firstname`,`lastname`,`email`,`image`,`gender`) VALUES('$user','".$user_profile["first_name"]."','".$user_profile["last_name"]."','".$user_profile["email"]."','https://graph.facebook.com/$user/picture?type=large','".$user_profile["gender"]."')");
 
-header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
+header("Location:http://www.ratestuf.com/?".$_SERVER['QUERY_STRING']);
     }
   }
 
@@ -32,9 +32,9 @@ header("Location:http://www.ratestuf.org/?".$_SERVER['QUERY_STRING']);
 	<title>RateStuf | Share Your Ratings</title>
   <meta name="description" content="Ratestuf&trade; is the easiest way to rate and share stuf. Create your own infographics to share your rating online.">
   <link href='http://fonts.googleapis.com/css?family=Lilita+One|Passion+One:700,400,900|Chivo:400,900,900italic' rel='stylesheet' type='text/css'>
-  <link rel="shortcut icon" href="http://www.ratestuf.org/favicon.ico" />
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
+  <link rel="shortcut icon" href="http://ratestuf.com/favicon.ico??v=2">
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -61,7 +61,7 @@ userloggedin =<?php
 <meta property="og:type" content="website" />
 <meta property="og:title" content="My rating of <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?><?php; ?>"/>
 <meta property="og:description" content="Rate anything and share your stuf. Create your own rating infographic and share it with friends." />
-<meta property="og:image" content="https://www.ratestuf.org/screenshots/<?php echo $_GET['i']; ?>">
+<meta property="og:image" content="https://www.ratestuf.com/screenshots/<?php echo $_GET['i']; ?>">
 
 </head>
   <body>
@@ -72,7 +72,7 @@ userloggedin =<?php
             <div class="col-lg-7 col-md-7 hidden-sm hidden-xs"></div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
               <?php if(!$user){ ?>
-                <a href="<?php echo $facebook->getLoginUrl(array('scope' => 'user_location,user_likes,email,user_about_me','redirect_uri'=>'http://ratestuf.org/?'.$_SERVER['QUERY_STRING'])); ?>">
+                <a href="<?php echo $facebook->getLoginUrl(array('scope' => 'user_location,user_likes,email,user_about_me','redirect_uri'=>'http://ratestuf.com/?'.$_SERVER['QUERY_STRING'])); ?>">
                 <img id="loginFacebook" src="images/facebook-login.png" alt="Log in with Facebook" title="Log in with facebook to validate your identity"/>
                 <p id="fbTagline">Log in to share your ratings...</p>
                 </a>
@@ -80,7 +80,7 @@ userloggedin =<?php
               <?php }else{ ?>
                 <img id="userImage" src='https://graph.facebook.com/<?php echo $user; ?>/picture?type=large'>
                 <span id="welcomeUserImage">Welcome <?php echo $user_profile['first_name'];?>!</span>
-                <a href="<?php echo $facebook->getLogoutUrl(array('next'=>'http://ratestuf.org?fblogout')); ?>" id="fbLogOut">Logout</a>
+                <a href="<?php echo $facebook->getLogoutUrl(array('next'=>'http://ratestuf.com?fblogout')); ?>" id="fbLogOut">Logout</a>
               <?php } ?>
             </div>
           </div>
@@ -95,11 +95,11 @@ userloggedin =<?php
             <div class="col-lg-4 col-md-2 hidden-sm hidden-xs"></div>
             <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
               <div id="logo3-container" class="logo pull-left" alt="RateStuf logo">
-                <p id="logo3">Ratestuf</p>
+                <p id="logo3">Ratestuf<span id="dotCom">.com</span></p>
                 <p id="logo3trademark" >&trade;</p>
-                <p id="logo3tagline">rate anything and compare stuf<span style="margin-left:1px;margin-top:0px" id="logo3-falling-f">f.</span></p>
+                <p id="logo3tagline">rate ANYTHING and compare stuf<span style="margin-left:1px;margin-top:0px" id="logo3-falling-f">f.</span></p>
               </div>
-
+<div id="wantToRateBrands"><p>Want to view or add <a href="http://www.ratestuf.org">brand ratings</a>? Go to Ratestuf.org.</p></div>
 <?php 
 create_search_input_for_ratetable();
 ?>
@@ -178,9 +178,9 @@ create_search_input_for_ratetable();
   <div id="hidden_widget_sharing_area">
       <h4>Copy and paste this code to add a RateStuf&trade; rating table to your webpage:</h4>
       <textarea id="widget_text_area" class="widget_text_area">
-<iframe src="http://www.ratestuf.org/widget-custom.php?s=example1+vs+example2&xAxis=example+x-axis&yAxis=example+y-axis" height="420px" width="420px" style="border:0px;"></iframe></textarea>
+<iframe src="http://www.ratestuf.com/widget-custom.php?s=example1+vs+example2&xAxis=example+x-axis&yAxis=example+y-axis" height="420px" width="420px" style="border:0px;"></iframe></textarea>
 <h3>Customize Your Widget:</h3>
-<form id="form1" name="input" action="http://www.ratestuf.org/widget.php?s=" method="get">
+<form id="form1" name="input" action="http://www.ratestuf.com/widget.php?s=" method="get">
   <input type="text" id="inputsTerm" class="" placeholder="custom search" name="s" value=""> define the search (e.g. 'apples' or 'us vs. them')<br>
   <input type="text" id="inputxAxis" class="" placeholder="x-axis" name="xAxis" value=""> define the x-axis <br>
   <input type="text" id="inputyAxis" class="" placeholder="y-axis" name="yAxis" value=""> define the y-axis <br>
@@ -238,15 +238,15 @@ create_search_input_for_ratetable();
                 ?> -->
           <h3 class="trending" id="trendingVsHeadline"> Trending Versus Searches</h3>
                 <ul>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=ruby+on+rails+developers+vs+php+developers&xAxis=salary&yAxis=intelligence">ruby on rails developers vs. php developers</a></li></br>   
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=mitt+romney+vs+hillary+clinton&xAxis=electability&yAxis=likeability">mitt romney vs. hillary clinton</a></li></br>   
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=batman+vs+superman&xAxis=strength&yAxis=speed">batman vs. superman</a></li></br>  
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=chuck+norris+vs+vladimir+putin&xAxis=evilness&yAxis=craftiness">chuck norris vs. vladimir putin</a></li></br>  
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=uber+vs.+lyft&xAxis=price&yAxis=value">uber vs. lyft</a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=elizabeth+warren+vs.+hillary+clinton&xAxis=electability&yAxis=trustworthiness">elizabeth warren vs. hillary clinton</a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=discover+home+loans+vs.+quicken+loans&xAxis=price&yAxis=value">discover home loans vs. quicken loans</a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=geico+vs.+state+farm&xAxis=price&yAxis=value">geico vs. state farm</a></li></br>
-                    <li class="trendingVS"><a href="http://ratestuf.org/?s=southwest+vs.+delta&xAxis=customer+service&yAxis=price">southwest vs. delta</a></li></br>       
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=ruby+on+rails+developers+vs+php+developers&xAxis=salary&yAxis=intelligence">ruby on rails developers vs. php developers</a></li></br>   
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=mitt+romney+vs+hillary+clinton&xAxis=electability&yAxis=likeability">mitt romney vs. hillary clinton</a></li></br>   
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=batman+vs+superman&xAxis=strength&yAxis=speed">batman vs. superman</a></li></br>  
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=chuck+norris+vs+vladimir+putin&xAxis=evilness&yAxis=craftiness">chuck norris vs. vladimir putin</a></li></br>  
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=uber+vs.+lyft&xAxis=price&yAxis=value">uber vs. lyft</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=elizabeth+warren+vs.+hillary+clinton&xAxis=electability&yAxis=trustworthiness">elizabeth warren vs. hillary clinton</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=discover+home+loans+vs.+quicken+loans&xAxis=price&yAxis=value">discover home loans vs. quicken loans</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=geico+vs.+state+farm&xAxis=price&yAxis=value">geico vs. state farm</a></li></br>
+                    <li class="trendingVS"><a href="http://ratestuf.com/?s=southwest+vs.+delta&xAxis=customer+service&yAxis=price">southwest vs. delta</a></li></br>       
                 </ul>
 
                   <?php
@@ -310,7 +310,7 @@ create_search_input_for_ratetable();
 
       <footer class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-               <p id="footer"> Ratestuf.org &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><a href="http://www.ratestuf.org/privacy.php">Privacy Policy</a><div id="footerLinks" class="hidden-sm hidden-xs"></p></div>
+               <p id="footer"> Ratestuf.com &copy; <?php echo DATE('Y'); ?> <br> An Adam Zuckerberg Production </br><a href="#"></a>  42 Alan Watts Way, Topanga CA #69 <br/><a href="http://www.ratestuf.com/privacy.php">Privacy Policy</a><div id="footerLinks" class="hidden-sm hidden-xs"></p></div>
           </div>
       </footer>
       <?php 

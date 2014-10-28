@@ -15,16 +15,22 @@ canvas {
  {
 /*	border: 5px solid red;*/
 }
-#logo3 {
-font-family: 'Chivo', sans-serif;
-	font-size: 2.0em;
-	font-weight: 700;
+#wantToRateBrands {
+	padding-left: 10px;
+	font-size: 0.8em;
+	margin-top: -10px;
+	margin-bottom: 7px;
 }
 #logo3 {
 	display: inline-block;
-	font-size: 3.3em;
-	font-weight: 900;
 	margin-top: -20px;
+	font-family: 'Chivo', sans-serif;
+	font-size: 3.0em;
+	font-weight: 900;
+	transition: 1s ease-in-out;
+}
+#logo3:hover {
+	 -webkit-transform: scale(1) rotate(0turn) translate(0px,0%);
 }
 #logo3-container {
 	width: 100%;
@@ -34,21 +40,27 @@ font-family: 'Chivo', sans-serif;
 	margin-top: 0px;
 	text-align:center;
 	padding: 10px;
+	margin-bottom:-15px;
 }
 #logo3trademark {
 	position: relative;
 	font-size: 1.6em;
 	font-weight: 900;
-	margin: -3em 0px 0px 10.0em;
+	margin: -3em 0px 0px 7.0em;
 }
 #logo3tagline {
 	font-size: 0.9em;
 	font-weight: 900;
 /*	border: 2px solid blue;*/
 	position: relative;
-	margin-top: 0.5em;
+	margin-top: 0.8em;
 	max-height: 2.0em;
 	z-index:100;
+}
+#dotCom {
+	color: blue;
+	font-size: 0.5em;
+	font-weight: 0.9em;
 }
 #logo3-falling-f {
 	display: inline-block;
@@ -223,8 +235,8 @@ input[id="searchTags"] {
 	position: relative;
 	font-size: 1.4em;
 /*    border: 2px solid blue;*/
-    margin-right: -1%;
-    margin-top: 54px;
+    margin-right: -4%;
+    margin-top: -9px;
     color: #404040 !important;
 }
 #searchGlyphiconForStandardWidget {
@@ -794,7 +806,7 @@ background: repeating-linear-gradient(
 	margin-left: -35%;
 	box-shadow: 4px 4px 0px 0px;
 	position: absolute;
-	z-index: 3;
+	z-index: 3;logo3
 	border: 2px solid #1cff2c;
 }
 #ratings-powered-by-tagline {
@@ -1237,11 +1249,23 @@ a:active {
 	opacity: 1.0;
 /*	margin-left: -25%;*/
 }
+#wantToRateBrands {
+	padding-left: 30px;
+	font-size: 1.2em;
+	margin-top: -10px;
+	margin-bottom: 7px;
+}
 /* Medium devices (desktops, 992px and up) */
 @media(min-width:992px){
 body {
 	margin-right: 5%;
 	margin-left: 5%;
+}
+#wantToRateBrands {
+	padding-left: 30px;
+	font-size: 1.0em;
+	margin-top: -10px;
+	margin-bottom: -10px;
 }
 /*****************
 THE RATESTUF WIDGET
@@ -1299,6 +1323,10 @@ THE RATESTUF WIDGET
 #logo3 {
 	font-size: 2.0em;
 	font-weight: 900;
+	transition: 1s ease-in-out;
+}
+#logo3:hover {
+    -webkit-transform: scale(1) rotate(0turn) translate(0px,0%);
 }
 #logo3 {
 	font-size: 5.0em;
@@ -1312,14 +1340,14 @@ THE RATESTUF WIDGET
 	position: relative;
 	font-size: 2.0em;
 	font-weight: 900;
-	margin: -3.5em 0px 0px 12.3em;
+	margin: -3.5em 0px 0px 9.5em;
 }
 #logo3tagline {
 	font-size: 1.3em;
 	font-weight: 900;
 /*	border: 2px solid blue;*/
 	position: relative;
-	margin-top: 1.4em;
+	margin-top: 1.6em;
 }
 #logo3-falling-f {
 	display: inline-block;
@@ -1522,7 +1550,7 @@ font-size: 1.2em;
 /*	display: block;*/
 }
 .glyphicon-search {
-    margin-top: 105px;
+    margin-top: 5px;
     margin-right: 0%;
 }
 #searchGlyphiconForStandardWidget {

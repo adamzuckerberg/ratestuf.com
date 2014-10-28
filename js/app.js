@@ -4,7 +4,7 @@
 // });
 $(document).ready(function() {
   if (getUrlParameter('rs') != null) {
-  window.location.href="http://www.ratestuf.org?s="+getUrlParameter('rs')+"&xAxis="+getUrlParameter('xAxis')+"&yAxis="+getUrlParameter('yAxis');
+  window.location.href="http://www.ratestuf.com?s="+getUrlParameter('rs')+"&xAxis="+getUrlParameter('xAxis')+"&yAxis="+getUrlParameter('yAxis');
   }
 });
 
@@ -14,14 +14,14 @@ $('#update_widget_code_button').click(function(event) {
   $('#update_widget_code_button').toggle();
   $('#clear_widget_code_button').show();
   //update iframe code
-  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-custom.php?s='+encodeURIComponent($('#inputsTerm').val())+'&xAxis='+encodeURIComponent($('#inputxAxis').val())+'&yAxis='+encodeURIComponent($('#inputyAxis').val())+'"'+' height="440px" width="500px" style="border:0px;"></iframe>');
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.com/widget-custom.php?s='+encodeURIComponent($('#inputsTerm').val())+'&xAxis='+encodeURIComponent($('#inputxAxis').val())+'&yAxis='+encodeURIComponent($('#inputyAxis').val())+'"'+' height="440px" width="500px" style="border:0px;"></iframe>');
 });
 
 $('#clear_widget_code_button').click(function() {
   event.preventDefault();
   $('#update_widget_code_button').show();
   $('#clear_widget_code_button').toggle(); 
-  $('#widget_text_area').text('<iframe src="http://www.ratestuf.org/widget-custom.php?s=example1+vs+example2&xAxis=example+x-axis&yAxis=example+y-axis" height="420px" width="420px" style="border:0px;"></iframe>');
+  $('#widget_text_area').text('<iframe src="http://www.ratestuf.com/widget-custom.php?s=example1+vs+example2&xAxis=example+x-axis&yAxis=example+y-axis" height="420px" width="420px" style="border:0px;"></iframe>');
 });
 
 $(document).ready(function() {
@@ -43,7 +43,7 @@ $("#logo3-container").hover(function(){
     $("#logo3-falling-f").css("position", "absolute" );
     $("#logo3-falling-f").css("z-index", "-9999" );
     $("#logo3-falling-f").css("font-size", "1em" );
-    $("#logo3-falling-f").css("margin", "25px 0px 0px 4px" );
+    $("#logo3-falling-f").css("margin", "16px 0px 0px 4px" );
     $("#logo3-falling-f").css("-webkit-transform", "rotate(55deg)" );
     $("#logo3-falling-f").css("-moz-transform", "rotate(55deg)" );
     $("#logo3-falling-f").css("-ms-transform", "rotate(55deg)" );
@@ -456,7 +456,7 @@ $("#shareNowButton").click(function(){
               url: "screenshots/screenshot.php",
               success: function(response) {
 
-            window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://ratestuf.org/screenshots/5420f480c44d4.png",'_blank');
+            window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&caption=test&link=http://ratestuf.com/screenshots/5420f480c44d4.png",'_blank');
 
               },
               error: function(response) {
@@ -474,7 +474,7 @@ $("#shareNowButton").click(function(){
               type: "POST",
               url: "ajax/upload_canvas_image.php",
               success: function(response) {
-    window.open("https://www.facebook.com/dialog/feed?app_id=228744763916305&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.org?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s')+"&yAxis="+$('#input-value-on-the-y-axis').val()+"&xAxis="+$('#input-value-on-the-x-axis').val())+'&redirect_uri='+encodeURI('http://www.ratestuf.org/facebook-redirect.php')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.org','_blank');
+    window.open("https://www.facebook.com/dialog/feed?app_id=300112593522000&display=popup&name=My%20rating%20of%20"+encodeURI(getUrlParameter('s'))+"&link=http://ratestuf.com?i="+response.imageName+encodeURIComponent('&rs='+getUrlParameter('s')+"&yAxis="+$('#input-value-on-the-y-axis').val()+"&xAxis="+$('#input-value-on-the-x-axis').val())+'&redirect_uri='+encodeURI('http://www.ratestuf.com/facebook-redirect.php')+"&caption="+encodeURI("Ratestuf is the easiest way to rate and share stuf.")+'&description=ratestuf.com','_blank');
               },
               error: function(response) {
                 console.log(response);
