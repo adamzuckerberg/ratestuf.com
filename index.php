@@ -61,7 +61,7 @@ userloggedin =<?php
 <meta property="og:type" content="website" />
 <meta property="og:title" content="My rating of <?php echo ucwords((isset($_GET['s'])? $_GET['s']:""))?><?php; ?>"/>
 <meta property="og:description" content="Rate anything and share your stuf. Create your own rating infographic and share it with friends." />
-<meta property="og:image" content="https://www.ratestuf.com/screenshots/<?php echo $_GET['i']; ?>">
+<meta property="og:image" content="http://www.ratestuf.com/screenshots/<?php echo $_GET['i']; ?>">
 
 </head>
   <body>
